@@ -616,7 +616,7 @@ vec3int8_t * vec3i8_addS_r(vec3int8_t * out, int8_t scalar);
 void vec3u8_add(vec3uint8_t * out, vec3uint8_t * other);
 
 // Add a scalar 'scalar' to the 3D uint8 vector 'out'.
-void vec3u8_addS(vec3int8_t * out, uint8_t scalar);
+void vec3u8_addS(vec3uint8_t * out, uint8_t scalar);
 
 // Addition of two 3D uint8 vectors 'other' and 'out' element-wise and return the result as a new vector.
 vec3uint8_t * vec3u8_add_r(vec3uint8_t * out, vec3uint8_t * other);
@@ -642,7 +642,7 @@ vec3int16_t * vec3i16_addS_r(vec3int16_t * out, int16_t scalar);
 void vec3u16_add(vec3uint16_t * out, vec3uint16_t * other);
 
 // Add a scalar 'scalar' to the 3D uint16 vector 'out'.
-void vec3u16_addS(vec3int16_t * out, uint16_t scalar);
+void vec3u16_addS(vec3uint16_t * out, uint16_t scalar);
 
 // Addition of two 3D uint16 vectors 'other' and 'out' element-wise and return the result as a new vector.
 vec3uint16_t * vec3u16_add_r(vec3uint16_t * out, vec3uint16_t * other);
@@ -667,7 +667,7 @@ vec3int32_t * vec3i32_addS_r(vec3int32_t * out, int32_t scalar);
 void vec3u32_add(vec3uint32_t * out, vec3uint32_t * other);
 
 // Add a scalar 'scalar' to the 3D uint32 vector 'out'.
-void vec3u32_addS(vec3int32_t * out, uint32_t scalar);
+void vec3u32_addS(vec3uint32_t * out, uint32_t scalar);
 
 // Addition of two 3D uint32 vectors 'other' and 'out' element-wise and return the result as a new vector.
 vec3uint32_t * vec3u32_add_r(vec3uint32_t * out, vec3uint32_t * other);
@@ -693,7 +693,7 @@ vec3int64_t * vec3i64_addS_r(vec3int64_t * out, int64_t scalar);
 void vec3u64_add(vec3uint64_t * out, vec3uint64_t * other);
 
 // Add a scalar 'scalar' to the 3D uint64 vector 'out'.
-void vec3u64_addS(vec3int64_t * out, uint64_t scalar);
+void vec3u64_addS(vec3uint64_t * out, uint64_t scalar);
 
 // Addition of two 3D uint64 vectors 'other' and 'out' element-wise and return the result as a new vector.
 vec3uint64_t * vec3u64_add_r(vec3uint64_t * out, vec3uint64_t * other);
@@ -743,7 +743,7 @@ vec3int8_t * vec3i8_subS_r(vec3int8_t * out, int8_t scalar);
 void vec3u8_sub(vec3uint8_t * out, vec3uint8_t * other);
 
 // Subtract a scalar 'scalar' from the 3D uint8 vector 'out'.
-void vec3u8_subS(vec3int8_t * out, uint8_t scalar);
+void vec3u8_subS(vec3uint8_t * out, uint8_t scalar);
 
 // Subtract the 3D uint8 vector 'other' from the 3D uint8 vector 'out' element-wise and return the result as a new vector.
 vec3uint8_t * vec3u8_sub_r(vec3uint8_t * out, vec3uint8_t * other);
@@ -767,7 +767,7 @@ vec3int16_t * vec3i16_subS_r(vec3int16_t * out, int16_t scalar);
 void vec3u16_sub(vec3uint16_t * out, vec3uint16_t * other);
 
 // Subtract a scalar 'scalar' from the 3D uint16 vector 'out'.
-void vec3u16_subS(vec3int16_t * out, uint16_t scalar);
+void vec3u16_subS(vec3uint16_t * out, uint16_t scalar);
 
 // Subtract the 3D uint16 vector 'other' from the 3D uint16 vector 'out' element-wise and return the result as a new vector.
 vec3uint16_t * vec3u16_sub_r(vec3uint16_t * out, vec3uint16_t * other);

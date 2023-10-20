@@ -1,6 +1,8 @@
-#include "../../include/math/vec4.h"
 #include "../../include/math/vec2.h"
 #include "../../include/math/vec3.h"
+
+#include "../../include/math/vec4.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
@@ -52,7 +54,7 @@ void initvec4I64(vec4int64_t * out , int64_t x ,int64_t y, int64_t z, int64_t w)
   out->_z = z;
   out->_w = w;
 }
-void initvec4U64(vec4uint64_t * out , uint64_t x ,uint64_t y, uint64_t z, int64_t w){
+void initvec4U64(vec4uint64_t * out , uint64_t x ,uint64_t y, uint64_t z, uint64_t w){
   out->_x = x;
   out->_y = y;
   out->_z = z;
@@ -982,7 +984,7 @@ void vec4u8_add(vec4uint8_t * out, vec4uint8_t * other){
   out->_z += other->_z;
   out->_w += other->_w;
 }
-void vec4u8_addS(vec4int8_t * out , uint8_t scalar){
+void vec4u8_addS(vec4uint8_t * out , uint8_t scalar){
   out->_x += scalar;
   out->_y += scalar;
   out->_z += scalar;
@@ -1038,7 +1040,7 @@ void vec4u16_add(vec4uint16_t * out, vec4uint16_t * other){
   out->_z += other->_z;
   out->_w += other->_w;
 }
-void vec4u16_addS(vec4int16_t * out , uint16_t scalar){
+void vec4u16_addS(vec4uint16_t * out , uint16_t scalar){
   out->_x += scalar;
   out->_y += scalar;
   out->_z += scalar;
@@ -1094,7 +1096,7 @@ void vec4u32_add(vec4uint32_t * out, vec4uint32_t * other){
   out->_z += other->_z;
   out->_w += other->_w;
 }
-void vec4u32_addS(vec4int32_t * out , uint32_t scalar){
+void vec4u32_addS(vec4uint32_t * out , uint32_t scalar){
   out->_x += scalar;
   out->_y += scalar;
   out->_z += scalar;
@@ -1150,7 +1152,7 @@ void vec4u64_add(vec4uint64_t * out, vec4uint64_t * other){
   out->_z += other->_z;
   out->_w += other->_w;
 }
-void vec4u64_addS(vec4int64_t * out , uint64_t scalar){
+void vec4u64_addS(vec4uint64_t * out , uint64_t scalar){
   out->_x += scalar;
   out->_y += scalar;
   out->_z += scalar;

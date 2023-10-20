@@ -711,7 +711,7 @@ void vec3u8_add(vec3uint8_t * out, vec3uint8_t * other){
   out->_y += other->_y;
   out->_z += other->_z;
 }
-void vec3u8_addS(vec3int8_t * out , uint8_t scalar){
+void vec3u8_addS(vec3uint8_t * out , uint8_t scalar){
   out->_x += scalar;
   out->_y += scalar;
   out->_z += scalar;
@@ -757,7 +757,7 @@ void vec3u16_add(vec3uint16_t * out, vec3uint16_t * other){
   out->_y += other->_y;
   out->_z += other->_z;
 }
-void vec3u16_addS(vec3int16_t * out , uint16_t scalar){
+void vec3u16_addS(vec3uint16_t * out , uint16_t scalar){
   out->_x += scalar;
   out->_y += scalar;
   out->_z += scalar;
@@ -803,7 +803,7 @@ void vec3u32_add(vec3uint32_t * out, vec3uint32_t * other){
   out->_y += other->_y;
   out->_z += other->_z;
 }
-void vec3u32_addS(vec3int32_t * out , uint32_t scalar){
+void vec3u32_addS(vec3uint32_t * out , uint32_t scalar){
   out->_x += scalar;
   out->_y += scalar;
   out->_z += scalar;
@@ -849,7 +849,7 @@ void vec3u64_add(vec3uint64_t * out, vec3uint64_t * other){
   out->_y += other->_y;
   out->_z += other->_z;
 }
-void vec3u64_addS(vec3int64_t * out , uint64_t scalar){
+void vec3u64_addS(vec3uint64_t * out , uint64_t scalar){
   out->_x += scalar;
   out->_y += scalar;
   out->_z += scalar;
@@ -942,7 +942,7 @@ void vec3u8_sub(vec3uint8_t * out, vec3uint8_t * other){
   out->_y -= other->_y;
   out->_z -= other->_z;
 }
-void vec3u8_subS(vec3int8_t * out , uint8_t scalar){
+void vec3u8_subS(vec3uint8_t * out , uint8_t scalar){
   out->_x -= scalar;
   out->_y -= scalar;
   out->_z -= scalar;
@@ -988,7 +988,7 @@ void vec3u16_sub(vec3uint16_t * out, vec3uint16_t * other){
   out->_y -= other->_y;
   out->_z -= other->_z;
 }
-void vec3u16_subS(vec3int16_t * out , uint16_t scalar){
+void vec3u16_subS(vec3uint16_t * out , uint16_t scalar){
   out->_x -= scalar;
   out->_y -= scalar;
   out->_z -= scalar;
@@ -1034,7 +1034,7 @@ void vec3u32_sub(vec3uint32_t * out, vec3uint32_t * other){
   out->_y -= other->_y;
   out->_z -= other->_z;
 }
-void vec3u32_subS(vec3int32_t * out , uint32_t scalar){
+void vec3u32_subS(vec3uint32_t * out , uint32_t scalar){
   out->_x -= scalar;
   out->_y -= scalar;
   out->_z -= scalar;
@@ -1080,7 +1080,7 @@ void vec3u64_sub(vec3uint64_t * out, vec3uint64_t * other){
   out->_y -= other->_y;
   out->_z -= other->_z;
 }
-void vec3u64_subS(vec3int64_t * out , uint64_t scalar){
+void vec3u64_subS(vec3uint64_t * out , uint64_t scalar){
   out->_x -= scalar;
   out->_y -= scalar;
   out->_z -= scalar;
@@ -1174,7 +1174,7 @@ void vec3u16_mult(vec3uint16_t * out, vec3uint16_t * other){
   out->_y *= other->_y;
   out->_z *= other->_z;
 }
-void vec3u16_multS(vec3int16_t * out , uint16_t scalar){
+void vec3u16_multS(vec3uint16_t * out , uint16_t scalar){
   out->_x *= scalar;
   out->_y *= scalar;
   out->_z *= scalar;
@@ -1220,7 +1220,7 @@ void vec3u32_mult(vec3uint32_t * out, vec3uint32_t * other){
   out->_y *= other->_y;
   out->_z *= other->_z;
 }
-void vec3u32_multS(vec3int32_t * out , uint32_t scalar){
+void vec3u32_multS(vec3uint32_t * out , uint32_t scalar){
   out->_x *= scalar;
   out->_y *= scalar;
   out->_z *= scalar;
@@ -1266,7 +1266,7 @@ void vec3u64_mult(vec3uint64_t * out, vec3uint64_t * other){
   out->_y *= other->_y;
   out->_z *= other->_z;
 }
-void vec3u64_multS(vec3int64_t * out , uint64_t scalar){
+void vec3u64_multS(vec3uint64_t * out , uint64_t scalar){
   out->_x *= scalar;
   out->_y *= scalar;
   out->_z *= scalar;
