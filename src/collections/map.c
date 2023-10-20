@@ -71,7 +71,11 @@ void map_insert(map_t *m, const char *key, const char *value) {
 
     // Check if the allocation was successful
     if (newPair) {
-        m->pairs[m->size] = *newPair;
+       memcpy(&m->pairs[m->size],newPair, sizeof(kvpair_t));
+        //m->pairs[m->size] = *newPair; //keeping in for commit. This looks like
+                                        //a possible bug. I need the CONTENTS,
+                                        //where as i was trying to set the address
+                                        //to newPair , then freeing it.
         free(newPair);  // Free the temporary kvpair
         m->size++;
     }

@@ -982,7 +982,7 @@ void vec4u8_add(vec4uint8_t * out, vec4uint8_t * other){
   out->_z += other->_z;
   out->_w += other->_w;
 }
-void vec4u8_addS(vec4int8_t * out , uint8_t scalar){
+void vec4u8_addS(vec4uint8_t * out , uint8_t scalar){
   out->_x += scalar;
   out->_y += scalar;
   out->_z += scalar;
@@ -1038,7 +1038,7 @@ void vec4u16_add(vec4uint16_t * out, vec4uint16_t * other){
   out->_z += other->_z;
   out->_w += other->_w;
 }
-void vec4u16_addS(vec4int16_t * out , uint16_t scalar){
+void vec4u16_addS(vec4uint16_t * out , uint16_t scalar){
   out->_x += scalar;
   out->_y += scalar;
   out->_z += scalar;
@@ -1094,7 +1094,7 @@ void vec4u32_add(vec4uint32_t * out, vec4uint32_t * other){
   out->_z += other->_z;
   out->_w += other->_w;
 }
-void vec4u32_addS(vec4int32_t * out , uint32_t scalar){
+void vec4u32_addS(vec4uint32_t * out , uint32_t scalar){
   out->_x += scalar;
   out->_y += scalar;
   out->_z += scalar;
@@ -1150,7 +1150,7 @@ void vec4u64_add(vec4uint64_t * out, vec4uint64_t * other){
   out->_z += other->_z;
   out->_w += other->_w;
 }
-void vec4u64_addS(vec4int64_t * out , uint64_t scalar){
+void vec4u64_addS(vec4uint64_t * out , uint64_t scalar){
   out->_x += scalar;
   out->_y += scalar;
   out->_z += scalar;

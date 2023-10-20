@@ -653,7 +653,7 @@ void vec2u8_sub(vec2uint8_t * out, vec2uint8_t * other){
   out->_x -= other->_x;
   out->_y -= other->_y;
 }
-void vec2u8_subS(vec2int8_t * out , uint8_t scalar){
+void vec2u8_subS(vec2uint8_t * out , uint8_t scalar){
   out->_x -= scalar;
   out->_y -= scalar;
 }
@@ -695,7 +695,7 @@ void vec2u16_sub(vec2uint16_t * out, vec2uint16_t * other){
   out->_x -= other->_x;
   out->_y -= other->_y;
 }
-void vec2u16_subS(vec2int16_t * out , uint16_t scalar){
+void vec2u16_subS(vec2uint16_t * out , uint16_t scalar){
   out->_x -= scalar;
   out->_y -= scalar;
 }
@@ -737,7 +737,7 @@ void vec2u32_sub(vec2uint32_t * out, vec2uint32_t * other){
   out->_x -= other->_x;
   out->_y -= other->_y;
 }
-void vec2u32_subS(vec2int32_t * out , uint32_t scalar){
+void vec2u32_subS(vec2uint32_t * out , uint32_t scalar){
   out->_x -= scalar;
   out->_y -= scalar;
 }
@@ -779,7 +779,7 @@ void vec2u64_sub(vec2uint64_t * out, vec2uint64_t * other){
   out->_x -= other->_x;
   out->_y -= other->_y;
 }
-void vec2u64_subS(vec2int64_t * out , uint64_t scalar){
+void vec2u64_subS(vec2uint64_t * out , uint64_t scalar){
   out->_x -= scalar;
   out->_y -= scalar;
 }
@@ -906,7 +906,7 @@ void vec2u16_mult(vec2uint16_t * out, vec2uint16_t * other){
   out->_x *= other->_x;
   out->_y *= other->_y;
 }
-void vec2u16_multS(vec2int16_t * out , uint16_t scalar){
+void vec2u16_multS(vec2uint16_t * out , uint16_t scalar){
   out->_x *= scalar;
   out->_y *= scalar;
 }
@@ -948,7 +948,7 @@ void vec2u32_mult(vec2uint32_t * out, vec2uint32_t * other){
   out->_x *= other->_x;
   out->_y *= other->_y;
 }
-void vec2u32_multS(vec2int32_t * out , uint32_t scalar){
+void vec2u32_multS(vec2uint32_t * out , uint32_t scalar){
   out->_x *= scalar;
   out->_y *= scalar;
 }
@@ -990,7 +990,7 @@ void vec2u64_mult(vec2uint64_t * out, vec2uint64_t * other){
   out->_x *= other->_x;
   out->_y *= other->_y;
 }
-void vec2u64_multS(vec2int64_t * out , uint64_t scalar){
+void vec2u64_multS(vec2uint64_t * out , uint64_t scalar){
   out->_x *= scalar;
   out->_y *= scalar;
 }

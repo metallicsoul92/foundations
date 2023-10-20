@@ -840,7 +840,7 @@ vec2uint16_t *vec2u16_sub_r(vec2uint16_t *out, vec2uint16_t *other);
   * @param out A pointer to the destination vec2int32_t vector where the result will be stored.
   * @param scalar The scalar value to be subtracted from each element of the vector.
   */
- void vec2u32_subS(vec2int32_t *out, uint32_t scalar);
+ void vec2u32_subS(vec2uint32_t *out, uint32_t scalar);
 
  /**
   * @brief Subtracts a scalar value from each element of a vec2uint32_t vector.
@@ -848,7 +848,7 @@ vec2uint16_t *vec2u16_sub_r(vec2uint16_t *out, vec2uint16_t *other);
   * @param out A pointer to the destination vec2uint32_t vector where the result will be stored.
   * @param scalar The scalar value to be subtracted from each element of the vector.
   */
- void vec2u32_subS(vec2int32_t *out, uint32_t scalar);
+ void vec2u32_subS(vec2uint32_t *out, uint32_t scalar);
 
  /**
   * @brief Performs element-wise subtraction between two vec2uint32_t vectors and returns a new vector.
@@ -904,7 +904,7 @@ vec2uint16_t *vec2u16_sub_r(vec2uint16_t *out, vec2uint16_t *other);
   * @param out A pointer to the destination vec2int64_t vector where the result will be stored.
   * @param scalar The scalar value to be subtracted from each element of the vector.
   */
- void vec2u64_subS(vec2int64_t *out, uint64_t scalar);
+ void vec2u64_subS(vec2uint64_t *out, uint64_t scalar);
 
  /**
   * @brief Subtracts a scalar value from each element of a vec2uint64_t vector.
@@ -912,7 +912,7 @@ vec2uint16_t *vec2u16_sub_r(vec2uint16_t *out, vec2uint16_t *other);
   * @param out A pointer to the destination vec2uint64_t vector where the result will be stored.
   * @param scalar The scalar value to be subtracted from each element of the vector.
   */
- void vec2u64_subS(vec2int64_t *out, uint64_t scalar);
+ void vec2u64_subS(vec2uint64_t *out, uint64_t scalar);
 
  /**
   * @brief Performs element-wise subtraction between two vec2uint64_t vectors and returns a new vector.
