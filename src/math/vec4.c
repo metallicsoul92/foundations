@@ -1,6 +1,8 @@
-#include "../../include/math/vec4.h"
 #include "../../include/math/vec2.h"
 #include "../../include/math/vec3.h"
+
+#include "../../include/math/vec4.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
@@ -52,7 +54,7 @@ void initvec4I64(vec4int64_t * out , int64_t x ,int64_t y, int64_t z, int64_t w)
   out->_z = z;
   out->_w = w;
 }
-void initvec4U64(vec4uint64_t * out , uint64_t x ,uint64_t y, uint64_t z, int64_t w){
+void initvec4U64(vec4uint64_t * out , uint64_t x ,uint64_t y, uint64_t z, uint64_t w){
   out->_x = x;
   out->_y = y;
   out->_z = z;

@@ -234,6 +234,31 @@ uint32_t vec2u32_X(vec2uint32_t * out);
 // Get the Y-component of a 2D vector of uint32_t.
 uint32_t vec2u32_Y(vec2uint32_t * out);
 
+// Set the X-component of a 2D vector of int64_t.
+void vec2i64_setX(vec2int64_t * out, int64_t x);
+
+// Set the Y-component of a 2D vector of int64_t.
+void vec2i64_setY(vec2int64_t * out, int64_t y);
+
+// Get the X-component of a 2D vector of int64_t.
+int64_t vec2i64_X(vec2int64_t * out);
+
+// Get the Y-component of a 2D vector of int64_t.
+int64_t vec2i64_Y(vec2int64_t * out);
+
+// Set the X-component of a 2D vector of uint64_t.
+void vec2u64_setX(vec2uint64_t * out, uint64_t x);
+
+// Set the Y-component of a 2D vector of uint64_t.
+void vec2u64_setY(vec2uint64_t * out, uint64_t y);
+
+// Get the X-component of a 2D vector of uint64_t.
+uint64_t vec2u64_X(vec2uint64_t * out);
+
+// Get the Y-component of a 2D vector of uint64_t.
+uint64_t vec2u64_Y(vec2uint64_t * out);
+
+
 // Set the X-component of a 2D vector of char.
 void vec2char_setX(vec2char_t * out, char x);
 
@@ -322,7 +347,7 @@ void vec2u8_add(vec2uint8_t *out, vec2uint8_t *other);
  * @param out A pointer to the destination vec2uint8_t vector where the result will be stored.
  * @param scalar The scalar value to be added to each element of the vector.
  */
-void vec2u8_addS(vec2int8_t *out, uint8_t scalar);
+void vec2u8_addS(vec2uint8_t *out, uint8_t scalar);
 
 /**
  * @brief Performs element-wise addition between two vec2uint8_t vectors and returns a new vector.
@@ -394,7 +419,7 @@ void vec2u16_add(vec2uint16_t *out, vec2uint16_t *other);
  * @param out A pointer to the destination vec2uint16_t vector where the result will be stored.
  * @param scalar The scalar value to be added to each element of the vector.
  */
-void vec2u16_addS(vec2int16_t *out, uint16_t scalar);
+void vec2u16_addS(vec2uint16_t *out, uint16_t scalar);
 
 /**
  * @brief Performs element-wise addition between two vec2uint16_t vectors and returns a new vector.
@@ -467,7 +492,7 @@ void vec2u32_add(vec2uint32_t *out, vec2uint32_t *other);
  * @param out A pointer to the destination vec2uint32_t vector where the result will be stored.
  * @param scalar The scalar value to be added to each element of the vector.
  */
-void vec2u32_addS(vec2int32_t *out, uint32_t scalar);
+void vec2u32_addS(vec2uint32_t *out, uint32_t scalar);
 
 /**
  * @brief Performs element-wise addition between two vec2uint32_t vectors and returns a new vector.
@@ -540,7 +565,7 @@ void vec2u64_add(vec2uint64_t *out, vec2uint64_t *other);
  * @param out A pointer to the destination vec2uint64_t vector where the result will be stored.
  * @param scalar The scalar value to be added to each element of the vector.
  */
-void vec2u64_addS(vec2int64_t *out, uint64_t scalar);
+void vec2u64_addS(vec2uint64_t *out, uint64_t scalar);
 
 /**
  * @brief Performs element-wise addition between two vec2uint64_t vectors and returns a new vector.
