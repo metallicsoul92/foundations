@@ -278,7 +278,12 @@ void int_allocBlock_initBlockAtAddress(size_t size, aBlock_t *prev, aBlock_t *ne
         block->_prev = prev;
         block->_next = next;
         block->_addr = (void *)(block + 1); // The data immediately follows the block struct
-        // Initialize other fields in the block as needed
+        block->_head = int_alloc_createHeader(size, 0, 0); // Initialize the header
+
+        // Additional initialization of the block if needed
+
+        // Place the block at the specified address
+        int_allocBlock_placeAtAddress(block, block);
     }
 }
 
@@ -324,7 +329,7 @@ void static_set_allocator(allocator_t * alloc){
 
 
 //allocation from the specified allocator.
-void * allocator_malloc(allocator_t * allocator, size_t size) {
+void *allocator_malloc(allocator_t *allocator, size_t size) {
     if (allocator == NULL || size == 0) {
         return NULL; // Invalid input, nothing to allocate
     }
@@ -338,6 +343,8 @@ void * allocator_malloc(allocator_t * allocator, size_t size) {
     // Find the last block in the selected bin
     aBlock_t *lastBlock = NULL;
     size_t binSize = allocator->_binData[binID]._binSize;
+
+    // Search for a block in the bin's linked list
     for (aBlock_t *block = int_alloc_getBlock(allocator->_binData[binID]._baseAddr);
          block != NULL;
          block = int_alloc_getNext(block)) {
@@ -350,7 +357,7 @@ void * allocator_malloc(allocator_t * allocator, size_t size) {
         offset = lastBlock->_head._offset + lastBlock->_head._size;
     }
 
-    // Create a new block at the calculated address
+    // Create a new block
     aBlock_t newBlock;
     int_allocBlock_initBlockAtAddress(size, lastBlock, NULL);
 
@@ -369,6 +376,7 @@ void * allocator_malloc(allocator_t * allocator, size_t size) {
     // Return the address of the data in the new block
     return int_alloc_getData(&newBlock);
 }
+
 
 void * allocator_calloc(allocator_t * allocator, size_t size){
 	return allocator_malloc(allocator,size);
