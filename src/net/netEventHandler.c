@@ -24,4 +24,13 @@ void * userFunction_getUserData(userFunction_t * function){
 void register_user_function(netEventHandler_t * handler, userFunction_t *function){
   vector_push(handler->_events,function);
 }
-void process_event(netEventHandler_t * handler, uint16_t event_id);
+void process_event(struct netEventHandler_t *handler, uint16_t event_id) {
+    // Iterate over registered user functions and call the relevant ones based on event_id.
+    for (size_t i = 0; i < handler->_eventCount; i++) {
+        struct userFunction *function = vector_get(handler->_events, i);
+        if (function->_identifier == event_id) {
+            // Call the user function with user data.
+            function->_function(function->_userData);
+        }
+    }
+}
