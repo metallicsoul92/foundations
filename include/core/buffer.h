@@ -38,8 +38,10 @@
  *  @var buffer::_data
  *  A pointer to the memory where the buffer stores data.
  */
+#ifndef BUFFER_T_DEF
 typedef struct buffer buffer_t;
-
+#define BUFFER_T_DEF 1
+#endif
 /** @brief Allocate memory for a new `buffer_t` and set its initial capacity.
  *
  *  @param capacity The initial capacity of the buffer.
