@@ -18,6 +18,12 @@ typedef struct userFunction userFunction_t;
 // Define the net event handler structure as 'netEventHandler_t'
 typedef struct netEventHandler netEventHandler_t;
 
+//malloc userFunction
+userFunction_t * userFunction_malloc(uint16_t id, void *func(void*), void * userDat);
+
+//free userFunction
+void userFunction_free(userFunction_t * out);
+
 // Get the identifier of a user function
 uint16_t userFunction_getID(userFunction_t *function);
 
