@@ -4,6 +4,7 @@
 #include "../../include/core/buffer.h"
 #include "../../include/core/log.h"
 
+#include <stdlib.h>
 
 #ifndef CLIENT_DEF
 struct client {
@@ -45,7 +46,7 @@ void client_free(client_t * out){
   buffer_free(out->_outputDataBuffer);
   buffer_free(out->_inputDataBuffer);
   ip_freeIP(out->_serverIP);
-  ip_free(out->_clientIP);
+  ip_freeIP(out->_clientIP);
   logMessage_t * goodbye = logMessage_malloc(LOG_LEVEL_INFO, "Closing Client");
   logger_log(out->_clientLog, goodbye);
   logMessage_free(goodbye);

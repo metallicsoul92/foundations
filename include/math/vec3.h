@@ -359,6 +359,17 @@ int8_t vec3i8_Y(vec3int8_t *out);
 // Get the Z component of a 3D vector of 8-bit signed integers
 int8_t vec3i8_Z(vec3int8_t *out);;
 
+
+// Set the X component of a 3D vector of 8-bit unsigned integers
+void vec3u8_setX(vec3uint8_t *out, uint8_t x);
+
+// Set the Y component of a 3D vector of 8-bit unsigned integers
+void vec3u8_setY(vec3uint8_t *out, uint8_t y);
+
+// Set the Z component of a 3D vector of 8-bit unsigned integers
+void vec3u8_setZ(vec3uint8_t *out, uint8_t z);
+
+
 // Get the X component of a 3D vector of 8-bit unsigned integers
 uint8_t vec3u8_X(vec3uint8_t *out);
 
@@ -368,14 +379,11 @@ uint8_t vec3u8_Y(vec3uint8_t *out);
 // Get the Z component of a 3D vector of 8-bit unsigned integers
 uint8_t vec3u8_Z(vec3uint8_t *out);
 
-// Set the X component of a 3D vector of 16-bit signed integers
-void vec3i16_setX(vec3int16_t *out, int16_t x);
 
-// Set the Y component of a 3D vector of 16-bit signed integers
-void vec3i16_setY(vec3int16_t *out, int16_t y);
 
-// Set the Z component of a 3D vector of 16-bit signed integers
-void vec3i16_setZ(vec3int16_t *out, int16_t z);
+
+
+
 
 
 // Set the X component of a 3D vector of 16-bit signed integers

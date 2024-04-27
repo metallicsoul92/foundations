@@ -30,6 +30,7 @@ typedef struct peer peer_t;
 #define PEER_T_DEF 1
 #endif
 
+#define PEER_E_SUCCESS 0
 #define PEER_E_INVALID_BROADCAST -1
 
 
@@ -63,6 +64,6 @@ void peer_set_listen_func(peer_t * out, peer_listen_func_t function);
 void peer_set_broadcast_func(peer_t * out, peer_broadcast_func_t function);
 
 // Send data from each of the output buffers to each of the peers on the peer list
-int peer_Broadcast(peer_t *peer);
+int peer_Broadcast(peer_t *out ,  const void * data, size_t dataLength);
 
 #endif

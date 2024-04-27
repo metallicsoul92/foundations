@@ -1301,7 +1301,7 @@ void vec4u8_setZ(vec4uint8_t * out, uint8_t z);
  * @param out - A pointer to the 4D uint8 vector to modify.
  * @param w - The value to set as the new 'w' component.
  */
-void vec4u8_setW(vec4int8_t * out, uint8_t w);
+void vec4u8_setW(vec4uint8_t * out, uint8_t w);
 
 /**
  * Gets the 'x' component of a 4D uint8 vector.

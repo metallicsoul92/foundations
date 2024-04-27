@@ -128,37 +128,37 @@ void initVec2D(vec2d_t *out, double x, double y);
 // Allocate and Initialize 2D Vectors
 
 // Allocate and initialize a 2D vector of int8_t with the specified values.
-vec2int8_t * allocVec2I8(int8_t x, int8_t y);
+vec2int8_t * allocvec2I8(int8_t x, int8_t y);
 
 // Allocate and initialize a 2D vector of uint8_t with the specified values.
-vec2uint8_t * allocVec2U8(uint8_t x, uint8_t y);
+vec2uint8_t * allocvec2U8(uint8_t x, uint8_t y);
 
 // Allocate and initialize a 2D vector of int16_t with the specified values.
-vec2int16_t * allocVec2I16(int16_t x, int16_t y);
+vec2int16_t * allocvec2I16(int16_t x, int16_t y);
 
 // Allocate and initialize a 2D vector of uint16_t with the specified values.
-vec2uint16_t * allocVec2U16(uint16_t x, uint16_t y);
+vec2uint16_t * allocvec2U16(uint16_t x, uint16_t y);
 
 // Allocate and initialize a 2D vector of int32_t with the specified values.
-vec2int32_t * allocVec2I32(int32_t x, int32_t y);
+vec2int32_t * allocvec2I32(int32_t x, int32_t y);
 
 // Allocate and initialize a 2D vector of uint32_t with the specified values.
-vec2uint32_t * allocVec2U32(uint32_t x, uint32_t y);
+vec2uint32_t * allocvec2U32(uint32_t x, uint32_t y);
 
 // Allocate and initialize a 2D vector of int64_t with the specified values.
-vec2int64_t * allocVec2I64(int64_t x, int64_t y);
+vec2int64_t * allocvec2I64(int64_t x, int64_t y);
 
 // Allocate and initialize a 2D vector of uint64_t with the specified values.
-vec2uint64_t * allocVec2U64(uint64_t x, uint64_t y);
+vec2uint64_t * allocvec2U64(uint64_t x, uint64_t y);
 
 // Allocate and initialize a 2D vector of char with the specified values.
-vec2char_t * allocVec2C(char x, char y);
+vec2char_t * allocvec2C(char x, char y);
 
 // Allocate and initialize a 2D vector of float with the specified values.
-vec2f_t * allocVec2F(float x, float y);
+vec2f_t * allocvec2F(float x, float y);
 
 // Allocate and initialize a 2D vector of double with the specified values.
-vec2d_t * allocVec2D(double x, double y);
+vec2d_t * allocvec2D(double x, double y);
 
 //getters and setters
 // Set the x component of a 2D vector of int8_t (8-bit signed integers).

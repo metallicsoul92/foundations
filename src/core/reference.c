@@ -1,5 +1,6 @@
 #include "../../include/core/reference.h"
 #include <string.h>
+#include <stdlib.h>
 
 struct reference{
   size_t _sizeOfData;

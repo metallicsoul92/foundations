@@ -342,7 +342,7 @@ void *allocator_malloc(allocator_t *allocator, size_t size) {
 
     // Find the last block in the selected bin
     aBlock_t *lastBlock = NULL;
-    size_t binSize = allocator->_binData[binID]._binSize;
+    //size_t binSize = allocator->_binData[binID]._binSize;
 
     // Search for a block in the bin's linked list
     for (aBlock_t *block = int_alloc_getBlock(allocator->_binData[binID]._baseAddr);

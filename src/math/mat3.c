@@ -79,7 +79,7 @@ void matrix3f_setElement(matrix3f_t * self, uint8_t index, float element){
 
 //maybe overthinking, but const compatible? or atleast
 //used like a const.
-const float matrix3f_ElementAt(const matrix3f_t *self, uint8_t index){
+float matrix3f_ElementAt(const matrix3f_t *self, uint8_t index){
 	if(index < 9){
 	return (const float)self->_data[index];
 	}else

@@ -1,7 +1,9 @@
 #include "../../include/physics/line.h"
-#include "../../include/math/vec2"
-#include "../../include/math/vec3"
-#include "../../include/math/vec4"
+#include "../../include/math/vec2.h"
+#include "../../include/math/vec3.h"
+#include "../../include/math/vec4.h"
+
+#include <stdlib.h>
 
 /*
 * 2D Implementations
@@ -200,8 +202,8 @@ line2Du8_t * line2Du8_malloc(uint8_t type, uint8_t bx, uint8_t by, uint8_t ex, u
   line2Du8_t * out = malloc(sizeof(line2Du8_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec2U8(bx,by);
-    out->_end = allocVec2U8(ex,ey);
+    out->_start = allocvec2U8(bx,by);
+    out->_end = allocvec2U8(ex,ey);
   }
   return out;
 }
@@ -210,8 +212,8 @@ line2Di8_t * line2Di8_malloc(uint8_t type, int8_t bx, int8_t by, int8_t ex, int8
   line2Di8_t * out = malloc(sizeof(line2Di8_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec2I8(bx,by);
-    out->_end = allocVec2I8(ex,ey);
+    out->_start = allocvec2I8(bx,by);
+    out->_end = allocvec2I8(ex,ey);
   }
   return out;
 }
@@ -219,8 +221,8 @@ line2Du16_t * line2Du16_malloc(uint8_t type, uint16_t bx, uint16_t by, uint16_t 
   line2Du16_t * out = malloc(sizeof(line2Du16_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec2U16(bx,by);
-    out->_end = allocVec2U16(ex,ey);
+    out->_start = allocvec2U16(bx,by);
+    out->_end = allocvec2U16(ex,ey);
   }
   return out;
 }
@@ -229,8 +231,8 @@ line2Di16_t * line2Di16_malloc(uint8_t type, int16_t bx, int16_t by, int16_t ex,
   line2Di16_t * out = malloc(sizeof(line2Di16_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec2I16(bx,by);
-    out->_end = allocVec2I16(ex,ey);
+    out->_start = allocvec2I16(bx,by);
+    out->_end = allocvec2I16(ex,ey);
   }
   return out;
 }
@@ -238,8 +240,8 @@ line2Du32_t * line2Du32_malloc(uint8_t type, uint32_t bx, uint32_t by, uint32_t 
   line2Du32_t * out = malloc(sizeof(line2Du32_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec2U32(bx,by);
-    out->_end = allocVec2U32(ex,ey);
+    out->_start = allocvec2U32(bx,by);
+    out->_end = allocvec2U32(ex,ey);
   }
   return out;
 }
@@ -248,8 +250,8 @@ line2Di32_t * line2Di32_malloc(uint8_t type, int32_t bx, int32_t by, int32_t ex,
   line2Di32_t * out = malloc(sizeof(line2Di32_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec2I32(bx,by);
-    out->_end = allocVec2I32(ex,ey);
+    out->_start = allocvec2I32(bx,by);
+    out->_end = allocvec2I32(ex,ey);
   }
   return out;
 }
@@ -257,8 +259,8 @@ line2Du64_t * line2Du64_malloc(uint8_t type, uint64_t bx, uint64_t by, uint64_t 
   line2Du64_t * out = malloc(sizeof(line2Du64_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec2U64(bx,by);
-    out->_end = allocVec2U64(ex,ey);
+    out->_start = allocvec2U64(bx,by);
+    out->_end = allocvec2U64(ex,ey);
   }
   return out;
 }
@@ -267,8 +269,8 @@ line2Di64_t * line2Di64_malloc(uint8_t type, int64_t bx, int64_t by, int64_t ex,
   line2Di64_t * out = malloc(sizeof(line2Di64_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec2I64(bx,by);
-    out->_end = allocVec2I64(ex,ey);
+    out->_start = allocvec2I64(bx,by);
+    out->_end = allocvec2I64(ex,ey);
   }
   return out;
 }
@@ -276,8 +278,8 @@ line2Df_t * line2Df_malloc(uint8_t type, float bx, float by, float ex, float ey)
   line2Df_t * out = malloc(sizeof(line2Df_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec2F(bx,by);
-    out->_end = allocVec2F(ex,ey);
+    out->_start = allocvec2F(bx,by);
+    out->_end = allocvec2F(ex,ey);
   }
   return out;
 }
@@ -285,8 +287,8 @@ line2Dd_t * line2Dd_malloc(uint8_t type, double bx, double by, double ex, double
   line2Dd_t * out = malloc(sizeof(line2Dd_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec2D(bx,by);
-    out->_end = allocVec2D(ex,ey);
+    out->_start = allocvec2D(bx,by);
+    out->_end = allocvec2D(ex,ey);
   }
   return out;
 }
@@ -295,8 +297,8 @@ line3Du8_t * line3Du8_malloc(uint8_t type, uint8_t bx, uint8_t by, uint8_t bz ,u
   line3Du8_t * out = malloc(sizeof(line3Du8_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec3U8(bx,by,bz);
-    out->_end = allocVec3U8(ex,ey,ez);
+    out->_start = allocvec3U8(bx,by,bz);
+    out->_end = allocvec3U8(ex,ey,ez);
   }
   return out;
 }
@@ -305,8 +307,8 @@ line3Di8_t * line3Di8_malloc(uint8_t type, int8_t bx, int8_t by, int8_t bz ,int8
   line3Di8_t * out = malloc(sizeof(line3Di8_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec3I8(bx,by,bz);
-    out->_end = allocVec3I8(ex,ey,ez);
+    out->_start = allocvec3I8(bx,by,bz);
+    out->_end = allocvec3I8(ex,ey,ez);
   }
   return out;
 }
@@ -314,8 +316,8 @@ line3Du16_t * line3Du16_malloc(uint8_t type,  uint16_t bx, uint16_t by, uint16_t
   line3Du16_t * out = malloc(sizeof(line3Du16_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec3U16(bx,by,bz);
-    out->_end = allocVec3U16(ex,ey,ez);
+    out->_start = allocvec3U16(bx,by,bz);
+    out->_end = allocvec3U16(ex,ey,ez);
   }
   return out;
 }
@@ -323,8 +325,8 @@ line3Di16_t * line3Di16_malloc(uint8_t type, int16_t bx, int16_t by, int16_t bz 
   line3Di16_t * out = malloc(sizeof(line3Di16_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec3I16(bx,by,bz);
-    out->_end = allocVec3I16(ex,ey,ez);
+    out->_start = allocvec3I16(bx,by,bz);
+    out->_end = allocvec3I16(ex,ey,ez);
   }
   return out;
 }
@@ -332,8 +334,8 @@ line3Du32_t * line3Du32_malloc(uint8_t type, uint32_t bx, uint32_t by, uint32_t 
   line3Du32_t * out = malloc(sizeof(line3Du32_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec3U32(bx,by,bz);
-    out->_end = allocVec3U32(ex,ey,ez);
+    out->_start = allocvec3U32(bx,by,bz);
+    out->_end = allocvec3U32(ex,ey,ez);
   }
   return out;
 }
@@ -341,8 +343,8 @@ line3Di32_t * line3Di32_malloc(uint8_t type, int32_t bx, int32_t by, int32_t bz 
   line3Di32_t * out = malloc(sizeof(line3Di32_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec3I32(bx,by,bz);
-    out->_end = allocVec3I32(ex,ey,ez);
+    out->_start = allocvec3I32(bx,by,bz);
+    out->_end = allocvec3I32(ex,ey,ez);
   }
   return out;
 }
@@ -350,8 +352,8 @@ line3Du64_t * line3Du64_malloc(uint8_t type, uint64_t bx, uint64_t by, uint64_t 
   line3Du64_t * out = malloc(sizeof(line3Du64_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec3U64(bx,by,bz);
-    out->_end = allocVec3U64(ex,ey,ez);
+    out->_start = allocvec3U64(bx,by,bz);
+    out->_end = allocvec3U64(ex,ey,ez);
   }
   return out;
 }
@@ -359,8 +361,8 @@ line3Di64_t * line3Di64_malloc(uint8_t type, int64_t bx, int64_t by, int64_t bz 
   line3Di64_t * out = malloc(sizeof(line3Di64_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec3I64(bx,by,bz);
-    out->_end = allocVec3I64(ex,ey,ez);
+    out->_start = allocvec3I64(bx,by,bz);
+    out->_end = allocvec3I64(ex,ey,ez);
   }
   return out;
 }
@@ -368,8 +370,8 @@ line3Df_t * line3Df_malloc(uint8_t type, float bx, float by, float bz, float ex,
   line3Df_t * out = malloc(sizeof(line3Df_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec3F(bx,by,bz);
-    out->_end = allocVec3F(ex,ey,ez);
+    out->_start = allocvec3F(bx,by,bz);
+    out->_end = allocvec3F(ex,ey,ez);
   }
   return out;
 }
@@ -377,8 +379,8 @@ line3Dd_t * line3Dd_malloc(uint8_t type, double bx, double by, double bz, double
   line3Dd_t * out = malloc(sizeof(line3Dd_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec3D(bx,by,bz);
-    out->_end = allocVec3D(ex,ey,ez);
+    out->_start = allocvec3D(bx,by,bz);
+    out->_end = allocvec3D(ex,ey,ez);
   }
   return out;
 }
@@ -387,8 +389,8 @@ line4Du8_t * line4Du8_malloc(uint8_t type, uint8_t bx, uint8_t by, uint8_t bz , 
   line4Du8_t * out = malloc(sizeof(line4Du8_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec4U8(bx,by,bz,bq);
-    out->_end = allocVec4U8(ex,ey,ez,eq);
+    out->_start = allocvec4U8(bx,by,bz,bq);
+    out->_end = allocvec4U8(ex,ey,ez,eq);
   }
   return out;
 }
@@ -396,8 +398,8 @@ line4Di8_t * line4Di8_malloc(uint8_t type,  int8_t bx, int8_t by, int8_t bz , in
   line4Di8_t * out = malloc(sizeof(line4Di8_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec4I8(bx,by,bz,bq);
-    out->_end = allocVec4I8(ex,ey,ez,eq);
+    out->_start = allocvec4I8(bx,by,bz,bq);
+    out->_end = allocvec4I8(ex,ey,ez,eq);
   }
   return out;
 }
@@ -405,8 +407,8 @@ line4Du16_t * line4Du16_malloc(uint8_t type,  uint16_t bx, uint16_t by, uint16_t
   line4Du16_t * out = malloc(sizeof(line4Du16_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec4U16(bx,by,bz,bq);
-    out->_end = allocVec4U16(ex,ey,ez,eq);
+    out->_start = allocvec4U16(bx,by,bz,bq);
+    out->_end = allocvec4U16(ex,ey,ez,eq);
   }
   return out;
 }
@@ -414,8 +416,8 @@ line4Di16_t * line4Di16_malloc(uint8_t type,  int16_t bx, int16_t by, int16_t bz
   line4Di16_t * out = malloc(sizeof(line4Di16_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec4I16(bx,by,bz,bq);
-    out->_end = allocVec4I16(ex,ey,ez,eq);
+    out->_start = allocvec4I16(bx,by,bz,bq);
+    out->_end = allocvec4I16(ex,ey,ez,eq);
   }
   return out;
 }
@@ -423,8 +425,8 @@ line4Du32_t * line4Du32_malloc(uint8_t type, uint32_t bx, uint32_t by, uint32_t 
   line4Du32_t * out = malloc(sizeof(line4Du32_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec4U32(bx,by,bz,bq);
-    out->_end = allocVec4U32(ex,ey,ez,eq);
+    out->_start = allocvec4U32(bx,by,bz,bq);
+    out->_end = allocvec4U32(ex,ey,ez,eq);
   }
   return out;
 }
@@ -432,8 +434,8 @@ line4Di32_t * line4Di32_malloc(uint8_t type,  int32_t bx, int32_t by, int32_t bz
   line4Di32_t * out = malloc(sizeof(line4Di32_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec4I32(bx,by,bz,bq);
-    out->_end = allocVec4I32(ex,ey,ez,eq);
+    out->_start = allocvec4I32(bx,by,bz,bq);
+    out->_end = allocvec4I32(ex,ey,ez,eq);
   }
   return out;
 }
@@ -441,8 +443,8 @@ line4Du64_t * line4Du64_malloc(uint8_t type, uint64_t bx, uint64_t by, uint64_t 
   line4Du64_t * out = malloc(sizeof(line4Du64_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec4U64(bx,by,bz,bq);
-    out->_end = allocVec4U64(ex,ey,ez,eq);
+    out->_start = allocvec4U64(bx,by,bz,bq);
+    out->_end = allocvec4U64(ex,ey,ez,eq);
   }
   return out;
 }
@@ -450,8 +452,8 @@ line4Di64_t * line4Di64_malloc(uint8_t type,  int64_t bx, int64_t by, int64_t bz
   line4Di64_t * out = malloc(sizeof(line4Di64_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec4I64(bx,by,bz,bq);
-    out->_end = allocVec4I64(ex,ey,ez,eq);
+    out->_start = allocvec4I64(bx,by,bz,bq);
+    out->_end = allocvec4I64(ex,ey,ez,eq);
   }
   return out;
 }
@@ -459,8 +461,8 @@ line4Df_t * line4Df_malloc(uint8_t type, float bx, float by, float bz, float bq,
   line4Df_t * out = malloc(sizeof(line4Df_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec4F(bx,by,bz,bq);
-    out->_end = allocVec4F(ex,ey,ez,eq);
+    out->_start = allocvec4F(bx,by,bz,bq);
+    out->_end = allocvec4F(ex,ey,ez,eq);
   }
   return out;
 }
@@ -468,8 +470,8 @@ line4Dd_t * line4Dd_malloc(uint8_t type, double bx, double by, double bz, double
   line4Dd_t * out = malloc(sizeof(line4Dd_t));
   if(out != NULL){
     out->_type = type;
-    out->_start = allocVec4D(bx,by,bz,bq);
-    out->_end = allocVec4D(ex,ey,ez,eq);
+    out->_start = allocvec4D(bx,by,bz,bq);
+    out->_end = allocvec4D(ex,ey,ez,eq);
   }
   return out;
 }
@@ -545,7 +547,7 @@ int16_t line3Di16_getStartX(line3Di16_t * out){
   return vec3i16_X(out->_start);
 }
 uint32_t line3Du32_getStartX(line3Du32_t * out){
-  return vec3u33_X(out->_start);
+  return vec3u32_X(out->_start);
 }
 int32_t line3Di32_getStartX(line3Di32_t * out){
   return vec3i32_X(out->_start);
@@ -553,7 +555,7 @@ int32_t line3Di32_getStartX(line3Di32_t * out){
 uint64_t line3Du64_getStartX(line3Du64_t * out){
   return vec3u64_X(out->_start);
 }
-uint64_t line3Di64_getStartX(line3Di64_t * out){
+int64_t line3Di64_getStartX(line3Di64_t * out){
   return vec3i64_X(out->_start);
 }
 float line3Df_getStartX(line3Df_t * out){
@@ -584,7 +586,7 @@ int32_t line4Di32_getStartX(line4Di32_t * out){
 uint64_t line4Du64_getStartX(line4Du64_t * out){
   return vec4u64_X(out->_start);
 }
-uint64_t line4Di64_getStartX(line4Di64_t * out){
+int64_t line4Di64_getStartX(line4Di64_t * out){
   return vec4i64_X(out->_start);
 }
 float line4Df_getStartX(line4Df_t * out){
@@ -619,7 +621,7 @@ int32_t line2Di32_getStartY(line2Di32_t * out){
 uint64_t line2Du64_getStartY(line2Du64_t * out){
   return vec2u64_Y(out->_start);
 }
-uint64_t line2Di64_getStartY(line2Di64_t * out){
+int64_t line2Di64_getStartY(line2Di64_t * out){
   return vec2i64_Y(out->_start);
 }
 float line2Df_getStartY(line2Df_t * out){
@@ -642,7 +644,7 @@ int16_t line3Di16_getStartY(line3Di16_t * out){
   return vec3i16_Y(out->_start);
 }
 uint32_t line3Du32_getStartY(line3Du32_t * out){
-  return vec3u33_Y(out->_start);
+  return vec3u32_Y(out->_start);
 }
 int32_t line3Di32_getStartY(line3Di32_t * out){
   return vec3i32_Y(out->_start);
@@ -650,7 +652,7 @@ int32_t line3Di32_getStartY(line3Di32_t * out){
 uint64_t line3Du64_getStartY(line3Du64_t * out){
   return vec3u64_Y(out->_start);
 }
-uint64_t line3Di64_getStartY(line3Di64_t * out){
+int64_t line3Di64_getStartY(line3Di64_t * out){
   return vec3i64_Y(out->_start);
 }
 float line3Df_getStartY(line3Df_t * out){
@@ -681,7 +683,7 @@ int32_t line4Di32_getStartY(line4Di32_t * out){
 uint64_t line4Du64_getStartY(line4Du64_t * out){
   return vec4u64_Y(out->_start);
 }
-uint64_t line4Di64_getStartY(line4Di64_t * out){
+int64_t line4Di64_getStartY(line4Di64_t * out){
   return vec4i64_Y(out->_start);
 }
 float line4Df_getStartY(line4Df_t * out){
@@ -715,7 +717,7 @@ int32_t line2Di32_getEndX(line2Di32_t * out){
 uint64_t line2Du64_getEndX(line2Du64_t * out){
   return vec2u64_X(out->_start);
 }
-uint64_t line2Di64_getEndX(line2Di64_t * out){
+int64_t line2Di64_getEndX(line2Di64_t * out){
   return vec2i64_X(out->_start);
 }
 float line2Df_getEndX(line2Df_t * out){
@@ -738,7 +740,7 @@ int16_t line3Di16_getEndX(line3Di16_t * out){
   return vec3i16_X(out->_start);
 }
 uint32_t line3Du32_getEndX(line3Du32_t * out){
-  return vec3u33_X(out->_start);
+  return vec3u32_X(out->_start);
 }
 int32_t line3Di32_getEndX(line3Di32_t * out){
   return vec3i32_X(out->_start);
@@ -746,7 +748,7 @@ int32_t line3Di32_getEndX(line3Di32_t * out){
 uint64_t line3Du64_getEndX(line3Du64_t * out){
   return vec3u64_X(out->_start);
 }
-uint64_t line3Di64_getEndX(line3Di64_t * out){
+int64_t line3Di64_getEndX(line3Di64_t * out){
   return vec3i64_X(out->_start);
 }
 float line3Df_getEndX(line3Df_t * out){
@@ -777,7 +779,7 @@ int32_t line4Di32_getEndX(line4Di32_t * out){
 uint64_t line4Du64_getEndX(line4Du64_t * out){
   return vec4u64_X(out->_start);
 }
-uint64_t line4Di64_getEndX(line4Di64_t * out){
+int64_t line4Di64_getEndX(line4Di64_t * out){
   return vec4i64_X(out->_start);
 }
 float line4Df_getEndX(line4Df_t * out){
@@ -812,7 +814,7 @@ int32_t line2Di32_getEndY(line2Di32_t * out){
 uint64_t line2Du64_getEndY(line2Du64_t * out){
   return vec2u64_Y(out->_start);
 }
-uint64_t line2Di64_getEndY(line2Di64_t * out){
+int64_t line2Di64_getEndY(line2Di64_t * out){
   return vec2i64_Y(out->_start);
 }
 float line2Df_getEndY(line2Df_t * out){
@@ -835,7 +837,7 @@ int16_t line3Di16_getEndY(line3Di16_t * out){
   return vec3i16_Y(out->_start);
 }
 uint32_t line3Du32_getEndY(line3Du32_t * out){
-  return vec3u33_Y(out->_start);
+  return vec3u32_Y(out->_start);
 }
 int32_t line3Di32_getEndY(line3Di32_t * out){
   return vec3i32_Y(out->_start);
@@ -843,7 +845,7 @@ int32_t line3Di32_getEndY(line3Di32_t * out){
 uint64_t line3Du64_getEndY(line3Du64_t * out){
   return vec3u64_Y(out->_start);
 }
-uint64_t line3Di64_getEndY(line3Di64_t * out){
+int64_t line3Di64_getEndY(line3Di64_t * out){
   return vec3i64_Y(out->_start);
 }
 float line3Df_getEndY(line3Df_t * out){
@@ -874,7 +876,7 @@ int32_t line4Di32_getEndY(line4Di32_t * out){
 uint64_t line4Du64_getEndY(line4Du64_t * out){
   return vec4u64_Y(out->_start);
 }
-uint64_t line4Di64_getEndY(line4Di64_t * out){
+int64_t line4Di64_getEndY(line4Di64_t * out){
   return vec4i64_Y(out->_start);
 }
 float line4Df_getEndY(line4Df_t * out){
@@ -902,7 +904,7 @@ int16_t line3Di16_getStartZ(line3Di16_t * out){
   return vec3i16_Z(out->_start);
 }
 uint32_t line3Du32_getStartZ(line3Du32_t * out){
-  return vec3u33_Z(out->_start);
+  return vec3u32_Z(out->_start);
 }
 int32_t line3Di32_getStartZ(line3Di32_t * out){
   return vec3i32_Z(out->_start);
@@ -910,7 +912,7 @@ int32_t line3Di32_getStartZ(line3Di32_t * out){
 uint64_t line3Du64_getStartZ(line3Du64_t * out){
   return vec3u64_Z(out->_start);
 }
-uint64_t line3Di64_getStartZ(line3Di64_t * out){
+int64_t line3Di64_getStartZ(line3Di64_t * out){
   return vec3i64_Z(out->_start);
 }
 float line3Df_getStartZ(line3Df_t * out){
@@ -941,7 +943,7 @@ int32_t line4Di32_getStartZ(line4Di32_t * out){
 uint64_t line4Du64_getStartZ(line4Du64_t * out){
   return vec4u64_Z(out->_start);
 }
-uint64_t line4Di64_getStartZ(line4Di64_t * out){
+int64_t line4Di64_getStartZ(line4Di64_t * out){
   return vec4i64_Z(out->_start);
 }
 float line4Df_getStartZ(line4Df_t * out){
@@ -969,7 +971,7 @@ int16_t line3Di16_getEndZ(line3Di16_t * out){
   return vec3i16_Z(out->_start);
 }
 uint32_t line3Du32_getEndZ(line3Du32_t * out){
-  return vec3u33_Z(out->_start);
+  return vec3u32_Z(out->_start);
 }
 int32_t line3Di32_getEndZ(line3Di32_t * out){
   return vec3i32_Z(out->_start);
@@ -977,7 +979,7 @@ int32_t line3Di32_getEndZ(line3Di32_t * out){
 uint64_t line3Du64_getEndZ(line3Du64_t * out){
   return vec3u64_Z(out->_start);
 }
-uint64_t line3Di64_getEndZ(line3Di64_t * out){
+int64_t line3Di64_getEndZ(line3Di64_t * out){
   return vec3i64_Z(out->_start);
 }
 float line3Df_getEndZ(line3Df_t * out){
@@ -1008,7 +1010,7 @@ int32_t line4Di32_getEndZ(line4Di32_t * out){
 uint64_t line4Du64_getEndZ(line4Du64_t * out){
   return vec4u64_Z(out->_start);
 }
-uint64_t line4Di64_getEndZ(line4Di64_t * out){
+int64_t line4Di64_getEndZ(line4Di64_t * out){
   return vec4i64_Z(out->_start);
 }
 float line4Df_getEndZ(line4Df_t * out){
@@ -1044,7 +1046,7 @@ int32_t line4Di32_getStartW(line4Di32_t * out){
 uint64_t line4Du64_getStartW(line4Du64_t * out){
   return vec4u64_W(out->_start);
 }
-uint64_t line4Di64_getStartW(line4Di64_t * out){
+int64_t line4Di64_getStartW(line4Di64_t * out){
   return vec4i64_W(out->_start);
 }
 float line4Df_getStartW(line4Df_t * out){
@@ -1058,36 +1060,7 @@ double line4Dd_getStartW(line4Dd_t * out){
 * Get End W
 * For  4D Lines
 **/
-uint8_t line3Du8_getEndW(line3Du8_t * out){
-  return vec3u8_W(out->_start);
-}
-int8_t line3Di8_getEndW(line3Di8_t * out){
-  return vec3i8_W(out->_start);
-}
-uint16_t line3Du16_getEndW(line3Du16_t * out){
-  return vec3u16_W(out->_start);
-}
-int16_t line3Di16_getEndW(line3Di16_t * out){
-  return vec3i16_W(out->_start);
-}
-uint32_t line3Du32_getEndW(line3Du32_t * out){
-  return vec3u33_W(out->_start);
-}
-int32_t line3Di32_getEndW(line3Di32_t * out){
-  return vec3i32_W(out->_start);
-}
-uint64_t line3Du64_getEndW(line3Du64_t * out){
-  return vec3u64_W(out->_start);
-}
-uint64_t line3Di64_getEndW(line3Di64_t * out){
-  return vec3i64_W(out->_start);
-}
-float line3Df_getEndW(line3Df_t * out){
-  return vec3f_W(out->_start);
-}
-double line3Dd_getEndW(line3Dd_t * out){
-  return vec3d_W(out->_start);
-}
+
 
 uint8_t line4Du8_getEndW(line4Du8_t * out){
   return vec4u8_W(out->_start);
@@ -1110,7 +1083,7 @@ int32_t line4Di32_getEndW(line4Di32_t * out){
 uint64_t line4Du64_getEndW(line4Du64_t * out){
   return vec4u64_W(out->_start);
 }
-uint64_t line4Di64_getEndW(line4Di64_t * out){
+int64_t line4Di64_getEndW(line4Di64_t * out){
   return vec4i64_W(out->_start);
 }
 float line4Df_getEndW(line4Df_t * out){

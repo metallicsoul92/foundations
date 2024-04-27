@@ -9,7 +9,7 @@ BUILDDIR = build
 OBJDIR = $(BUILDDIR)/obj
 
 # Source files
-SRCS = $(wildcard $(SRCDIR)/*/*.c)
+SRCS = $(wildcard $(SRCDIR)/*/*.c) $(wildcard $(SRCDIR)/core/dt/*.c)
 OBJS = $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCS))
 
 # Static library output name and path

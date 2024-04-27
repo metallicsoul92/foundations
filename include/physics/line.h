@@ -161,7 +161,7 @@ int16_t line2Di16_getStartY(line2Di16_t * out);
 uint32_t line2Du32_getStartY(line2Du32_t * out);
 int32_t line2Di32_getStartY(line2Di32_t * out);
 uint64_t line2Du64_getStartY(line2Du64_t * out);
-uint64_t line2Di64_getStartY(line2Di64_t * out);
+int64_t line2Di64_getStartY(line2Di64_t * out);
 float line2Df_getStartY(line2Df_t * out);
 double line2Dd_getStartY(line2Dd_t * out);
 
@@ -198,7 +198,7 @@ int16_t line2Di16_getEndX(line2Di16_t * out);
 uint32_t line2Du32_getEndX(line2Du32_t * out);
 int32_t line2Di32_getEndX(line2Di32_t * out);
 uint64_t line2Du64_getEndX(line2Du64_t * out);
-uint64_t line2Di64_getEndX(line2Di64_t * out);
+int64_t line2Di64_getEndX(line2Di64_t * out);
 float line2Df_getEndX(line2Df_t * out);
 double line2Dd_getEndX(line2Dd_t * out);
 
@@ -234,7 +234,7 @@ int16_t line2Di16_getEndY(line2Di16_t * out);
 uint32_t line2Du32_getEndY(line2Du32_t * out);
 int32_t line2Di32_getEndY(line2Di32_t * out);
 uint64_t line2Du64_getEndY(line2Du64_t * out);
-uint64_t line2Di64_getEndY(line2Di64_t * out);
+int64_t line2Di64_getEndY(line2Di64_t * out);
 float line2Df_getEndY(line2Df_t * out);
 double line2Dd_getEndY(line2Dd_t * out);
 
@@ -592,7 +592,7 @@ void line4Dd_setEndW(line4Dd_t * out, double x);
 /**
 * intersects functions
 **/
-bool line2du8_intersects(line2Du8 * first, line2Du8 * second);
+bool line2du8_intersects(line2Du8_t * first, line2Du8_t * second);
 
 
 #endif

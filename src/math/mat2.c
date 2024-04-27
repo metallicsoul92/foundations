@@ -72,7 +72,7 @@ void matrix2f_setElement(matrix2f_t * self, uint8_t index, float element){
 
 //maybe overthinking, but const compatible? or atleast
 //used like a const.
-const float matrix2f_ElementAt(const matrix2f_t *self, uint8_t index){
+float matrix2f_ElementAt(const matrix2f_t *self, uint8_t index){
 	if(index < 4){
 	return (const float)self->_data[index];
 	}else

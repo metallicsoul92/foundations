@@ -19,7 +19,7 @@ typedef struct userFunction userFunction_t;
 typedef struct netEventHandler netEventHandler_t;
 
 //malloc userFunction
-userFunction_t * userFunction_malloc(uint16_t id, void *func(void*), void * userDat);
+userFunction_t * userFunction_malloc(uint16_t id, void (*func)(void*), void *userData);
 
 //free userFunction
 void userFunction_free(userFunction_t * out);
@@ -28,15 +28,15 @@ void userFunction_free(userFunction_t * out);
 uint16_t userFunction_getID(userFunction_t *function);
 
 // Get the function pointer of a user function
-void *userFunction_getFunction(userFunction_t *function);
+void (*userFunction_getFunction(userFunction_t *function))(void*);
 
 // Get the user data associated with a user function
 void *userFunction_getUserData(userFunction_t *function);
 
 // Register a user function in the event handler
-void register_user_function(userFunction_t *function);
+void register_user_function(netEventHandler_t *handler, userFunction_t *function);
 
 // Process an event with the specified event ID
-void process_event(uint16_t event_id);
+void process_event(netEventHandler_t *handler, uint16_t event_id);
 
 #endif // FOUNDATIONS_NET_NETEVENTHANDLER_H_
