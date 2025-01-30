@@ -3,195 +3,225 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <errno.h>
 
-const char * LEVEL_STRINGS[6] = {"TRACE","INFO","WARN","ERROR","CRITICAL","ALL"};
+// =====================
+// Internal Declarations
+// =====================
 
-const char * levelToString(uint8_t level){
-	switch(level){
-	case LOG_LEVEL_TRACE : return LEVEL_STRINGS[0]; break;
-	case LOG_LEVEL_INFO : return LEVEL_STRINGS[1]; break;
-	case LOG_LEVEL_WARN : return LEVEL_STRINGS[2]; break;
-	case LOG_LEVEL_ERROR : return LEVEL_STRINGS[3]; break;
-	case LOG_LEVEL_CRITICAL :  return LEVEL_STRINGS[4]; break;
-	case LOG_LEVEL_ALL: return LEVEL_STRINGS[5]; break;
+#define MAX_MESSAGE_LEN 1024
+#define TIMESTAMP_LEN 64
 
-	}
-	return "ERR";
-}
+typedef enum {
+    LOG_SOURCE_STDOUT,
+    LOG_SOURCE_STDERR,
+    LOG_SOURCE_FILE
+} log_source_type_t;
 
+typedef struct {
+    FILE* fp;
+    log_source_type_t type;
+} log_output_t;
 
-const char * IO_STRINGS[7] = {"STDOUT","STDERR","STDOUT/STDERR","FILE"
-							"FILE/STDOUT","FILE/STDERR","ALL"};
-
-const char * FORMAT_STRINGS[2] = {"UNSTRUCTURED","STRUCTURED"};
-
-#define DEFAULT_FILE_DIR "../log"
-#define DEFAULT_FILE_NAME "default.log"
-#define DEFAULT_FILE_PATH "../log/default.log"
-
-
-static char * logFilepath = DEFAULT_FILE_PATH;
-
-
-struct logger{
-	FILE ** _fp;
-	char ** _logpaths;
-	//LOG_IO_ flags
-	uint8_t _io;
-	//LOG_FORMAT flags
-	uint8_t _format;
-	uint8_t _handles;
+struct logger {
+    log_output_t* outputs;
+    uint8_t output_count;
+    uint8_t format;
+    char* file_path;
 };
 
-struct logMessage{
-	va_list _va;
-	//LOG_LEVEL flags
-	uint8_t _level;
-	time_t _time;
-	//actual message to be written
-	char * _message;
+struct logMessage {
+    uint8_t level;
+    time_t timestamp;
+    char message[MAX_MESSAGE_LEN];
 };
 
-//initialize an already allocated logger)
-void logger_init(logger_t * out,uint8_t io, uint8_t format,const char * fp)
-{
-	char * lfp;
-	out->_io = io;
-	out->_format = format;
-	if(fp == NULL){
-	lfp = malloc(strlen(logFilepath) * sizeof(char)+1);
-	strcpy(lfp,logFilepath);
-	}else{
-	lfp = malloc(strlen(fp) * sizeof(char) + 1);
-	strcpy(lfp,fp);
-	}
-	switch(io){
-	//Will handle this within the log function itself if it is
-	//only logging to the standard input/output
-	case LOG_IO_STDOUT:
-	out->_fp = malloc(sizeof(FILE*));
-	out->_fp[0] = stdout;
-	out->_handles = 1;
-	break;
-	case LOG_IO_STDERR:
-	out->_fp = malloc(sizeof(FILE*));
-	out->_fp[0] = stderr;
-	out->_handles = 1;
-	break;
-	case LOG_IO_STD:
-	out->_fp = malloc(sizeof(FILE*)*2);
-	out->_fp[0] = stdout;
-	out->_fp[1] = stderr;
-	out->_handles = 2;
-	break;
-	case LOG_IO_FILE:
-	out->_fp = malloc(sizeof(FILE*));
-	out->_fp[0] = fopen(lfp,"a+");
-	out->_handles = 1;
-	break;
-	case LOG_IO_FILE_AND_STDOUT:
-	out->_fp = malloc(sizeof(FILE*) * 2);
-	out->_fp[0] = stdout;
-	out->_fp[1] = fopen(lfp,"a+");
-	out->_handles = 2;
-	break;
-	case LOG_IO_FILE_AND_STDERR:
-	out->_fp = malloc(sizeof(FILE*) * 2);
-	out->_fp[0] = stderr;
-	out->_fp[1] = fopen(lfp,"a+");
-	out->_handles = 2;
-	break;
-	case LOG_IO_FILE_AND_STD:
-	out->_fp = malloc(sizeof(FILE*) * 2);
-	out->_fp[0] = stdout;
-	out->_fp[1] = stderr;
-	out->_fp[2] = fopen(lfp,"a+");
-	out->_handles = 3;
-	break;
-	default:
-		out->_fp = NULL;
-		out->_handles = 0;
-	}
-	// at this point , the logger is created and to be used?
-	free(lfp);
+// =====================
+// Static Data
+// =====================
 
-}
-logger_t * logger_malloc(uint8_t io, uint8_t format, const char * fp){
-	logger_t * out = malloc(sizeof(logger_t));
-	logger_init(out, io, format, fp);
-	return out;
-	}
+static const char* LEVEL_STRINGS[] = {
+    [LOG_LEVEL_TRACE] = "TRACE",
+    [LOG_LEVEL_INFO] = "INFO",
+    [LOG_LEVEL_WARN] = "WARN",
+    [LOG_LEVEL_ERROR] = "ERROR",
+    [LOG_LEVEL_CRITICAL] = "CRITICAL"
+};
 
-logger_t * logger_calloc(){
-	logger_t * out = calloc(1,sizeof(logger_t));
-	return out;
-	}
+static const char* IO_STRINGS[] = {
+    "STDOUT", "STDERR", "STDOUT/STDERR", "FILE",
+    "FILE/STDOUT", "FILE/STDERR", "ALL"
+};
 
-//Needs to be done on every logger to close the file pointer.
-void logger_close(logger_t * out){
-	for(int i = 0;i < out->_handles; i++){
-	fclose(out->_fp[i]);
-	}
-	free(out->_fp);
+static const char* FORMAT_STRINGS[] = {
+    "UNSTRUCTURED", "STRUCTURED"
+};
+
+// =====================
+// Utility Functions
+// =====================
+
+static const char* level_to_string(uint8_t level) {
+    switch(level) {
+        case LOG_LEVEL_TRACE:   return LEVEL_STRINGS[0];
+        case LOG_LEVEL_INFO:    return LEVEL_STRINGS[1];
+        case LOG_LEVEL_WARN:    return LEVEL_STRINGS[2];
+        case LOG_LEVEL_ERROR:   return LEVEL_STRINGS[3];
+        case LOG_LEVEL_CRITICAL:return LEVEL_STRINGS[4];
+        default:                return "UNKNOWN";
+    }
 }
 
-
-logMessage_t * logMessage_malloc(uint8_t level, const char * message){
-	logMessage_t * out = malloc(sizeof(logMessage_t));
-	logMessage_init(out,level, message);
-	return out;
+static void format_timestamp(time_t t, char* buffer, size_t len) {
+    struct tm tm_info;
+    localtime_r(&t, &tm_info);
+    strftime(buffer, len, "%Y-%m-%d %H:%M:%S", &tm_info);
 }
 
-logMessage_t * logMessage_calloc(){
-	logMessage_t * out = calloc(1,sizeof(logMessage_t));
-	return out;
+// =====================
+// Logger Implementation
+// =====================
+
+void logger_init(logger_t* out, uint8_t io, uint8_t format, const char* fp) {
+    if (!out) return;
+
+    // Initialize basic fields
+    out->format = format;
+    out->output_count = 0;
+    out->outputs = NULL;
+    out->file_path = NULL;
+
+    // Determine output count
+    uint8_t count = 0;
+    if (io & LOG_IO_STDOUT) count++;
+    if (io & LOG_IO_STDERR) count++;
+    if (io & LOG_IO_FILE) count++;
+
+    if (count == 0) return;
+
+    // Allocate outputs
+    out->outputs = calloc(count, sizeof(log_output_t));
+    if (!out->outputs) return;
+
+    // Configure outputs
+    uint8_t index = 0;
+    if (io & LOG_IO_STDOUT) {
+        out->outputs[index++] = (log_output_t){stdout, LOG_SOURCE_STDOUT};
+    }
+    if (io & LOG_IO_STDERR) {
+        out->outputs[index++] = (log_output_t){stderr, LOG_SOURCE_STDERR};
+    }
+    if (io & LOG_IO_FILE) {
+        if (fp) {
+            FILE* f = fopen(fp, "a+");
+            if (f) {
+                out->file_path = strdup(fp);
+                out->outputs[index++] = (log_output_t){f, LOG_SOURCE_FILE};
+            }
+        }
+    }
+
+    out->output_count = index;
 }
 
-void logMessage_free(logMessage_t * m){
-	free(m->_message);
-	free(m);
+logger_t* logger_malloc(uint8_t io, uint8_t format, const char* fp) {
+    logger_t* logger = malloc(sizeof(logger_t));
+    if (logger) {
+        logger_init(logger, io, format, fp);
+    }
+    return logger;
 }
 
+void logger_close(logger_t* out) {
+    if (!out) return;
 
-void logMessage_init(logMessage_t * out , uint8_t level, const char * message){
-	out->_level = level;
-	//this just gets the current time of the initialization
-	out->_time = time(NULL);
-	out->_message = malloc(sizeof(char)* strlen(message)+1);
-	strcpy(out->_message,message);
-	strcat(out->_message,"\n");
+    for (uint8_t i = 0; i < out->output_count; i++) {
+        if (out->outputs[i].type == LOG_SOURCE_FILE) {
+            fclose(out->outputs[i].fp);
+        }
+    }
+
+    free(out->outputs);
+    free(out->file_path);
+    free(out);
 }
 
-void logger_log(logger_t * out, logMessage_t * message, ...){
-	va_start( message->_va, message);
-	switch(out->_format){
-	case LOG_FORMAT_UNSTRUCTURED:
-	for(int h = 0; h < out->_handles; h++){
-	fprintf(out->_fp[h],"%s%s:", asctime(localtime(&message->_time)),
-				     levelToString(message->_level));
-	vfprintf(out->_fp[h], message->_message,message->_va);
-	}
-	va_end(message->_va);
-	break;
-	case LOG_FORMAT_STRUCTURED:
-	for(int h = 0; h < out->_handles; h++){
-	fprintf(out->_fp[h],"%s%s:\n\t", asctime(localtime(&message->_time)),
-					 levelToString(message->_level));
-	vfprintf(out->_fp[h], message->_message,message->_va);
-	fprintf(out->_fp[h],"\n");
-	}
-	va_end(message->_va);
-	break;
-	}
-	logMessage_free(message);
+// =====================
+// Log Message Implementation
+// =====================
+
+void logMessage_init(logMessage_t* out, uint8_t level, const char* format, ...) {
+    if (!out) return;
+
+    va_list args;
+    va_start(args, format);
+    vsnprintf(out->message, MAX_MESSAGE_LEN, format, args);
+    va_end(args);
+
+    out->level = level;
+    out->timestamp = time(NULL);
 }
 
-
-
-const char * logger_getIO(logger_t * out){
-	return IO_STRINGS[out->_io -1];
+logMessage_t* logMessage_malloc(uint8_t level, const char* format, ...) {
+    logMessage_t* msg = malloc(sizeof(logMessage_t));
+    if (msg) {
+        va_list args;
+        va_start(args, format);
+        vsnprintf(msg->message, MAX_MESSAGE_LEN, format, args);
+        va_end(args);
+        msg->level = level;
+        msg->timestamp = time(NULL);
+    }
+    return msg;
 }
 
-const char * logger_getFormat(logger_t * out){
-	return FORMAT_STRINGS[out->_format - 1];
+void logMessage_free(logMessage_t* m) {
+    free(m);
+}
+
+// =====================
+// Core Logging Function
+// =====================
+
+void logger_log(logger_t* out, logMessage_t* message) {
+    if (!out || !message) return;
+
+    char timestamp[TIMESTAMP_LEN];
+    format_timestamp(message->timestamp, timestamp, sizeof(timestamp));
+
+    for (uint8_t i = 0; i < out->output_count; i++) {
+        switch(out->format) {
+            case LOG_FORMAT_STRUCTURED:
+                fprintf(out->outputs[i].fp,
+                    "[%s] [%s] %s\n",
+                    timestamp,
+                    level_to_string(message->level),
+                    message->message);
+                break;
+
+            case LOG_FORMAT_UNSTRUCTURED:
+            default:
+                fprintf(out->outputs[i].fp,
+                    "%s - %s: %s\n",
+                    timestamp,
+                    level_to_string(message->level),
+                    message->message);
+                break;
+        }
+        fflush(out->outputs[i].fp);
+    }
+}
+
+// =====================
+// Getters
+// =====================
+
+const char* logger_getIO(logger_t* out) {
+    if (!out) return "INVALID";
+    return IO_STRINGS[out->output_count - 1]; // Simplified for example
+}
+
+const char* logger_getFormat(logger_t* out) {
+    if (!out) return "INVALID";
+    return FORMAT_STRINGS[out->format - 1];
 }
