@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <uchar.h>
-#include "../../include/cstr/cchartraits.h" // Include the header file for char_traits_t
-#include "../../include/cstr/cstr.h"
+#include "../../../include/core/cstr/cchartraits.h" // Include the header file for char_traits_t
+#include "../../../include/core/cstr/cstr.h"
 
 
 // Define the cstr_t structure

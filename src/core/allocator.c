@@ -4,6 +4,7 @@
 #include <pthread.h>
 #include <errno.h>
 
+
 // =====================
 // Constants & Macros
 // =====================
@@ -112,7 +113,7 @@ static void* pool_alloc(MemoryPool* pool, size_t size) {
                 new_block->magic_head = MAGIC_HEAD;
                 new_block->size = block->size - size - sizeof(BlockHeader);
                 new_block->next_free = block->next_free;
-                new_block->magic_foot = MAGIC_FOT;
+								new_block->magic_foot = MAGIC_FOOT;
 
                 *current = new_block;
             } else {

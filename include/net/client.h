@@ -1,79 +1,71 @@
 #ifndef FOUNDATIONS_NET_CLIENT_H_
-#define FOUNDATIONS_NET_CLIENT_H_ 1
+#define FOUNDATIONS_NET_CLIENT_H_
 
-// Standard header for size_t
-#ifndef STDDEF_DEFINED
+// Standard headers for size_t and fixed-size integers
 #include <stddef.h>
-#define STDDEF_DEFINED 1
-#endif
-
-// Standard header for fixed-size integer types
-#ifndef STDINT_DEFINED
 #include <stdint.h>
-#define STDINT_DEFINED 1
-#endif
 
-// Define the client structure as 'client_t'
-#ifndef CLIENT_T_DEF
+// Forward declarations for external structures
+typedef struct buffer buffer_t;  // Buffer structure (defined elsewhere)
+typedef struct ip ip_t;          // IP address structure (defined elsewhere)
+
+// Forward declaration of the client structure (defined in client.c)
 typedef struct client client_t;
-#define CLIENT_T_DEF 1
-#endif
 
-// Define the buffer structure as 'buffer_t'
-#ifndef BUFFER_T_DEF
-typedef struct buffer buffer_t;
-#define BUFFER_T_DEF 1
-#endif
-
-// Define the IP structure as 'ip_t'
-#ifndef IP_T_DEF
-typedef struct ip ip_t;
-#define IP_T_DEF 1
-#endif
-
-#ifndef CLIENT_LISTEN_FUNC_DEF
-// Define a function pointer type for the listen function
+// Define a function pointer type for a custom listen function
 typedef int (*client_listen_func_t)(client_t *client, int backlog);
-#define CLIENT_LISTEN_FUNC_DEF 1
-#endif
 
-// Allocate and initialize a client structure.
-client_t * client_malloc(uint16_t cid, int sd, uint16_t p, ip_t *sp, ip_t * cp, int st, buffer_t * idb, buffer_t * odb );
+// === Client Management Functions ===
 
-// Free resources associated with a client structure.
-void client_free(client_t * out);
+// Allocate and initialize a new client structure
+client_t *client_malloc(uint16_t client_id, int socket_descriptor, uint16_t port,
+                        ip_t *server_ip, ip_t *client_ip, int state,
+                        buffer_t *input_buffer, buffer_t *output_buffer);
 
-// Get the client's unique identifier.
-uint16_t client_getClientID(client_t * out);
+// Free resources associated with a client structure
+void client_free(client_t *client);
 
-// Get the socket descriptor associated with the client.
-int client_getsocketDescriptor(client_t * out);
+// Explicitly close the client's socket without freeing the object
+void client_close(client_t *client);
 
-// Get the port on which the client is listening.
-uint16_t client_getport(client_t * out);
+// === Client Accessor Functions ===
 
-// Get the server's IP address to which the client is connected.
-ip_t * client_getserverIP(client_t * out);
+// Get the client's unique identifier
+uint16_t client_get_client_id(client_t *client);
 
-// Get the client's IP address.
-ip_t * client_getclientIP(client_t * out);
+// Get the socket descriptor associated with the client
+int client_get_socket_descriptor(client_t *client);
 
-// Get the current state of the client.
-int client_getstate(client_t * out);
+// Get the port on which the client is listening
+uint16_t client_get_port(client_t *client);
 
-// Get the data buffer used to read from the client.
-buffer_t * client_getInputdataBuffer(client_t * out);
+// Get the server's IP address to which the client is connected
+ip_t *client_get_server_ip(client_t *client);
 
-// Get the data buffer used to write to the client.
-buffer_t * client_getOutputdataBuffer(client_t * out);
+// Get the client's own IP address
+ip_t *client_get_client_ip(client_t *client);
 
-// Set a custom listen function for the client to handle incoming connections.
+// Get the current state of the client
+int client_get_state(client_t *client);
+
+// Get the data buffer used for reading input
+buffer_t *client_get_input_buffer(client_t *client);
+
+// Get the data buffer used for writing output
+buffer_t *client_get_output_buffer(client_t *client);
+
+// === Client Utility Functions ===
+
+// Set a custom listen function for handling incoming connections
 void client_set_listen_function(client_t *client, client_listen_func_t listen_func);
 
-// Read data from the input data buffer into a provided buffer.
-size_t client_dataBufferRead(client_t * out , char * data, size_t length);
+// Read data from the client's input buffer into a provided buffer
+size_t client_buffer_read(client_t *client, char *data, size_t length);
 
-// Write data to the output data buffer from a provided buffer.
-size_t client_dataBufferWrite(client_t * out, const char * data, size_t length);
+// Write data to the client's output buffer from a provided buffer
+size_t client_buffer_write(client_t *client, const char *data, size_t length);
 
-#endif
+// Check if the client's socket connection is still open
+int client_is_connected(client_t *client);
+
+#endif  // FOUNDATIONS_NET_CLIENT_H_

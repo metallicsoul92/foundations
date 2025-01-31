@@ -1,4 +1,4 @@
-#include "../../include/cstr/cchartraits.h"
+#include "../../../include/core/cstr/cchartraits.h"
 #include <string.h>  // For strlen, memcpy, etc.
 #include <wchar.h>   // For wcslen, wmemcpy, etc.
 #include <uchar.h>
