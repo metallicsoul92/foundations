@@ -1,3 +1,16 @@
+9/1/2025
+
+Refactor line structure:
+  1. Create line2d.h , line3d.h , line4d.h
+  2. Create line2d.c , line3d.c , line4d.c
+  3. Move line.h into line headers and line.c into line sources .
+
+
+
+
+
+
+===============================================================================
 
 10/13/2023
 

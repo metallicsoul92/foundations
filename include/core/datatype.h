@@ -272,7 +272,7 @@ long double datatype_getMaxValue_aslongdouble(datatype_t *dt);
 
 
 
-// Get the minimum value of the datatype (const version)
+// Get the maximum value of the datatype (const version)
 int64_t datatype_MaxValue_asi64(const datatype_t *dt);
 uint64_t datatype_MaxValue_asu64(const datatype_t *dt);
 float datatype_MaxValue_asfloat(const datatype_t *dt);
