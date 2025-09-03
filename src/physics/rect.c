@@ -4370,6 +4370,394 @@ long double rectld_area(const rectld_t* obj) {
     return obj->_width * obj->_height;
 }
 
+
+
+#ifdef VEC2_DEFINED
+
+//vec2 getPosVec2()
+//YOU MUST FREE THIS MEMORY
+vec2uint8_t * rectu8_getPosVec2(rectu8_t * obj){
+  if(obj == NULL){
+    rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+    rect_set_error_string("Cannot access NULL rectangle object");
+    return NULL;
+  }
+    return allocVec2U8(obj->_posx, obj->_posy);
+}
+vec2int8_t * recti8_getPosVec2(recti8_t * obj){
+  if(obj == NULL){
+    rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+    rect_set_error_string("Cannot access NULL rectangle object");
+    return NULL;
+  }
+    return allocVec2I8(obj->_posx, obj->_posy);
+}
+vec2uint16_t * rectu16_getPosVec2(rectu16_t * obj){
+  if(obj == NULL){
+    rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+    rect_set_error_string("Cannot access NULL rectangle object");
+    return NULL;
+  }
+    return allocVec2U16(obj->_posx, obj->_posy);
+}
+vec2int16_t * recti16_getPosVec2(recti16_t * obj){
+  if(obj == NULL){
+    rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+    rect_set_error_string("Cannot access NULL rectangle object");
+    return NULL;
+  }
+    return allocVec2I16(obj->_posx, obj->_posy);
+}
+vec2uint32_t * rectu32_getPosVec2(rectu32_t * obj){
+  if(obj == NULL){
+    rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+    rect_set_error_string("Cannot access NULL rectangle object");
+    return NULL;
+  }
+    return allocVec2U32(obj->_posx, obj->_posy);
+}
+vec2int32_t * recti32_getPosVec2(recti32_t * obj){
+  if(obj == NULL){
+    rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+    rect_set_error_string("Cannot access NULL rectangle object");
+    return NULL;
+  }
+    return allocVec2I32(obj->_posx, obj->_posy);
+}
+vec2uint64_t * rectu64_getPosVec2(rectu64_t * obj){
+  if(obj == NULL){
+    rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+    rect_set_error_string("Cannot access NULL rectangle object");
+    return NULL;
+  }
+    return allocVec2U64(obj->_posx, obj->_posy);
+}
+vec2int64_t * recti64_getPosVec2(recti64_t * obj){
+  if(obj == NULL){
+    rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+    rect_set_error_string("Cannot access NULL rectangle object");
+    return NULL;
+  }
+    return allocVec2I64(obj->_posx, obj->_posy);
+}
+vec2f_t * rectf_getPosVec2(recf_t * obj){
+  if (obj == NULL) {
+      rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+      rect_set_error_string("Cannot access NULL rectangle object");
+      return NULL;
+  }
+
+  // Check for NaN or infinity
+  if (isnan(obj->_posx) || isnan(obj->_posy) ||
+      isinf(obj->_posx) || isinf(obj->_posy)) {
+      rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+      rect_set_error_string("Cannot calculate area with NaN or infinite values");
+      return NULL;
+  }
+
+  return allocVec2F(obj->_posx, obj->_posy);
+}
+vec2d_t * rectd_getPosVec2(rectd_t * obj){
+  if (obj == NULL) {
+      rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+      rect_set_error_string("Cannot access NULL rectangle object");
+      return NULL;
+  }
+
+  // Check for NaN or infinity
+  if (isnan(obj->_posx) || isnan(obj->_posy) ||
+      isinf(obj->_posx) || isinf(obj->_posy)) {
+      rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+      rect_set_error_string("Cannot calculate area with NaN or infinite values");
+      return NULL;
+  }
+
+  return allocVec2D(obj->_posx, obj->_posy);
+}
+vec2ld_t * rectld_getPosVec2(rectld_t * obj){
+  if (obj == NULL) {
+      rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+      rect_set_error_string("Cannot access NULL rectangle object");
+      return NULL;
+  }
+
+  // Check for NaN or infinity
+  if (isnan(obj->_posx) || isnan(obj->_posy) ||
+      isinf(obj->_posx) || isinf(obj->_posy)) {
+      rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+      rect_set_error_string("Cannot calculate area with NaN or infinite values");
+      return NULL;
+  }
+
+  return allocVec2LD(obj->_posx, obj->_posy);
+}
+
+
+//vec2 getSize()
+//YOU MUST FREE THIS MEMORY
+vec2uint8_t * rectu8_getSizeVec2(rectu8_t * obj){
+  if(obj == NULL){
+    rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+    rect_set_error_string("Cannot access NULL rectangle object");
+    return NULL;
+  }
+    return allocVec2U8(obj->_width, obj->_height);
+}
+vec2int8_t * recti8_getSizeVec2(recti8_t * obj){
+  if(obj == NULL){
+    rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+    rect_set_error_string("Cannot access NULL rectangle object");
+    return NULL;
+  }
+    return allocVec2I8(obj->_width, obj->_height);
+}
+vec2uint16_t * rectu16_getSizeVec2(rectu16_t * obj){
+  if(obj == NULL){
+    rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+    rect_set_error_string("Cannot access NULL rectangle object");
+    return NULL;
+  }
+    return allocVec2U16(obj->_width, obj->_height);
+}
+vec2int16_t * recti16_getSizeVec2(recti16_t * obj){
+  if(obj == NULL){
+    rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+    rect_set_error_string("Cannot access NULL rectangle object");
+    return NULL;
+  }
+    return allocVec2I16(obj->_width, obj->_height);
+}
+vec2uint32_t * rectu32_getSizeVec2(rectu32_t * obj){
+  if(obj == NULL){
+    rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+    rect_set_error_string("Cannot access NULL rectangle object");
+    return NULL;
+  }
+    return allocVec2U32(obj->_width, obj->_height);
+}
+vec2int32_t * recti32_getSizeVec2(recti32_t * obj){
+  if(obj == NULL){
+    rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+    rect_set_error_string("Cannot access NULL rectangle object");
+    return NULL;
+  }
+    return allocVec2I32(obj->_width, obj->_height);
+}
+vec2uint64_t * rectu64_getSizeVec2(rectu64_t * obj){
+  if(obj == NULL){
+    rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+    rect_set_error_string("Cannot access NULL rectangle object");
+    return NULL;
+  }
+    return allocVec2U64(obj->_width, obj->_height);
+}
+vec2int64_t * recti64_getSizeVec2(recti64_t * obj){
+  if(obj == NULL){
+    rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+    rect_set_error_string("Cannot access NULL rectangle object");
+    return NULL;
+  }
+    return allocVec2I64(obj->_width, obj->_height);
+}
+vec2f8_t * rectf_getSizeVec2(recf_t * obj){
+  if (obj == NULL) {
+      rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+      rect_set_error_string("Cannot access NULL rectangle object");
+      return NULL;
+  }
+
+  // Check for NaN or infinity
+  if (isnan(obj->_width) || isnan(obj->_height) ||
+      isinf(obj->_width) || isinf(obj->_height)) {
+      rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+      rect_set_error_string("Cannot calculate area with NaN or infinite values");
+      return NULL;
+  }
+
+  return allocVec2F(obj->_width, obj->_height);
+}
+vec2f8_t * rectf_getSizeVec2(recf_t * obj){
+  if (obj == NULL) {
+      rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+      rect_set_error_string("Cannot access NULL rectangle object");
+      return NULL;
+  }
+
+  // Check for NaN or infinity
+  if (isnan(obj->_width) || isnan(obj->_height) ||
+      isinf(obj->_width) || isinf(obj->_height)) {
+      rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+      rect_set_error_string("Cannot calculate area with NaN or infinite values");
+      return NULL;
+  }
+
+  return allocVec2D(obj->_width, obj->_height);
+}
+vec2ld_t * rectld_getSizeVec2(rectld_t * obj){
+  if (obj == NULL) {
+      rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+      rect_set_error_string("Cannot access NULL rectangle object");
+      return NULL;
+  }
+
+  // Check for NaN or infinity
+  if (isnan(obj->_width) || isnan(obj->_height) ||
+      isinf(obj->_width) || isinf(obj->_height)) {
+      rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
+      rect_set_error_string("Cannot calculate area with NaN or infinite values");
+      return NULL;
+  }
+
+  return allocVec2LD(obj->_width, obj->_height);
+}
+
+
+
+//setSizeVec2()
+void rectu8_setSizeVec2(rectu8_t * obj, const vec2uint8_t * size){
+  rectu8_setSize(obj,vec2u8_X(size),vec2u8_Y(size));
+}
+void recti8_setSizeVec2(recti8_t * obj, const vec2int8_t * size){
+  recti8_setSize(obj,veci8_X(size),veci8_Y(size));
+}
+void rectu16_setSizeVec2(rectu16_t * obj, const vec2uint16_t * size){
+  rectu16_setSize(obj,vecu16_X(size),vecu16_Y(size));
+}
+void recti16_setSizeVec2(recti16_t * obj, const vec2int16_t * size){
+  recti16_setSize(obj,veci16_X(size),veci16_Y(size));
+}
+void rectu32_setSizeVec2(rectu32_t * obj, const vec2uint32_t * size){
+  recu32t_setSize(obj,vecu32_X(size),vecu32_Y(size));
+}
+void recti32_setSizeVec2(recti32_t * obj, const vec2int32_t * size){
+  recti32_setSize(obj,veci32_X(size),veci32_Y(size));
+}
+void rectu64_setSizeVec2(rectu64_t * obj, const vec2uint64_t * size){
+  rectu64_setSize(obj,vecu64_X(size),vecu64_Y(size));
+}
+void recti64_setSizeVec2(recti64_t * obj, const vec2int64_t * size){
+  recti64_setSize(obj,veci64_X(size),veci64_Y(size));
+}
+void rectf_setSizeVec2(rectf_t * obj, const vec2f_t * size){
+  rectf_setSize(obj,vecf_X(size),vecf_Y(size));
+}
+void rectd_setSizeVec2(rectd_t * obj, const vec2d_t * size){
+  rectd_setSize(obj,vecd_X(size),vecd_Y(size));
+}
+void rectld_setSizeVec2(rectld_t * obj, const vec2ld_t * size){
+  rectld_setSize(obj,vecld_X(size),vecld_Y(size));
+}
+
+//setPosVec2()
+void rectu8_setPosVec2(rectu8_t * obj, const vec2uint8_t * pos){
+  rectu8_setPos(obj,vec2u8_X(pos),vec2u8_Y(pos));
+}
+void recti8_setPosVec2(recti8_t * obj, const vec2int8_t * pos){
+  recti8_setPos(obj,veci8_X(pos),veci8_Y(pos));
+}
+void rectu16_setPosVec2(rectu16_t * obj, const vec2uint16_t * pos){
+  rectu16_setPos(obj,vecu16_X(pos),vecu16_Y(pos));
+}
+void recti16_setPosVec2(recti16_t * obj, const vec2int16_t * pos){
+  recti16_setPos(obj,veci16_X(pos),veci16_Y(pos));
+}
+void rectu32_setPosVec2(rectu32_t * obj, const vec2uint32_t * pos){
+  recu32t_setPos(obj,vecu32_X(pos),vecu32_Y(pos));
+}
+void recti32_setPosVec2(recti32_t * obj, const vec2int32_t * pos){
+  recti32_setPos(obj,veci32_X(pos),veci32_Y(pos));
+}
+void rectu64_setPosVec2(rectu64_t * obj, const vec2uint64_t * pos){
+  rectu64_setPos(obj,vecu64_X(pos),vecu64_Y(pos));
+}
+void recti64_setPosVec2(recti64_t * obj, const vec2int64_t * pos){
+  recti64_setPos(obj,veci64_X(pos),veci64_Y(pos));
+}
+void rectf_setPosVec2(rectf_t * obj, const vec2f_t * pos){
+  rectf_setPos(obj,vecf_X(pos),vecf_Y(pos));
+}
+void rectd_setPosVec2(rectd_t * obj, const vec2d_t * pos){
+  rectd_setPos(obj,vecd_X(pos),vecd_Y(pos));
+}
+void rectld_setPosVec2(rectld_t * obj, const vec2ld_t * pos){
+  rectld_setPos(obj,vecld_X(pos),vecld_Y(pos));
+}
+
+// moveVec2()
+void rectu8_moveVec2(rectu8_t * obj, const vec2int8_t * delta){
+  rectu8_move(obj,vec2u8_X(delta),vec2u8_Y(delta));
+}
+void recti8_moveVec2(recti8_t * obj, const vec2int8_t * delta){
+  recti8_move(obj,veci8_X(delta),veci8_Y(delta));
+}
+void rectu16_moveVec2(rectu16_t * obj, const vec2int16_t * delta){
+  rectu16_move(obj,vecu16_X(delta),vecu16_Y(delta));
+}
+void recti16_moveVec2(recti16_t * obj, const vec2int16_t * delta){
+  recti16_move(obj,veci16_X(delta),veci16_Y(delta));
+}
+void rectu32_moveVec2(rectu32_t * obj, const vec2int32_t * delta){
+  recu32t_move(obj,vecu32_X(delta),vecu32_Y(delta));
+}
+void recti32_moveVec2(recti32_t * obj, const vec2int32_t * delta){
+  recti32_move(obj,veci32_X(delta),veci32_Y(delta));
+}
+void rectu64_moveVec2(rectu64_t * obj, const vec2int64_t * delta){
+  rectu64_move(obj,vecu64_X(delta),vecu64_Y(delta));
+}
+void recti64_moveVec2(recti64_t * obj, const vec2int64_t * delta){
+  recti64_move(obj,veci64_X(delta),veci64_Y(delta));
+}
+void rectf_moveVec2(rectf_t * obj, const vec2f_t * delta){
+  rectf_move(obj,vecf_X(delta),vecf_Y(delta));
+}
+void rectd_moveVec2(rectd_t * obj, const vec2d_t * delta){
+  rectd_move(obj,vecd_X(delta),vecd_Y(delta));
+}
+void rectld_moveVec2(rectld_t * obj, const vec2ld_t * delta){
+  rectld_move(obj,vecld_X(delta),vecld_Y(delta));
+}
+
+// resizeVec2()
+void rectu8_resizeVec2(rectu8_t * obj, const vec2uint8_t * delta){
+  rectu8_resize(obj,vec2u8_X(delta),vec2u8_Y(delta));
+}
+void recti8_resizeVec2(recti8_t * obj, const vec2int8_t * delta){
+  recti8_resize(obj,veci8_X(delta),veci8_Y(delta));
+}
+void rectu16_resizeVec2(rectu16_t * obj, const vec2uint16_t * delta){
+  rectu16_resize(obj,vecu16_X(delta),vecu16_Y(delta));
+}
+void recti16_resizeVec2(recti16_t * obj, const vec2int16_t * delta){
+  recti16_resize(obj,veci16_X(delta),veci16_Y(delta));
+}
+void rectu32_resizeVec2(rectu32_t * obj, const vec2uint32_t * delta){
+  recu32t_resize(obj,vecu32_X(delta),vecu32_Y(delta));
+}
+void recti32_resizeVec2(recti32_t * obj, const vec2int32_t * delta){
+  recti32_resize(obj,veci32_X(delta),veci32_Y(delta));
+}
+void rectu64_resizeVec2(rectu64_t * obj, const vec2uint64_t * delta){
+  rectu64_resize(obj,vecu64_X(delta),vecu64_Y(delta));
+}
+void recti64_resizeVec2(recti64_t * obj, const vec2int64_t * delta){
+  recti64_resize(obj,veci64_X(delta),veci64_Y(delta));
+}
+void rectf_resizeVec2(rectf_t * obj, const vec2f_t * delta){
+  rectf_resize(obj,vecf_X(delta),vecf_Y(delta));
+}
+void rectd_resizeVec2(rectd_t * obj, const vec2d_t * delta){
+  rectd_resize(obj,vecd_X(delta),vecd_Y(delta));
+}
+void rectld_resizeVec2(rectld_t * obj, const vec2ld_t * delta){
+  rectld_resize(obj,vecld_X(delta),vecld_Y(delta));
+}
+
+
+#endif
+
+
+
 // Collision detection functions
 bool rectu8_collides(const rectu8_t* obj, const rectu8_t* other) {
     if (obj == NULL || other == NULL) {

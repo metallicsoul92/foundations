@@ -360,20 +360,20 @@ double rectd_area(const rectd_t * obj);
 long double rectld_area(const rectld_t * obj);
 
 #ifdef VEC2_DEFINED
-//vec2 getPosition()
+
+//vec2 getPosVec2()
 //YOU MUST FREE THIS MEMORY
-vec2uint8_t * rectu8_getPositionVec2(rectu8_t * obj);
-vec2int8_t * recti8_getPositionVec2(recti8_t * obj);
-vec2uint16_t * rectu16_getPositionVec2(rectu16_t * obj);
-vec2int16_t * recti16_getPositionVec2(recti16_t * obj);
-vec2uint32_t * rectu32_getPositionVec2(rectu32_t * obj);
-vec2int32_t * recti32_getPositionVec2(recti32_t * obj);
-vec2uint64_t * rectu64_getPositionVec2(rectu64_t * obj);
-vec2int64_t * recti64_getPositionVec2(recti64_t * obj);
-vec2f8_t * rectf_getPositionVec2(recf_t * obj);
-vec2f8_t * rectf_getPositionVec2(recf_t * obj);
-//TODO: Implement vec2ld_t;
-//vec2ld_t * rectld_getPositionVec2(rectld_t * obj);
+vec2uint8_t * rectu8_getPosVec2(rectu8_t * obj);
+vec2int8_t * recti8_getPosVec2(recti8_t * obj);
+vec2uint16_t * rectu16_getPosVec2(rectu16_t * obj);
+vec2int16_t * recti16_getPosVec2(recti16_t * obj);
+vec2uint32_t * rectu32_getPosVec2(rectu32_t * obj);
+vec2int32_t * recti32_getPosVec2(recti32_t * obj);
+vec2uint64_t * rectu64_getPosVec2(rectu64_t * obj);
+vec2int64_t * recti64_getPosVec2(recti64_t * obj);
+vec2f8_t * rectf_getPosVec2(recf_t * obj);
+vec2f8_t * rectf_getPosVec2(recf_t * obj);
+vec2ld_t * rectld_getPosVec2(rectld_t * obj);
 
 
 //vec2 getSize()
@@ -388,9 +388,61 @@ vec2uint64_t * rectu64_getSizeVec2(rectu64_t * obj);
 vec2int64_t * recti64_getSizeVec2(recti64_t * obj);
 vec2f8_t * rectf_getSizeVec2(recf_t * obj);
 vec2f8_t * rectf_getSizeVec2(recf_t * obj);
-//TODO: Implement vec2ld_t;
-//vec2ld_t * rectld_getSizeVec2(rectld_t * obj);
+vec2ld_t * rectld_getSizeVec2(rectld_t * obj);
 
+
+
+//setSizeVec2()
+void rectu8_setSizeVec2(rectu8_t * obj, const vec2uint8_t * size);
+void recti8_setSizeVec2(recti8_t * obj, const vec2int8_t * size);
+void rectu16_setSizeVec2(rectu16_t * obj, const vec2uint16_t * size);
+void recti16_setSizeVec2(recti16_t * obj, const vec2int16_t * size);
+void rectu32_setSizeVec2(rectu32_t * obj, const vec2uint32_t * size);
+void recti32_setSizeVec2(recti32_t * obj, const vec2int32_t * size);
+void rectu64_setSizeVec2(rectu64_t * obj, const vec2uint64_t * size);
+void recti64_setSizeVec2(recti64_t * obj, const vec2int64_t * size);
+void rectf_setSizeVec2(rectf_t * obj, const vec2f_t * size);
+void rectd_setSizeVec2(rectd_t * obj, const vec2d_t * size);
+void rectld_setSizeVec2(rectld_t * obj, const vec2ld_t * size);
+
+//setPosVec2()
+void rectu8_setPosVec2(rectu8_t * obj, const vec2uint8_t * pos);
+void recti8_setPosVec2(recti8_t * obj, const vec2int8_t * pos);
+void rectu16_setPosVec2(rectu16_t * obj, const vec2uint16_t * pos);
+void recti16_setPosVec2(recti16_t * obj, const vec2int16_t * pos);
+void rectu32_setPosVec2(rectu32_t * obj, const vec2uint32_t * pos);
+void recti32_setPosVec2(recti32_t * obj, const vec2int32_t * pos);
+void rectu64_setPosVec2(rectu64_t * obj, const vec2uint64_t * pos);
+void recti64_setPosVec2(recti64_t * obj, const vec2int64_t * pos);
+void rectf_setPosVec2(rectf_t * obj, const vec2f_t * pos);
+void rectd_setPosVec2(rectd_t * obj, const vec2d_t * pos);
+void rectld_setPosVec2(rectld_t * obj, const vec2ld_t * pos);
+
+// moveVec2()
+void rectu8_moveVec2(rectu8_t * obj, const vec2int8_t * delta);
+void recti8_moveVec2(recti8_t * obj, const vec2int8_t * delta);
+void rectu16_moveVec2(rectu16_t * obj, const vec2int16_t * delta);
+void recti16_moveVec2(recti16_t * obj, const vec2int16_t * delta);
+void rectu32_moveVec2(rectu32_t * obj, const vec2int32_t * delta);
+void recti32_moveVec2(recti32_t * obj, const vec2int32_t * delta);
+void rectu64_moveVec2(rectu64_t * obj, const vec2int64_t * delta);
+void recti64_moveVec2(recti64_t * obj, const vec2int64_t * delta);
+void rectf_moveVec2(rectf_t * obj, const vec2f_t * delta);
+void rectd_moveVec2(rectd_t * obj, const vec2d_t * delta);
+void rectld_moveVec2(rectld_t * obj, const vec2ld_t * delta);
+
+// resizeVec2()
+void rectu8_resizeVec2(rectu8_t * obj, const vec2uint8_t * delta);
+void recti8_resizeVec2(recti8_t * obj, const vec2int8_t * delta);
+void rectu16_resizeVec2(rectu16_t * obj, const vec2uint16_t * delta);
+void recti16_resizeVec2(recti16_t * obj, const vec2int16_t * delta);
+void rectu32_resizeVec2(rectu32_t * obj, const vec2uint32_t * delta);
+void recti32_resizeVec2(recti32_t * obj, const vec2int32_t * delta);
+void rectu64_resizeVec2(rectu64_t * obj, const vec2uint64_t * delta);
+void recti64_resizeVec2(recti64_t * obj, const vec2int64_t * delta);
+void rectf_resizeVec2(rectf_t * obj, const vec2f_t * delta);
+void rectd_resizeVec2(rectd_t * obj, const vec2d_t * delta);
+void rectld_resizeVec2(rectld_t * obj, const vec2ld_t * delta);
 
 
 #endif
