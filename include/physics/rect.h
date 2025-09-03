@@ -221,7 +221,7 @@ void rectu32_setHeight(rectu32_t * obj, uint32_t height);
 void recti32_setHeight(recti32_t * obj, int32_t height);
 void rectu64_setHeight(rectu64_t * obj, uint64_t height);
 void recti64_setHeight(recti64_t * obj, int64_t height);
-void rectf_seHeight(rectf_t * obj, float height);
+void rectf_setHeight(rectf_t * obj, float height);
 void rectd_setHeight(rectd_t * obj, double height);
 void rectld_setHeight(rectld_t * obj, long double height);
 

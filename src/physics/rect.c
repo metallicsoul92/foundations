@@ -103,7 +103,7 @@ struct _recti32_t{
   int32_t _height;
 };
 
-struct _rectu16_t{
+struct _rectu64_t{
   uint64_t _posx;
   uint64_t _posy;
   uint64_t _width;
