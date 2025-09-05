@@ -81,6 +81,12 @@
   #define VEC2D_DEFINED 1
   #endif
 
+  // Forward declaration for a 2D vector of long double.
+    #ifndef VEC2LD_DEFINED
+    typedef struct vector2longdouble vec2ld_t;
+    #define VEC2LD_DEFINED 1
+    #endif
+
 #define VEC2_DEFINED 1
 #endif
 
@@ -152,6 +158,12 @@
   #define VEC3D_DEFINED 1
   #endif
 
+  // Define a 3D vector structure for long double-precision floating-point numbers if not defined
+  #ifndef VEC3LD_DEFINED
+  typedef struct vector3longdouble vec3ld_t;
+  #define VEC3D_DEFINED 1
+  #endif
+
 // Define VEC3_DEFINED to indicate that the 3D vector types have been defined
 #define VEC3_DEFINED 1
 #endif
@@ -203,7 +215,7 @@ void initvec3F(vec3f_t *out, float x, float y, float z);
 void initvec3D(vec3d_t *out, double x, double y, double z);
 
 // Initialize a 3D vector of long double-precision floating-point numbers
-void initvec3D(vec3d_t *out, long double x, long double y, long double z);
+void initvec3LD(vec3ld_t *out, long double x, long double y, long double z);
 
 // Initialize a 3D vector of 8-bit signed integers from a 2D vector and an additional 8-bit value
 void initvec3I8_fromVec2(vec3int8_t *out, vec2int8_t *xy, int8_t z);
@@ -577,13 +589,13 @@ void vec3ld_setX(vec3ld_t *out, long double x);
 void vec3ld_setY(vec3ld_t *out, long double y);
 
 // Set the Z component of a 3D vector of long doubles (long double)
-void vecl3d_setZ(vec3ld_t *out, long double z);
+void vec3ld_setZ(vec3ld_t *out, long double z);
 
 // Get the X component of a 3D vector of long doubles (long double)
 long double vec3ld_X(vec3ld_t *out);
 
 // Get the Y component of a 3D vector of long doubles (long double)
-long double vec3ld_Y(vecl3d_t *out);
+long double vec3ld_Y(vec3ld_t *out);
 
 // Get the Z component of a 3D vector of long doubles (long double)
 long double vec3ld_Z(vec3ld_t *out);

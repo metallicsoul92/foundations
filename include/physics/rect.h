@@ -267,7 +267,7 @@ void rectld_moveY(rectld_t * obj, long double dy);
 
 //move()
 void rectu8_move(rectu8_t * obj, uint8_t dx, uint8_t dy);
-void recti8_move(recti8_t * obj, int8_t dx, int8_td dy);
+void recti8_move(recti8_t * obj, int8_t dx, int8_t dy);
 void rectu16_move(rectu16_t * obj, uint16_t dx, uint16_t dy);
 void recti16_move(recti16_t * obj, int16_t dx, int16_t dy);
 void rectu32_move(rectu32_t * obj, uint32_t dx, uint32_t dy);

@@ -1,6 +1,12 @@
 #ifndef FOUNDATIONS_MATH_VEC2_H_
 #define FOUNDATIONS_MATH_VEC2_H_ 1
 
+
+#ifndef STDDEF_DEFINED
+#include <stddef.h>
+#define STDDEF_DEFINED 1
+#endif
+
 // Standard header for fixed-size integer types
 #ifndef STDINT_DEFINED
 #include <stdint.h>
@@ -76,10 +82,11 @@
   #endif
 
   // Forward declaration for a 2D vector of double.
-  #ifndef VEC2D_DEFINED
+  #ifndef VEC2LD_DEFINED
   typedef struct vector2longdouble vec2ld_t;
-  #define VEC2D_DEFINED 1
-    #endif
+  #define VEC2LD_DEFINED 1
+  #endif
+
 #define VEC2_DEFINED 1
 #endif
 

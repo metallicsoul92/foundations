@@ -3763,7 +3763,7 @@ void rectd_resize(rectd_t* obj, double dw, double dh) {
 
 void rectld_resize(rectld_t* obj, long double dw, long double dh) {
     if (obj == NULL) {
-        rect_last_error = RECT_ERROR_INVALID_DIMENSions;
+        rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
         rect_set_error_string("Cannot modify NULL rectangle object");
         return;
     }
@@ -6396,7 +6396,7 @@ void recti64_union(const recti64_t* left, const recti64_t* right, recti64_t* res
 
     // Calculate union (bounding box)
     int64_t union_x = (left->_posx < right->_posx) ? left->_posx : right->_posx;
-    int64_t union_y = (left->_posy < right->_posy) : left->_posy : right->_posy;
+    int64_t union_y = (left->_posy < right->_posy) ? left->_posy : right->_posy;
     int64_t union_right = (left_right > right_right) ? left_right : right_right;
     int64_t union_bottom = (left_bottom > right_bottom) ? left_bottom : right_bottom;
 

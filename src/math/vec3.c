@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <math.h>
 
+#define DEFINE_ALL_VEC2
 #define DEFINE_ALL_VEC3
 #include "../../include/math/priv/types.h"
 
@@ -226,7 +227,7 @@ vec3d_t * allocvec3D(double x, double y, double z){
 }
 
 vec3ld_t * allocvec3LD(long double x, long double y, long double z){
-  vec3d_t * out;
+  vec3ld_t * out;
   out = malloc(sizeof(vec3ld_t));
   out->_x = x;
   out->_y = y;
@@ -325,7 +326,7 @@ vec3d_t * allocvec3D_fromVec2(vec2d_t * xy, double z){
   return out;
 }
 
-vec3ld_t * allocvec3D_fromVec2(vec2ld_t * xy, long double z){
+vec3ld_t * allocvec3LD_fromVec2(vec2ld_t * xy, long double z){
   vec3ld_t * out;
   out = malloc(sizeof(vec3ld_t));
   out->_x = vec2ld_X(xy);
@@ -735,9 +736,9 @@ double * vec3d_asPOD(vec3d_t * self,double * out){
 }
 
 long double * vec3ld_asPOD(vec3ld_t * self,long double * out){
-  out[0] = vec3d_X(self);
-  out[1] = vec3d_Y(self);
-  out[2] = vec3d_Z(self);
+  out[0] = vec3ld_X(self);
+  out[1] = vec3ld_Y(self);
+  out[2] = vec3ld_Z(self);
   return out;
 }
 
@@ -998,7 +999,7 @@ vec3ld_t * vec3ld_add_r(vec3ld_t * out,vec3ld_t * other){
   out->_z += other->_z;
   return out;
 }
-vecl3d_t * vec3ld_addS_r(vec3ld_t * out,long double scalar){
+vec3ld_t * vec3ld_addS_r(vec3ld_t * out,long double scalar){
   out->_x += scalar;
   out->_y += scalar;
   out->_z += scalar;
@@ -1242,7 +1243,7 @@ void vec3ld_sub(vec3ld_t * out, vec3ld_t * other){
   out->_y -= other->_y;
   out->_z -= other->_z;
 }
-void vec3ld_subS(vec3d_t * out ,long double scalar){
+void vec3ld_subS(vec3ld_t * out ,long double scalar){
   out->_x -= scalar;
   out->_y -= scalar;
   out->_z -= scalar;
@@ -1600,7 +1601,7 @@ void vec3d_cross(vec3d_t * out, vec3d_t * left, vec3d_t * right){
 	vec3d_setZ(out, (left->_x * right->_y ) - (left->_y * right->_x));
 }
 
-void vec3ld_cross(vecl3d_t * out, vec3ld_t * left, vec3ld_t * right){
+void vec3ld_cross(vec3ld_t * out, vec3ld_t * left, vec3ld_t * right){
   vec3ld_setX(out, (left->_y * right->_z ) - (left->_z * right->_y));
   vec3ld_setY(out, (left->_z * right->_x ) - (left->_x * right->_z));
   vec3ld_setZ(out, (left->_x * right->_y ) - (left->_y * right->_x));
@@ -1649,7 +1650,7 @@ vec3d_t * vec3d_cross_r(vec3d_t * out, vec3d_t * left, vec3d_t * right){
 	return out;
 }
 vec3ld_t * vec3ld_cross_r(vec3ld_t * out, vec3ld_t * left, vec3ld_t * right){
-	vec3d_cross(out,left,right);
+  vec3ld_cross(out,left,right);
 	return out;
 }
 

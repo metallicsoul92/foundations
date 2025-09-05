@@ -280,7 +280,7 @@ void boxu64_setSize(boxu64_t * obj, uint64_t width, uint64_t height, uint64_t de
 void boxi64_setSize(boxi64_t * obj, int64_t width, int64_t height, int64_t depth);
 void boxf_setSize(boxf_t * obj, float width, float height, float depth);
 void boxd_setSize(boxd_t * obj, double width, double height, double depth);
-void boxld_setSize(boxld_t * obj, long double width, long double depth, long double depth);
+void boxld_setSize(boxld_t * obj, long double width, long double height, long double depth);
 
 //moveX()
 void boxu8_moveX(boxu8_t * obj, uint8_t dx);
@@ -323,7 +323,7 @@ void boxld_moveZ(boxld_t * obj, long double dz);
 
 //move()
 void boxu8_move(boxu8_t * obj, uint8_t dx, uint8_t dy, uint8_t dz);
-void boxi8_move(boxi8_t * obj, int8_t dx, int8_td dy, int8_td dz);
+void boxi8_move(boxi8_t * obj, int8_t dx, int8_t dy, int8_t dz);
 void boxu16_move(boxu16_t * obj, uint16_t dx, uint16_t dy, uint16_t dz);
 void boxi16_move(boxi16_t * obj, int16_t dx, int16_t dy, int16_t dz);
 void boxu32_move(boxu32_t * obj, uint32_t dx, uint32_t dy, uint32_t dz);
@@ -621,17 +621,17 @@ bool boxd_collides(const boxd_t * obj, const boxd_t * other);
 bool boxld_collides(const boxld_t * obj, const boxld_t * other);
 
 //contains_point()
-bool boxu8_contains_point(const boxu8_t * obj, uint8_t width, uint8_t height);
-bool boxi8_contains_point(const boxi8_t * obj, int8_t width, int8_t height);
-bool boxu16_contains_point(const boxu16_t * obj, uint16_t width, uint16_t height);
-bool boxi16_contains_point(const boxi16_t * obj, int16_t width, int16_t height);
-bool boxu32_contains_point(const boxu32_t * obj, uint32_t width, uint32_t height);
-bool boxi32_contains_point(const boxi32_t * obj, int32_t width, int32_t height);
-bool boxu64_contains_point(const boxu64_t * obj, uint64_t width, uint64_t height);
-bool boxi64_contains_point(const boxi64_t * obj, int64_t width, int64_t height);
-bool boxf_contains_point(const boxf_t * obj, float width, float height);
-bool boxd_contains_point(const boxd_t * obj, double width, double height);
-bool boxld_contains_point(const boxld_t * obj, long double width, long double height);
+bool boxu8_contains_point(const boxu8_t * obj, uint8_t x, uint8_t y, uint8_t z);
+bool boxi8_contains_point(const boxi8_t * obj, int8_t x, int8_t y, int8_t z);
+bool boxu16_contains_point(const boxu16_t * obj, uint16_t x, uint16_t y, uint16_t zt);
+bool boxi16_contains_point(const boxi16_t * obj, int16_t x, int16_t y, int16_t z);
+bool boxu32_contains_point(const boxu32_t * obj, uint32_t x, uint32_t y, uint32_t z);
+bool boxi32_contains_point(const boxi32_t * obj, int32_t x, int32_t y, int32_t z);
+bool boxu64_contains_point(const boxu64_t * obj, uint64_t x, uint64_t y, uint64_t z);
+bool boxi64_contains_point(const boxi64_t * obj, int64_t x, int64_t y, int64_t z);
+bool boxf_contains_point(const boxf_t * obj, float x, float y, float z);
+bool boxd_contains_point(const boxd_t * obj, double x, double y, double z);
+bool boxld_contains_point(const boxld_t * obj, long double x, long double y, long double z);
 
 //contains_box()
 bool boxu8_contains_box(const boxu8_t * obj, const boxu8_t * other);

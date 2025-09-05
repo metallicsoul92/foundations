@@ -2504,7 +2504,7 @@ void boxi16_moveY(boxi16_t *obj, int16_t dy) {
         return;
     }
     if ((dy > 0 && obj->_posy > INT16_MAX - dy) ||
-        (dx < 0 && obj->_posy < INT16_MIN - dy)) {
+        (dy < 0 && obj->_posy < INT16_MIN - dy)) {
         box_last_error = BOX_ERROR_OVERFLOW;
         return;
     }
