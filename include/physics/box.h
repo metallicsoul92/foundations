@@ -177,43 +177,6 @@ double boxd_getDepth(const boxd_t * obj);
 long double boxld_getDepth(const boxld_t * obj);
 
 
-#ifdef VEC3_DEFINED
-//vec3 getPosition()
-//YOU MUST FREE THIS MEMORY
-vec3uint8_t * boxu8_getPositionvec3(boxu8_t * obj);
-vec3int8_t * boxi8_getPositionvec3(boxi8_t * obj);
-vec3uint16_t * boxu16_getPositionvec3(boxu16_t * obj);
-vec3int16_t * boxi16_getPositionvec3(boxi16_t * obj);
-vec3uint32_t * boxu32_getPositionvec3(boxu32_t * obj);
-vec3int32_t * boxi32_getPositionvec3(boxi32_t * obj);
-vec3uint64_t * boxu64_getPositionvec3(boxu64_t * obj);
-vec3int64_t * boxi64_getPositionvec3(boxi64_t * obj);
-vec3f8_t * boxf_getPositionvec3(recf_t * obj);
-vec3f8_t * boxf_getPositionvec3(recf_t * obj);
-//TODO: Implement vec3ld_t;
-//vec3ld_t * boxld_getPositionvec3(boxld_t * obj);
-
-
-//vec3 getSize()
-//YOU MUST FREE THIS MEMORY
-vec3uint8_t * boxu8_getSizevec3(boxu8_t * obj);
-vec3int8_t * boxi8_getSizevec3(boxi8_t * obj);
-vec3uint16_t * boxu16_getSizevec3(boxu16_t * obj);
-vec3int16_t * boxi16_getSizevec3(boxi16_t * obj);
-vec3uint32_t * boxu32_getSizevec3(boxu32_t * obj);
-vec3int32_t * boxi32_getSizevec3(boxi32_t * obj);
-vec3uint64_t * boxu64_getSizevec3(boxu64_t * obj);
-vec3int64_t * boxi64_getSizevec3(boxi64_t * obj);
-vec3f8_t * boxf_getSizevec3(recf_t * obj);
-vec3f8_t * boxf_getSizevec3(recf_t * obj);
-//TODO: Implement vec3ld_t;
-//vec3ld_t * boxld_getSizevec3(boxld_t * obj);
-
-
-
-#endif
-
-
 //setters
 //setPosX()
 void boxu8_setPosX(boxu8_t * obj, uint8_t posX);
@@ -423,6 +386,92 @@ void boxi64_resize(boxi64_t * obj, int64_t dw, int64_t dh, int64_t dd);
 void boxf_resize(boxf_t * obj, float dw, float dh, float dd);
 void boxd_resize(boxd_t * obj, double dw, double dh, double dd);
 void boxld_resize(boxld_t * obj, long double dw, long double dh, long double dd);
+
+//Vector Extensions
+#ifdef VEC3_DEFINED
+//vec3 getPosition()
+//YOU MUST FREE THIS MEMORY
+vec3uint8_t * boxu8_getPosVec3(boxu8_t * obj);
+vec3int8_t * boxi8_getPosVec3(boxi8_t * obj);
+vec3uint16_t * boxu16_getPosVec3(boxu16_t * obj);
+vec3int16_t * boxi16_getPosVec3(boxi16_t * obj);
+vec3uint32_t * boxu32_getPosVec3(boxu32_t * obj);
+vec3int32_t * boxi32_getPosVec3(boxi32_t * obj);
+vec3uint64_t * boxu64_getPosVec3(boxu64_t * obj);
+vec3int64_t * boxi64_getPosVec3(boxi64_t * obj);
+vec3f8_t * boxf_getPosVec3(boxf_t * obj);
+vec3f8_t * boxf_getPosVec3(boxf_t * obj);
+vec3ld_t * boxld_getPosVec3(boxld_t * obj);
+
+
+//vec3 getSize()
+//YOU MUST FREE THIS MEMORY
+vec3uint8_t * boxu8_getSizeVec3(boxu8_t * obj);
+vec3int8_t * boxi8_getSizeVec3(boxi8_t * obj);
+vec3uint16_t * boxu16_getSizeVec3(boxu16_t * obj);
+vec3int16_t * boxi16_getSizeVec3(boxi16_t * obj);
+vec3uint32_t * boxu32_getSizeVec3(boxu32_t * obj);
+vec3int32_t * boxi32_getSizeVec3(boxi32_t * obj);
+vec3uint64_t * boxu64_getSizeVec3(boxu64_t * obj);
+vec3int64_t * boxi64_getSizeVec3(boxi64_t * obj);
+vec3f8_t * boxf_getSizeVec3(boxf_t * obj);
+vec3f8_t * boxf_getSizeVec3(boxf_t * obj);
+vec3ld_t * boxld_getSizeVec3(boxld_t * obj);
+
+//setSizeVec3()
+void boxu8_setSizeVec3(boxu8_t * obj, const vec3uint8_t * size);
+void boxi8_setSizeVec3(boxi8_t * obj, const vec3int8_t * size);
+void boxu16_setSizeVec3(boxu16_t * obj, const vec3uint16_t * size);
+void boxi16_setSizeVec3(boxi16_t * obj, const vec3int16_t * size);
+void boxu32_setSizeVec3(boxu32_t * obj, const vec3uint32_t * size);
+void boxi32_setSizeVec3(boxi32_t * obj, const vec3int32_t * size);
+void boxu64_setSizeVec3(boxu64_t * obj, const vec3uint64_t * size);
+void boxi64_setSizeVec3(boxi64_t * obj, const vec3int64_t * size);
+void boxf_setSizeVec3(boxf_t * obj, const vec3f_t * size);
+void boxd_setSizeVec3(boxd_t * obj, const vec3d_t * size);
+void boxld_setSizeVec3(boxld_t * obj, const vec3ld_t * size);
+
+//setPosVec3()
+void boxu8_setPosVec3(boxu8_t * obj, const vec3uint8_t * pos);
+void boxi8_setPosVec3(boxi8_t * obj, const vec3int8_t * pos);
+void boxu16_setPosVec3(boxu16_t * obj, const vec3uint16_t * pos);
+void boxi16_setPosVec3(boxi16_t * obj, const vec3int16_t * pos);
+void boxu32_setPosVec3(boxu32_t * obj, const vec3uint32_t * pos);
+void boxi32_setPosVec3(boxi32_t * obj, const vec3int32_t * pos);
+void boxu64_setPosVec3(boxu64_t * obj, const vec3uint64_t * pos);
+void boxi64_setPosVec3(boxi64_t * obj, const vec3int64_t * pos);
+void boxf_setPosVec3(boxf_t * obj, const vec3f_t * pos);
+void boxd_setPosVec3(boxd_t * obj, const vec3d_t * pos);
+void boxld_setPosVec3(boxld_t * obj, const vec3ld_t * pos);
+
+// moveVec3()
+void boxu8_moveVec3(boxu8_t * obj, const vec3int8_t * delta);
+void boxi8_moveVec3(boxi8_t * obj, const vec3int8_t * delta);
+void boxu16_moveVec3(boxu16_t * obj, const vec3int16_t * delta);
+void boxi16_moveVec3(boxi16_t * obj, const vec3int16_t * delta);
+void boxu32_moveVec3(boxu32_t * obj, const vec3int32_t * delta);
+void boxi32_moveVec3(boxi32_t * obj, const vec3int32_t * delta);
+void boxu64_moveVec3(boxu64_t * obj, const vec3int64_t * delta);
+void boxi64_moveVec3(boxi64_t * obj, const vec3int64_t * delta);
+void boxf_moveVec3(boxf_t * obj, const vec3f_t * delta);
+void boxd_moveVec3(boxd_t * obj, const vec3d_t * delta);
+void boxld_moveVec3(boxld_t * obj, const vec3ld_t * delta);
+
+// resizeVec3()
+void boxu8_resizeVec3(boxu8_t * obj, const vec3uint8_t * delta);
+void boxi8_resizeVec3(boxi8_t * obj, const vec3int8_t * delta);
+void boxu16_resizeVec3(boxu16_t * obj, const vec3uint16_t * delta);
+void boxi16_resizeVec3(boxi16_t * obj, const vec3int16_t * delta);
+void boxu32_resizeVec3(boxu32_t * obj, const vec3uint32_t * delta);
+void boxi32_resizeVec3(boxi32_t * obj, const vec3int32_t * delta);
+void boxu64_resizeVec3(boxu64_t * obj, const vec3uint64_t * delta);
+void boxi64_resizeVec3(boxi64_t * obj, const vec3int64_t * delta);
+void boxf_resizeVec3(boxf_t * obj, const vec3f_t * delta);
+void boxd_resizeVec3(boxd_t * obj, const vec3d_t * delta);
+void boxld_resizeVec3(boxld_t * obj, const vec3ld_t * delta);
+
+#endif
+
 
 //Geometry
 //getSideX()

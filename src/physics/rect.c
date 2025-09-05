@@ -4559,7 +4559,7 @@ vec2int64_t * recti64_getSizeVec2(recti64_t * obj){
   }
     return allocVec2I64(obj->_width, obj->_height);
 }
-vec2f8_t * rectf_getSizeVec2(recf_t * obj){
+vec2f_t * rectf_getSizeVec2(rectf_t * obj){
   if (obj == NULL) {
       rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
       rect_set_error_string("Cannot access NULL rectangle object");
@@ -4576,7 +4576,7 @@ vec2f8_t * rectf_getSizeVec2(recf_t * obj){
 
   return allocVec2F(obj->_width, obj->_height);
 }
-vec2f8_t * rectf_getSizeVec2(recf_t * obj){
+vec2d_t * rectd_getSizeVec2(rectd_t * obj){
   if (obj == NULL) {
       rect_last_error = RECT_ERROR_INVALID_DIMENSIONS;
       rect_set_error_string("Cannot access NULL rectangle object");
@@ -4618,25 +4618,25 @@ void rectu8_setSizeVec2(rectu8_t * obj, const vec2uint8_t * size){
   rectu8_setSize(obj,vec2u8_X(size),vec2u8_Y(size));
 }
 void recti8_setSizeVec2(recti8_t * obj, const vec2int8_t * size){
-  recti8_setSize(obj,veci8_X(size),veci8_Y(size));
+  recti8_setSize(obj,vec2i8_X(size),vec2i8_Y(size));
 }
 void rectu16_setSizeVec2(rectu16_t * obj, const vec2uint16_t * size){
-  rectu16_setSize(obj,vecu16_X(size),vecu16_Y(size));
+  rectu16_setSize(obj,vec2u16_X(size),vec2u16_Y(size));
 }
 void recti16_setSizeVec2(recti16_t * obj, const vec2int16_t * size){
-  recti16_setSize(obj,veci16_X(size),veci16_Y(size));
+  recti16_setSize(obj,vec2i16_X(size),vec2i16_Y(size));
 }
 void rectu32_setSizeVec2(rectu32_t * obj, const vec2uint32_t * size){
-  recu32t_setSize(obj,vecu32_X(size),vecu32_Y(size));
+  recu32t_setSize(obj,vec2u32_X(size),vec2u32_Y(size));
 }
 void recti32_setSizeVec2(recti32_t * obj, const vec2int32_t * size){
-  recti32_setSize(obj,veci32_X(size),veci32_Y(size));
+  recti32_setSize(obj,vec2i32_X(size),vec2i32_Y(size));
 }
 void rectu64_setSizeVec2(rectu64_t * obj, const vec2uint64_t * size){
-  rectu64_setSize(obj,vecu64_X(size),vecu64_Y(size));
+  rectu64_setSize(obj,vec2u64_X(size),vec2u64_Y(size));
 }
 void recti64_setSizeVec2(recti64_t * obj, const vec2int64_t * size){
-  recti64_setSize(obj,veci64_X(size),veci64_Y(size));
+  recti64_setSize(obj,vec2i64_X(size),vec2i64_Y(size));
 }
 void rectf_setSizeVec2(rectf_t * obj, const vec2f_t * size){
   rectf_setSize(obj,vecf_X(size),vecf_Y(size));
@@ -4653,25 +4653,25 @@ void rectu8_setPosVec2(rectu8_t * obj, const vec2uint8_t * pos){
   rectu8_setPos(obj,vec2u8_X(pos),vec2u8_Y(pos));
 }
 void recti8_setPosVec2(recti8_t * obj, const vec2int8_t * pos){
-  recti8_setPos(obj,veci8_X(pos),veci8_Y(pos));
+  recti8_setPos(obj,vec2i8_X(pos),vec2i8_Y(pos));
 }
 void rectu16_setPosVec2(rectu16_t * obj, const vec2uint16_t * pos){
-  rectu16_setPos(obj,vecu16_X(pos),vecu16_Y(pos));
+  rectu16_setPos(obj,vec2u16_X(pos),vec2u16_Y(pos));
 }
 void recti16_setPosVec2(recti16_t * obj, const vec2int16_t * pos){
-  recti16_setPos(obj,veci16_X(pos),veci16_Y(pos));
+  recti16_setPos(obj,vec2i16_X(pos),vec2i16_Y(pos));
 }
 void rectu32_setPosVec2(rectu32_t * obj, const vec2uint32_t * pos){
-  recu32t_setPos(obj,vecu32_X(pos),vecu32_Y(pos));
+  recu32t_setPos(obj,vec2u32_X(pos),vec2u32_Y(pos));
 }
 void recti32_setPosVec2(recti32_t * obj, const vec2int32_t * pos){
-  recti32_setPos(obj,veci32_X(pos),veci32_Y(pos));
+  recti32_setPos(obj,vec2i32_X(pos),vec2i32_Y(pos));
 }
 void rectu64_setPosVec2(rectu64_t * obj, const vec2uint64_t * pos){
-  rectu64_setPos(obj,vecu64_X(pos),vecu64_Y(pos));
+  rectu64_setPos(obj,vec2u64_X(pos),vec2u64_Y(pos));
 }
 void recti64_setPosVec2(recti64_t * obj, const vec2int64_t * pos){
-  recti64_setPos(obj,veci64_X(pos),veci64_Y(pos));
+  recti64_setPos(obj,vec2i64_X(pos),vec2i64_Y(pos));
 }
 void rectf_setPosVec2(rectf_t * obj, const vec2f_t * pos){
   rectf_setPos(obj,vecf_X(pos),vecf_Y(pos));
@@ -4688,25 +4688,25 @@ void rectu8_moveVec2(rectu8_t * obj, const vec2int8_t * delta){
   rectu8_move(obj,vec2u8_X(delta),vec2u8_Y(delta));
 }
 void recti8_moveVec2(recti8_t * obj, const vec2int8_t * delta){
-  recti8_move(obj,veci8_X(delta),veci8_Y(delta));
+  recti8_move(obj,vec2i8_X(delta),vec2i8_Y(delta));
 }
 void rectu16_moveVec2(rectu16_t * obj, const vec2int16_t * delta){
-  rectu16_move(obj,vecu16_X(delta),vecu16_Y(delta));
+  rectu16_move(obj,vec2u16_X(delta),vec2u16_Y(delta));
 }
 void recti16_moveVec2(recti16_t * obj, const vec2int16_t * delta){
-  recti16_move(obj,veci16_X(delta),veci16_Y(delta));
+  recti16_move(obj,vec2i16_X(delta),vec2i16_Y(delta));
 }
 void rectu32_moveVec2(rectu32_t * obj, const vec2int32_t * delta){
-  recu32t_move(obj,vecu32_X(delta),vecu32_Y(delta));
+  recu32t_move(obj,vec2u32_X(delta),vec2u32_Y(delta));
 }
 void recti32_moveVec2(recti32_t * obj, const vec2int32_t * delta){
-  recti32_move(obj,veci32_X(delta),veci32_Y(delta));
+  recti32_move(obj,vec2i32_X(delta),vec2i32_Y(delta));
 }
 void rectu64_moveVec2(rectu64_t * obj, const vec2int64_t * delta){
-  rectu64_move(obj,vecu64_X(delta),vecu64_Y(delta));
+  rectu64_move(obj,vec2u64_X(delta),vec2u64_Y(delta));
 }
 void recti64_moveVec2(recti64_t * obj, const vec2int64_t * delta){
-  recti64_move(obj,veci64_X(delta),veci64_Y(delta));
+  recti64_move(obj,vec2i64_X(delta),vec2i64_Y(delta));
 }
 void rectf_moveVec2(rectf_t * obj, const vec2f_t * delta){
   rectf_move(obj,vecf_X(delta),vecf_Y(delta));
@@ -4723,25 +4723,25 @@ void rectu8_resizeVec2(rectu8_t * obj, const vec2uint8_t * delta){
   rectu8_resize(obj,vec2u8_X(delta),vec2u8_Y(delta));
 }
 void recti8_resizeVec2(recti8_t * obj, const vec2int8_t * delta){
-  recti8_resize(obj,veci8_X(delta),veci8_Y(delta));
+  recti8_resize(obj,vec2i8_X(delta),vec2i8_Y(delta));
 }
 void rectu16_resizeVec2(rectu16_t * obj, const vec2uint16_t * delta){
-  rectu16_resize(obj,vecu16_X(delta),vecu16_Y(delta));
+  rectu16_resize(obj,vec2u16_X(delta),vec2u16_Y(delta));
 }
 void recti16_resizeVec2(recti16_t * obj, const vec2int16_t * delta){
-  recti16_resize(obj,veci16_X(delta),veci16_Y(delta));
+  recti16_resize(obj,vec2i16_X(delta),vec2i16_Y(delta));
 }
 void rectu32_resizeVec2(rectu32_t * obj, const vec2uint32_t * delta){
-  recu32t_resize(obj,vecu32_X(delta),vecu32_Y(delta));
+  recu32t_resize(obj,vec2u32_X(delta),vec2u32_Y(delta));
 }
 void recti32_resizeVec2(recti32_t * obj, const vec2int32_t * delta){
-  recti32_resize(obj,veci32_X(delta),veci32_Y(delta));
+  recti32_resize(obj,vec2i32_X(delta),vec2i32_Y(delta));
 }
 void rectu64_resizeVec2(rectu64_t * obj, const vec2uint64_t * delta){
-  rectu64_resize(obj,vecu64_X(delta),vecu64_Y(delta));
+  rectu64_resize(obj,vec2u64_X(delta),vec2u64_Y(delta));
 }
 void recti64_resizeVec2(recti64_t * obj, const vec2int64_t * delta){
-  recti64_resize(obj,veci64_X(delta),veci64_Y(delta));
+  recti64_resize(obj,vec2i64_X(delta),vec2i64_Y(delta));
 }
 void rectf_resizeVec2(rectf_t * obj, const vec2f_t * delta){
   rectf_resize(obj,vecf_X(delta),vecf_Y(delta));

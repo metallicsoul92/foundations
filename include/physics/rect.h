@@ -371,8 +371,8 @@ vec2uint32_t * rectu32_getPosVec2(rectu32_t * obj);
 vec2int32_t * recti32_getPosVec2(recti32_t * obj);
 vec2uint64_t * rectu64_getPosVec2(rectu64_t * obj);
 vec2int64_t * recti64_getPosVec2(recti64_t * obj);
-vec2f8_t * rectf_getPosVec2(recf_t * obj);
-vec2f8_t * rectf_getPosVec2(recf_t * obj);
+vec2f_t * rectf_getPosVec2(rectf_t * obj);
+vec2d_t * rectd_getPosVec2(rectd_t * obj);
 vec2ld_t * rectld_getPosVec2(rectld_t * obj);
 
 
@@ -386,8 +386,8 @@ vec2uint32_t * rectu32_getSizeVec2(rectu32_t * obj);
 vec2int32_t * recti32_getSizeVec2(recti32_t * obj);
 vec2uint64_t * rectu64_getSizeVec2(rectu64_t * obj);
 vec2int64_t * recti64_getSizeVec2(recti64_t * obj);
-vec2f8_t * rectf_getSizeVec2(recf_t * obj);
-vec2f8_t * rectf_getSizeVec2(recf_t * obj);
+vec2f_t * rectf_getSizeVec2(rectf_t * obj);
+vec2d_t * rectd_getSizeVec2(rectd_t * obj);
 vec2ld_t * rectld_getSizeVec2(rectld_t * obj);
 
 

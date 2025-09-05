@@ -202,6 +202,8 @@ void initvec3F(vec3f_t *out, float x, float y, float z);
 // Initialize a 3D vector of double-precision floating-point numbers
 void initvec3D(vec3d_t *out, double x, double y, double z);
 
+// Initialize a 3D vector of long double-precision floating-point numbers
+void initvec3D(vec3d_t *out, long double x, long double y, long double z);
 
 // Initialize a 3D vector of 8-bit signed integers from a 2D vector and an additional 8-bit value
 void initvec3I8_fromVec2(vec3int8_t *out, vec2int8_t *xy, int8_t z);
@@ -236,6 +238,8 @@ void initvec3F_fromVec2(vec3f_t *out, vec2f_t *xy, float z);
 // Initialize a 3D vector of double-precision floating-point numbers from a 2D vector and an additional double
 void initvec3D_fromVec2(vec3d_t *out, vec2d_t *xy, double z);
 
+// Initialize a 3D vector of long double-precision floating-point numbers from a 2D vector and an additional long double
+void initvec3LD_fromVec2(vec3ld_t *out, vec2ld_t *xy, long double z);
 
 // Allocate and initialize a 3D vector of 8-bit signed integers with the provided values
 vec3int8_t *allocvec3I8(int8_t x, int8_t y, int8_t z);
@@ -269,6 +273,10 @@ vec3f_t *allocvec3F(float x, float y, float z);
 
 // Allocate and initialize a 3D vector of double-precision floating-point numbers with the provided values
 vec3d_t *allocvec3D(double x, double y, double z);
+
+// Allocate and initialize a 3D vector of long double-precision floating-point numbers with the provided values
+vec3ld_t *allocvec3LD(long double x, long double y, long double z);
+
 
 
 // Allocate and initialize a 3D vector of 8-bit signed integers from a vec2int8_t and an 8-bit integer
@@ -304,6 +312,8 @@ vec3f_t *allocvec3F_fromVec2(vec2f_t *xy, float z);
 // Allocate and initialize a 3D vector of double-precision floating-point numbers from a vec2d_t and a double
 vec3d_t *allocvec3D_fromVec2(vec2d_t *xy, double z);
 
+// Allocate and initialize a 3D vector of long double-precision floating-point numbers from a vec2d_t and a long double
+vec3ld_t *allocvec3LD_fromVec2(vec2ld_t *xy, long double z);
 
 // Allocate and initialize a 3D vector of 8-bit signed integers from a string
 vec3int8_t *allocvec3I8_fromString(const char *str);
@@ -338,7 +348,8 @@ vec3f_t *allocvec3F_fromString(const char *str);
 // Allocate and initialize a 3D vector of double-precision floating-point numbers from a string
 vec3d_t *allocvec3D_fromString(const char *str);
 
-
+// Allocate and initialize a 3D vector of long double-precision floating-point numbers from a string
+vec3ld_t *allocvec3LD_fromString(const char *str);
 
 //getters and setters
 // Set the X component of a 3D vector of 8-bit signed integers
@@ -559,6 +570,25 @@ double vec3d_Y(vec3d_t *out);
 double vec3d_Z(vec3d_t *out);
 
 
+// Set the X component of a 3D vector of long doubles (long double)
+void vec3ld_setX(vec3ld_t *out, long double x);
+
+// Set the Y component of a 3D vector of long doubles (long double)
+void vec3ld_setY(vec3ld_t *out, long double y);
+
+// Set the Z component of a 3D vector of long doubles (long double)
+void vecl3d_setZ(vec3ld_t *out, long double z);
+
+// Get the X component of a 3D vector of long doubles (long double)
+long double vec3ld_X(vec3ld_t *out);
+
+// Get the Y component of a 3D vector of long doubles (long double)
+long double vec3ld_Y(vecl3d_t *out);
+
+// Get the Z component of a 3D vector of long doubles (long double)
+long double vec3ld_Z(vec3ld_t *out);
+
+
 
 // Get the data of a 3D vector of int8_t as a plain-old-data (POD) int8_t array
 // Note: For thread safety, user-provided storage should be set up.
@@ -599,6 +629,10 @@ float *vec3f_asPOD(vec3f_t *self, float *out);
 // Get the data of a 3D vector of double as a plain-old-data (POD) double array
 // Note: For thread safety, user-provided storage should be set up.
 double *vec3d_asPOD(vec3d_t *self, double *out);
+
+// Get the data of a 3D vector of long double as a plain-old-data (POD) long double array
+// Note: For thread safety, user-provided storage should be set up.
+long double *vec3ld_asPOD(vec3ld_t *self, long double *out);
 
 // Get the data of a 3D vector of char as a plain-old-data (POD) char array
 // Note: For thread safety, user-provided storage should be set up.
@@ -733,6 +767,18 @@ vec3d_t * vec3d_add_r(vec3d_t * out, vec3d_t * other);
 // Add a scalar 'scalar' to the 3D double vector 'out' and return the result as a new vector.
 vec3d_t * vec3d_addS_r(vec3d_t * out, double scalar);
 
+// Addition of two 3D long double vectors 'other' and 'out' element-wise.
+void vec3ld_add(vec3ld_t * out, vec3ld_t * other);
+
+// Add a scalar 'scalar' to the 3D long double vector 'out'.
+void vec3ld_addS(vec3ld_t * out,long double scalar);
+
+// Addition of two 3D long double vectors 'other' and 'out' element-wise and return the result as a new vector.
+vec3ld_t * vec3ld_add_r(vec3ld_t * out, vec3ld_t * other);
+
+// Add a scalar 'scalar' to the 3D long double vector 'out' and return the result as a new vector.
+vec3ld_t * vec3ld_addS_r(vec3ld_t * out,long double scalar);
+
 
 // Subtract the 3D int8 vector 'other' from the 3D int8 vector 'out' element-wise.
 void vec3i8_sub(vec3int8_t * out, vec3int8_t * other);
@@ -857,6 +903,19 @@ vec3d_t * vec3d_sub_r(vec3d_t * out, vec3d_t * other);
 // Subtract a scalar 'scalar' from the 3D double vector 'out' and return the result as a new vector.
 vec3d_t * vec3d_subS_r(vec3d_t * out, double scalar);
 
+// Subtract the 3D long double vector 'other' from the 3D long double vector 'out' element-wise.
+void vec3ld_sub(vec3ld_t * out, vec3ld_t * other);
+
+// Subtract a scalar 'scalar' from the 3D lon double vector 'out'.
+void vec3ld_subS(vec3ld_t * out,long double scalar);
+
+// Subtract the 3D long double vector 'other' from the 3D double vector 'out' element-wise and return the result as a new vector.
+vec3ld_t * vec3ld_sub_r(vec3ld_t * out, vec3ld_t * other);
+
+// Subtract a scalar 'scalar' from the 3D long double vector 'out' and return the result as a new vector.
+vec3ld_t * vec3ld_subS_r(vec3ld_t * out,long double scalar);
+
+
 
 //Multiplication (only doing 16-bits+)
 // Multiply the 3D int16 vector 'out' element-wise with another 3D int16 vector 'other'.
@@ -958,6 +1017,19 @@ vec3d_t * vec3d_mult_r(vec3d_t * out, vec3d_t * other);
 // Multiply the 3D double vector 'out' by a scalar 'scalar' and return the result as a new vector.
 vec3d_t * vec3d_multS_r(vec3d_t * out, double scalar);
 
+// Multiply the 3D long double vector 'out' element-wise with another 3D long double vector 'other'.
+void vec3ld_mult(vec3ld_t * out, vec3ld_t * other);
+
+// Multiply the 3D long double vector 'out' by a scalar 'scalar'.
+void vec3ld_multS(vec3ld_t * out, long double scalar);
+
+// Multiply the 3D long double vector 'out' element-wise with another 3D long double vector 'other' and return the result as a new vector.
+vec3ld_t * vec3ld_mult_r(vec3ld_t * out, vec3ld_t * other);
+
+// Multiply the 3D long double vector 'out' by a scalar 'scalar' and return the result as a new vector.
+vec3ld_t * vec3ld_multS_r(vec3ld_t * out, long double scalar);
+
+
 //Divison (TO BE IMPLEMENTED)
 
 
@@ -995,6 +1067,9 @@ float vec3f_length(vec3f_t * self);
 // Calculate the Euclidean length (magnitude) of the 3D double vector 'self' and return the result as a float.
 float vec3d_length(vec3d_t * self);
 
+// Calculate the Euclidean length (magnitude) of the 3D long double vector 'self' and return the result as a float.
+float vec3ld_length(vec3ld_t * self);
+
 
 // Calculate the dot product of two 3D int8 vectors 'left' and 'right' and return the result as a float.
 float vec3i8_dot(vec3int8_t * left, vec3int8_t * right);
@@ -1029,6 +1104,8 @@ float vec3f_dot(vec3f_t * left, vec3f_t * right);
 // Calculate the dot product of two 3D double vectors 'left' and 'right' and return the result as a float.
 float vec3d_dot(vec3d_t * left, vec3d_t * right);
 
+// Calculate the dot product of two 3D long double vectors 'left' and 'right' and return the result as a float.
+float vec3ld_dot(vec3ld_t * left, vec3ld_t * right);
 
 
 // Calculate the cross product of two 3D int8 vectors 'left' and 'right' and store the result in 'out'.
@@ -1061,6 +1138,9 @@ void vec3f_cross(vec3f_t * out, vec3f_t * left, vec3f_t * right);
 // Calculate the cross product of two 3D double vectors 'left' and 'right' and store the result in 'out'.
 void vec3d_cross(vec3d_t * out, vec3d_t * left, vec3d_t * right);
 
+// Calculate the cross product of two 3D long double vectors 'left' and 'right' and store the result in 'out'.
+void vec3ld_cross(vec3ld_t * out, vec3ld_t * left, vec3ld_t * right);
+
 
 // Returned version: Calculate the cross product of two 3D int8 vectors 'left' and 'right' and store the result in 'out'.
 vec3int8_t * vec3i8_cross_r(vec3int8_t * out, vec3int8_t * left, vec3int8_t * right);
@@ -1092,6 +1172,8 @@ vec3f_t * vec3f_cross_r(vec3f_t * out, vec3f_t * left, vec3f_t * right);
 // Returned version: Calculate the cross product of two 3D double vectors 'left' and 'right' and store the result in 'out'.
 vec3d_t * vec3d_cross_r(vec3d_t * out, vec3d_t * left, vec3d_t * right);
 
+// Returned version: Calculate the cross product of two 3D long double vectors 'left' and 'right' and store the result in 'out'.
+vec3ld_t * vec3ld_cross_r(vec3ld_t * out, vec3ld_t * left, vec3ld_t * right);
 
 
 // Normalize a 3D float vector 'self' and store the result in 'out'.
@@ -1118,6 +1200,18 @@ void vec3d_slerp(vec3d_t * out, vec3d_t * start, vec3d_t * end, float percentage
 // Perform normalized linear interpolation (NLERP) between two 3D double vectors 'start' and 'end' with a given 'percentage' and store the result in 'out'.
 void vec3d_nlerp(vec3d_t * out, vec3d_t * start, vec3d_t * end, float percentage);
 
+// Normalize a 3D double vector 'self' and store the result in 'out'.
+void vec3ld_normalize(vec3ld_t * out, vec3ld_t * self);
+
+// Interpolate between two 3D double vectors 'start' and 'end' with a given 'percentage' and store the result in 'out'.
+void vec3ld_lerp(vec3ld_t * out, vec3ld_t * start, vec3ld_t * end, float percentage);
+
+// Perform spherical linear interpolation (SLERP) between two 3D double vectors 'start' and 'end' with a given 'percentage' and store the result in 'out'.
+void vec3ld_slerp(vec3ld_t * out, vec3ld_t * start, vec3ld_t * end, float percentage);
+
+// Perform normalized linear interpolation (NLERP) between two 3D double vectors 'start' and 'end' with a given 'percentage' and store the result in 'out'.
+void vec3ld_nlerp(vec3ld_t * out, vec3ld_t * start, vec3ld_t * end, float percentage);
+
 
 // Returned version: Normalize a 3D float vector 'self' and return the normalized vector.
 vec3f_t * vec3f_normalize_r(vec3f_t * out, vec3f_t * self);
@@ -1142,6 +1236,20 @@ vec3d_t * vec3d_slerp_r(vec3d_t * out, vec3d_t * start, vec3d_t * end, float per
 
 // Returned version: Perform normalized linear interpolation (NLERP) between two 3D double vectors 'start' and 'end' with a given 'percentage' and return the interpolated vector.
 vec3d_t * vec3d_nlerp_r(vec3d_t * out, vec3d_t * start, vec3d_t * end, float percentage);
+
+// Returned version: Normalize a 3D double vector 'self' and return the normalized vector.
+vec3ld_t * vec3ld_normalize_r(vec3ld_t * out, vec3ld_t * self);
+
+// Returned version: Interpolate between two 3D double vectors 'start' and 'end' with a given 'percentage' and return the interpolated vector.
+vec3ld_t * vec3ld_lerp_r(vec3ld_t * out, vec3ld_t * start, vec3ld_t * end, float percentage);
+
+// Returned version: Perform spherical linear interpolation (SLERP) between two 3D double vectors 'start' and 'end' with a given 'percentage' and return the interpolated vector.
+vec3ld_t * vec3ld_slerp_r(vec3ld_t * out, vec3ld_t * start, vec3ld_t * end, float percentage);
+
+// Returned version: Perform normalized linear interpolation (NLERP) between two 3D double vectors 'start' and 'end' with a given 'percentage' and return the interpolated vector.
+vec3ld_t * vec3ld_nlerp_r(vec3ld_t * out, vec3ld_t * start, vec3ld_t * end, float percentage);
+
+
 
 
 // Get the size (in bytes) of a 3D vector of int8_t
@@ -1174,9 +1282,10 @@ size_t vec3c_getSize();
 // Get the size (in bytes) of a 3D vector of float
 size_t vec3f_getSize();
 
-// Get the size (in bytes) of a 3D vector of double
+// Get the size (in bytes) of a 3D vector of long double
 size_t vec3d_getSize();
-
+// Get the size (in bytes) of a 3D vector of long double
+size_t vec3ld_getSize();
 
 // Convert a 3D vector of int8_t to a dynamically allocated string
 // The returned string must be freed when no longer needed.
@@ -1221,7 +1330,9 @@ char *vec3f_toString(vec3f_t *self);
 // Convert a 3D vector of double to a dynamically allocated string
 // The returned string must be freed when no longer needed.
 char *vec3d_toString(vec3d_t *self);
-
+// Convert a 3D vector of long double to a dynamically allocated string
+// The returned string must be freed when no longer needed.
+char *vec3ld_toString(vec3ld_t *self);
 
 
 
@@ -1257,7 +1368,8 @@ void printvec3f(vec3f_t *vec);
 
 // Print the values of a 3D vector of double to the standard output
 void printvec3d(vec3d_t *vec);
-
+// Print the values of a 3D vector of long double to the standard output
+void printvec3ld(vec3ld_t *vec);
 
 
 #endif

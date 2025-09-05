@@ -7,6 +7,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <limits.h>
+#include <stdbool.h>
 
 // Ensure error state is clear
 #define BOX_MALLOC_CLEAR_ERROR() \
@@ -3612,9 +3613,365 @@ void boxld_resize(boxld_t *obj, long double dw, long double dh, long double dd) 
     obj->_depth += dd;
 }
 
-#include <limits.h>
-#include <math.h>
-#include <stdbool.h>
+
+
+//Vector Extensions
+#ifdef VEC3_DEFINED
+//vec3 getPosition()
+//YOU MUST FREE THIS MEMORY
+vec3uint8_t * boxu8_getPosVec3(boxu8_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+  return allocVec3U8(obj->_posx, obj->_posy, obj->_posz);
+}
+vec3int8_t * boxi8_getPosVec3(boxi8_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+  return allocVec3I8(obj->_posx, obj->_posy, obj->_posz);
+}
+vec3uint16_t * boxu16_getPosVec3(boxu16_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+  return allocVec3U16(obj->_posx, obj->_posy, obj->_posz);
+}
+vec3int16_t * boxi16_getPosVec3(boxi16_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+  return allocVec3I16(obj->_posx, obj->_posy, obj->_posz);
+}
+vec3uint32_t * boxu32_getPosVec3(boxu32_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+  return allocVec3U32(obj->_posx, obj->_posy, obj->_posz);
+}
+vec3int32_t * boxi32_getPosVec3(boxi32_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+  return allocVec3I32(obj->_posx, obj->_posy, obj->_posz);
+}
+vec3uint64_t * boxu64_getPosVec3(boxu64_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+  return allocVec3U64(obj->_posx, obj->_posy, obj->_posz);
+}
+vec3int64_t * boxi64_getPosVec3(boxi64_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+  return allocVec3I64(obj->_posx, obj->_posy, obj->_posz);
+}
+vec3f_t * boxf_getPosVec3(boxf_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+  // Check for NaN or infinity
+  if (isnan(obj->_posx) || isnan(obj->_posy) ||
+      isinf(obj->_posx) || isinf(obj->_posy) ||
+      isnan(obj->_posz) || isinf(obj->_posz)) {
+      box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+      return NULL;
+  }
+
+  return allocVec3F(obj->_posx, obj->_posy, obj->_posz);
+}
+vec3d_t * boxd_getPosVec3(boxd_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+
+  // Check for NaN or infinity
+  if (isnan(obj->_posx) || isnan(obj->_posy) ||
+      isinf(obj->_posx) || isinf(obj->_posy) ||
+      isnan(obj->_posz) || isinf(obj->_posz)) {
+      box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+      return NULL;
+  }
+
+  return allocVec3D(obj->_posx, obj->_posy, obj->_posz);
+}
+vec3ld_t * boxld_getPosVec3(boxld_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+  // Check for NaN or infinity
+  if (isnan(obj->_posx) || isnan(obj->_posy) ||
+      isinf(obj->_posx) || isinf(obj->_posy) ||
+      isnan(obj->_posz) || isinf(obj->_posz)) {
+      box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+      return NULL;
+  }
+
+
+  return allocVec3LD(obj->_posx, obj->_posy, obj->_posz);
+}
+
+
+//vec3 getSize()
+//YOU MUST FREE THIS MEMORY
+vec3uint8_t * boxu8_getSizeVec3(boxu8_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+  return allocVec3U8(obj->_width, obj->_height, obj->_depth);
+}
+vec3int8_t * boxi8_getSizeVec3(boxi8_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+  return allocVec3I8(obj->_width, obj->_height, obj->_depth);
+}
+vec3uint16_t * boxu16_getSizeVec3(boxu16_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+  return allocVec3U16(obj->_width, obj->_height, obj->_depth);
+}
+vec3int16_t * boxi16_getSizeVec3(boxi16_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+  return allocVec3I16(obj->_width, obj->_height, obj->_depth);
+}
+vec3uint32_t * boxu32_getSizeVec3(boxu32_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+  return allocVec3U32(obj->_width, obj->_height, obj->_depth);
+}
+vec3int32_t * boxi32_getSizeVec3(boxi32_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+  return allocVec3I32(obj->_width, obj->_height, obj->_depth);
+}
+vec3uint64_t * boxu64_getSizeVec3(boxu64_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+  return allocVec3U64(obj->_width, obj->_height, obj->_depth);
+}
+vec3int64_t * boxi64_getSizeVec3(boxi64_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+  return allocVec3I64(obj->_width, obj->_height, obj->_depth);
+}
+vec3f8_t * boxf_getSizeVec3(recf_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+  // Check for NaN or infinity
+  if (isnan(obj->_width) || isnan(obj->_height) ||
+      isinf(obj->_width) || isinf(obj->_height) ||
+      isinf(obj->_depth) || isnan(obj->_depth)){
+      box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+      return NULL;
+  }
+
+  return allocVec3F(obj->_width, obj->_height, obj->_depth);
+}
+vec3f8_t * boxf_getSizeVec3(recf_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+
+  // Check for NaN or infinity
+  if (isnan(obj->_width) || isnan(obj->_height) ||
+      isinf(obj->_width) || isinf(obj->_height) ||
+      isinf(obj->_depth) || isnan(obj->_depth)){
+      box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+      return NULL;
+  }
+
+  return allocVec3D(obj->_width, obj->_height, obj->_depth);
+}
+vec3ld_t * boxld_getSizeVec3(boxld_t * obj){
+  if(obj == NULL){
+    box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+    return NULL;
+  }
+
+  // Check for NaN or infinity
+  if (isnan(obj->_width) || isnan(obj->_height) ||
+      isinf(obj->_width) || isinf(obj->_height) ||
+      isinf(obj->_depth) || isnan(obj->_depth)){
+      box_last_error = BOX_ERROR_INVALID_DIMENSIONS;
+      return NULL;
+  }
+
+  return allocVec3LD(obj->_width, obj->_height, obj->_depth);
+}
+
+//setSizeVec3()
+void boxu8_setSizeVec3(boxu8_t * obj, const vec3uint8_t * size){
+  boxu8_setSize(obj,vec3u8_X(size),vec3u8_Y(size),vec3u8_Z(size));
+}
+void boxi8_setSizeVec3(boxi8_t * obj, const vec3int8_t * size){
+  boxi8_setSize(obj,vec3i8_X(size),vec3i8_Y(size),vec3i8_Z(size));
+}
+void boxu16_setSizeVec3(boxu16_t * obj, const vec3uint16_t * size){
+  boxu16_setSize(obj,vec3u16_X(size),vec3u16_Y(size),vec3u16_Z(size));
+}
+void boxi16_setSizeVec3(boxi16_t * obj, const vec3int16_t * size){
+  boxi16_setSize(obj,vec3i16_X(size),vec3i16_Y(size),vec3i16_Z(size));
+}
+void boxu32_setSizeVec3(boxu32_t * obj, const vec3uint32_t * size){
+  recu32t_setSize(obj,vec3u32_X(size),vec3u32_Y(size),vec3u32_Z(size));
+}
+void boxi32_setSizeVec3(boxi32_t * obj, const vec3int32_t * size){
+  boxi32_setSize(obj,vec3i32_X(size),vec3i32_Y(size),vec3i32_Z(size));
+}
+void boxu64_setSizeVec3(boxu64_t * obj, const vec3uint64_t * size){
+  boxu64_setSize(obj,vec3u64_X(size),vec3u64_Y(size),vec3u64_Z(size));
+}
+void boxi64_setSizeVec3(boxi64_t * obj, const vec3int64_t * size){
+  boxi64_setSize(obj,vec3i64_X(size),vec3i64_Y(size),vec3i64_Z(size));
+}
+void boxf_setSizeVec3(boxf_t * obj, const vec3f_t * size){
+  boxf_setSize(obj,vecf_X(size),vecf_Y(size),vecf_Z(size));
+}
+void boxd_setSizeVec3(boxd_t * obj, const vec3d_t * size){
+  boxd_setSize(obj,vecd_X(size),vecd_Y(size),vecd_Z(size));
+}
+void boxld_setSizeVec3(boxld_t * obj, const vec3ld_t * size){
+  boxld_setSize(obj,vecld_X(size),vecld_Y(size),vecld_Z(size));
+}
+
+//setPosVec3()
+void boxu8_setPosVec3(boxu8_t * obj, const vec3uint8_t * pos){
+  boxu8_setPos(obj,vec3u8_X(pos),vec3u8_Y(pos),vec3u8_Z(pos));
+}
+void boxi8_setPosVec3(boxi8_t * obj, const vec3int8_t * pos){
+  boxi8_setPos(obj,vec3i8_X(pos),vec3i8_Y(pos),vec3i8_Z(pos));
+}
+void boxu16_setPosVec3(boxu16_t * obj, const vec3uint16_t * pos){
+  boxu16_setPos(obj,vec3u16_X(pos),vec3u16_Y(pos),vec3u16_Z(pos));
+}
+void boxi16_setPosVec3(boxi16_t * obj, const vec3int16_t * pos){
+  boxi16_setPos(obj,vec3i16_X(pos),vec3i16_Y(pos),vec3i16_Z(pos));
+}
+void boxu32_setPosVec3(boxu32_t * obj, const vec3uint32_t * pos){
+  recu32t_setPos(obj,vec3u32_X(pos),vec3u32_Y(pos),vec3u32_Z(pos));
+}
+void boxi32_setPosVec3(boxi32_t * obj, const vec3int32_t * pos){
+  boxi32_setPos(obj,vec3i32_X(pos),vec3i32_Y(pos),vec3i32_Z(pos));
+}
+void boxu64_setPosVec3(boxu64_t * obj, const vec3uint64_t * pos){
+  boxu64_setPos(obj,vec3u64_X(pos),vec3u64_Y(pos),vec3u64_Z(pos));
+}
+void boxi64_setPosVec3(boxi64_t * obj, const vec3int64_t * pos){
+  boxi64_setPos(obj,vec3i64_X(pos),vec3i64_Y(pos),vec3i64_Z(pos));
+}
+void boxf_setPosVec3(boxf_t * obj, const vec3f_t * pos){
+  boxf_setPos(obj,vecf_X(pos),vecf_Y(pos),vecf_Z(pos));
+}
+void boxd_setPosVec3(boxd_t * obj, const vec3d_t * pos){
+  boxd_setPos(obj,vecd_X(pos),vecd_Y(pos),vecd_Z(pos));
+}
+void boxld_setPosVec3(boxld_t * obj, const vec3ld_t * pos){
+  boxld_setPos(obj,vecld_X(pos),vecld_Y(pos),vecld_Z(pos));
+}
+
+// moveVec3()
+void boxu8_moveVec3(boxu8_t * obj, const vec3int8_t * delta){
+  boxu8_move(obj,vec3u8_X(delta),vec3u8_Y(delta),vec3u8_Z(delta));
+}
+void boxi8_moveVec3(boxi8_t * obj, const vec3int8_t * delta){
+  boxi8_move(obj,vec3i8_X(delta),vec3i8_Y(delta),vec3i8_Z(delta));
+}
+void boxu16_moveVec3(boxu16_t * obj, const vec3int16_t * delta){
+  boxu16_move(obj,vec3u16_X(delta),vec3u16_Y(delta),vec3u16_Z(delta));
+}
+void boxi16_moveVec3(boxi16_t * obj, const vec3int16_t * delta){
+  boxi16_move(obj,vec3i16_X(delta),vec3i16_Y(delta),vec3i16_Z(delta));
+}
+void boxu32_moveVec3(boxu32_t * obj, const vec3int32_t * delta){
+  recu32t_move(obj,vec3u32_X(delta),vec3u32_Y(delta),vec3u32_Z(delta));
+}
+void boxi32_moveVec3(boxi32_t * obj, const vec3int32_t * delta){
+  boxi32_move(obj,vec3i32_X(delta),vec3i32_Y(delta),vec3i32_Z(delta));
+}
+void boxu64_moveVec3(boxu64_t * obj, const vec3int64_t * delta){
+  boxu64_move(obj,vec3u64_X(delta),vec3u64_Y(delta),vec3u64_Z(delta));
+}
+void boxi64_moveVec3(boxi64_t * obj, const vec3int64_t * delta){
+  boxi64_move(obj,vec3i64_X(delta),vec3i64_Y(delta),vec3i64_Z(delta));
+}
+void boxf_moveVec3(boxf_t * obj, const vec3f_t * delta){
+  boxf_move(obj,vecf_X(delta),vecf_Y(delta),vecf_Z(delta));
+}
+void boxd_moveVec3(boxd_t * obj, const vec3d_t * delta){
+  boxd_move(obj,vecd_X(delta),vecd_Y(delta),vecd_Z(delta));
+}
+void boxld_moveVec3(boxld_t * obj, const vec3ld_t * delta){
+  boxld_move(obj,vecld_X(delta),vecld_Y(delta),vecld_Z(delta));
+}
+
+// resizeVec3()
+void boxu8_resizeVec3(boxu8_t * obj, const vec3uint8_t * delta){
+  boxu8_resize(obj,vec3u8_X(delta),vec3u8_Y(delta),vec3u8_Z(delta));
+}
+void boxi8_resizeVec3(boxi8_t * obj, const vec3int8_t * delta){
+  boxi8_resize(obj,vec3i8_X(delta),vec3i8_Y(delta),vec3i8_Z(delta));
+}
+void boxu16_resizeVec3(boxu16_t * obj, const vec3uint16_t * delta){
+  boxu16_resize(obj,vec3u16_X(delta),vec3u16_Y(delta),vec3u16_Z(delta));
+}
+void boxi16_resizeVec3(boxi16_t * obj, const vec3int16_t * delta){
+  boxi16_resize(obj,vec3i16_X(delta),vec3i16_Y(delta),vec3i16_Z(delta));
+}
+void boxu32_resizeVec3(boxu32_t * obj, const vec3uint32_t * delta){
+  recu32t_resize(obj,vec3u32_X(delta),vec3u32_Y(delta),vec3u32_Z(delta));
+}
+void boxi32_resizeVec3(boxi32_t * obj, const vec3int32_t * delta){
+  boxi32_resize(obj,vec3i32_X(delta),vec3i32_Y(delta),vec3i32_Z(delta));
+}
+void boxu64_resizeVec3(boxu64_t * obj, const vec3uint64_t * delta){
+  boxu64_resize(obj,vec3u64_X(delta),vec3u64_Y(delta),vec3u64_Z(delta));
+}
+void boxi64_resizeVec3(boxi64_t * obj, const vec3int64_t * delta){
+  boxi64_resize(obj,vec3i64_X(delta),vec3i64_Y(delta),vec3i64_Z(delta));
+}
+void boxf_resizeVec3(boxf_t * obj, const vec3f_t * delta){
+  boxf_resize(obj,vecf_X(delta),vecf_Y(delta),vecf_Z(delta));
+}
+void boxd_resizeVec3(boxd_t * obj, const vec3d_t * delta){
+  boxd_resize(obj,vecd_X(delta),vecd_Y(delta),vecd_Z(delta));
+}
+void boxld_resizeVec3(boxld_t * obj, const vec3ld_t * delta){
+  boxld_resize(obj,vecld_X(delta),vecld_Y(delta),vecld_Z(delta));
+}
+
+#endif
+
 
 // Helper function to check for overflow in unsigned addition
 static bool check_unsigned_overflow(uintmax_t a, uintmax_t b, uintmax_t max) {
