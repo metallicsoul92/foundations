@@ -136,7 +136,7 @@ vec2d_t * allocvec2D(double x, double y){
 }
 
 vec2ld_t * allocvec2LD(long double x, long double y){
-  vec2d_t * out;
+  vec2ld_t * out;
   out = malloc(sizeof(vec2ld_t));
   out->_x = x;
   out->_y = y;
