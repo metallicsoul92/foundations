@@ -52,7 +52,7 @@ typedef enum {
 } box_error_t;
 
 // Global error state for all box types
-static box_error_t box_last_error = BOX_SUCCESS;  // Fixed: BOX_SUCCESS instead of box_SUCCESS
+static box_error_t box_last_error = BOX_SUCCESS; 
 static const char* box_error_string = NULL;
 
 // Error strings
