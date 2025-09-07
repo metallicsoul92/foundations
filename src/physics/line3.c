@@ -5043,3 +5043,459 @@ line3Dld_t *line3Dld_fromBytesLE(const uint8_t *bytes) {
 
     return line;
 }
+
+
+#ifdef VEC3_DEFINED
+
+// For line3Du8_t
+vec3uint8_t* line3Du8_getStartPosVec3(line3Du8_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3U8(line->_startX, line->_startY, line->_startZ);
+}
+
+vec3uint8_t* line3Du8_getEndPosVec3(line3Du8_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3U8(line->_endX, line->_endY, line->_endZ);
+}
+
+void line3Du8_setStartPosVec3(line3Du8_t* line, const vec3uint8_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_startX = vec3u8_X((vec3uint8_t*)vec);
+    line->_startY = vec3u8_Y((vec3uint8_t*)vec);
+    line->_startZ = vec3u8_Z((vec3uint8_t*)vec);
+}
+
+void line3Du8_setEndPosVec3(line3Du8_t* line, const vec3uint8_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_endX = vec3u8_X((vec3uint8_t*)vec);
+    line->_endY = vec3u8_Y((vec3uint8_t*)vec);
+    line->_endZ = vec3u8_Z((vec3uint8_t*)vec);
+}
+
+// For line3Di8_t
+vec3int8_t* line3Di8_getStartPosVec3(line3Di8_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3I8(line->_startX, line->_startY, line->_startZ);
+}
+
+vec3int8_t* line3Di8_getEndPosVec3(line3Di8_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3I8(line->_endX, line->_endY, line->_endZ);
+}
+
+void line3Di8_setStartPosVec3(line3Di8_t* line, const vec3int8_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_startX = vec3i8_X((vec3int8_t*)vec);
+    line->_startY = vec3i8_Y((vec3int8_t*)vec);
+    line->_startZ = vec3i8_Z((vec3int8_t*)vec);
+}
+
+void line3Di8_setEndPosVec3(line3Di8_t* line, const vec3int8_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_endX = vec3i8_X((vec3int8_t*)vec);
+    line->_endY = vec3i8_Y((vec3int8_t*)vec);
+    line->_endZ = vec3i8_Z((vec3int8_t*)vec);
+}
+
+// For line3Du16_t
+vec3uint16_t* line3Du16_getStartPosVec3(line3Du16_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3U16(line->_startX, line->_startY, line->_startZ);
+}
+
+vec3uint16_t* line3Du16_getEndPosVec3(line3Du16_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3U16(line->_endX, line->_endY, line->_endZ);
+}
+
+void line3Du16_setStartPosVec3(line3Du16_t* line, const vec3uint16_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_startX = vec3u16_X((vec3uint16_t*)vec);
+    line->_startY = vec3u16_Y((vec3uint16_t*)vec);
+    line->_startZ = vec3u16_Z((vec3uint16_t*)vec);
+}
+
+void line3Du16_setEndPosVec3(line3Du16_t* line, const vec3uint16_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_endX = vec3u16_X((vec3uint16_t*)vec);
+    line->_endY = vec3u16_Y((vec3uint16_t*)vec);
+    line->_endZ = vec3u16_Z((vec3uint16_t*)vec);
+}
+
+// For line3Di16_t
+vec3int16_t* line3Di16_getStartPosVec3(line3Di16_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3I16(line->_startX, line->_startY, line->_startZ);
+}
+
+vec3int16_t* line3Di16_getEndPosVec3(line3Di16_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3I16(line->_endX, line->_endY, line->_endZ);
+}
+
+void line3Di16_setStartPosVec3(line3Di16_t* line, const vec3int16_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_startX = vec3i16_X((vec3int16_t*)vec);
+    line->_startY = vec3i16_Y((vec3int16_t*)vec);
+    line->_startZ = vec3i16_Z((vec3int16_t*)vec);
+}
+
+void line3Di16_setEndPosVec3(line3Di16_t* line, const vec3int16_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_endX = vec3i16_X((vec3int16_t*)vec);
+    line->_endY = vec3i16_Y((vec3int16_t*)vec);
+    line->_endZ = vec3i16_Z((vec3int16_t*)vec);
+}
+
+// For line3Du32_t
+vec3uint32_t* line3Du32_getStartPosVec3(line3Du32_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3U32(line->_startX, line->_startY, line->_startZ);
+}
+
+vec3uint32_t* line3Du32_getEndPosVec3(line3Du32_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3U32(line->_endX, line->_endY, line->_endZ);
+}
+
+void line3Du32_setStartPosVec3(line3Du32_t* line, const vec3uint32_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_startX = vec3u32_X((vec3uint32_t*)vec);
+    line->_startY = vec3u32_Y((vec3uint32_t*)vec);
+    line->_startZ = vec3u32_Z((vec3uint32_t*)vec);
+}
+
+void line3Du32_setEndPosVec3(line3Du32_t* line, const vec3uint32_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_endX = vec3u32_X((vec3uint32_t*)vec);
+    line->_endY = vec3u32_Y((vec3uint32_t*)vec);
+    line->_endZ = vec3u32_Z((vec3uint32_t*)vec);
+}
+
+// For line3Di32_t
+vec3int32_t* line3Di32_getStartPosVec3(line3Di32_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3I32(line->_startX, line->_startY, line->_startZ);
+}
+
+vec3int32_t* line3Di32_getEndPosVec3(line3Di32_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3I32(line->_endX, line->_endY, line->_endZ);
+}
+
+void line3Di32_setStartPosVec3(line3Di32_t* line, const vec3int32_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_startX = vec3i32_X((vec3int32_t*)vec);
+    line->_startY = vec3i32_Y((vec3int32_t*)vec);
+    line->_startZ = vec3i32_Z((vec3int32_t*)vec);
+}
+
+void line3Di32_setEndPosVec3(line3Di32_t* line, const vec3int32_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_endX = vec3i32_X((vec3int32_t*)vec);
+    line->_endY = vec3i32_Y((vec3int32_t*)vec);
+    line->_endZ = vec3i32_Z((vec3int32_t*)vec);
+}
+
+// For line3Du64_t
+vec3uint64_t* line3Du64_getStartPosVec3(line3Du64_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3U64(line->_startX, line->_startY, line->_startZ);
+}
+
+vec3uint64_t* line3Du64_getEndPosVec3(line3Du64_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3U64(line->_endX, line->_endY, line->_endZ);
+}
+
+void line3Du64_setStartPosVec3(line3Du64_t* line, const vec3uint64_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_startX = vec3u64_X((vec3uint64_t*)vec);
+    line->_startY = vec3u64_Y((vec3uint64_t*)vec);
+    line->_startZ = vec3u64_Z((vec3uint64_t*)vec);
+}
+
+void line3Du64_setEndPosVec3(line3Du64_t* line, const vec3uint64_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_endX = vec3u64_X((vec3uint64_t*)vec);
+    line->_endY = vec3u64_Y((vec3uint64_t*)vec);
+    line->_endZ = vec3u64_Z((vec3uint64_t*)vec);
+}
+
+// For line3Di64_t
+vec3int64_t* line3Di64_getStartPosVec3(line3Di64_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3I64(line->_startX, line->_startY, line->_startZ);
+}
+
+vec3int64_t* line3Di64_getEndPosVec3(line3Di64_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3I64(line->_endX, line->_endY, line->_endZ);
+}
+
+void line3Di64_setStartPosVec3(line3Di64_t* line, const vec3int64_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_startX = vec3i64_X((vec3int64_t*)vec);
+    line->_startY = vec3i64_Y((vec3int64_t*)vec);
+    line->_startZ = vec3i64_Z((vec3int64_t*)vec);
+}
+
+void line3Di64_setEndPosVec3(line3Di64_t* line, const vec3int64_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_endX = vec3i64_X((vec3int64_t*)vec);
+    line->_endY = vec3i64_Y((vec3int64_t*)vec);
+    line->_endZ = vec3i64_Z((vec3int64_t*)vec);
+}
+
+// For line3Df_t (float)
+vec3f_t* line3Df_getStartPosVec3(line3Df_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3F(line->_startX, line->_startY, line->_startZ);
+}
+
+vec3f_t* line3Df_getEndPosVec3(line3Df_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3F(line->_endX, line->_endY, line->_endZ);
+}
+
+void line3Df_setStartPosVec3(line3Df_t* line, const vec3f_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_startX = vec3f_X((vec3f_t*)vec);
+    line->_startY = vec3f_Y((vec3f_t*)vec);
+    line->_startZ = vec3f_Z((vec3f_t*)vec);
+}
+
+void line3Df_setEndPosVec3(line3Df_t* line, const vec3f_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_endX = vec3f_X((vec3f_t*)vec);
+    line->_endY = vec3f_Y((vec3f_t*)vec);
+    line->_endZ = vec3f_Z((vec3f_t*)vec);
+}
+
+// For line3Dd_t (double)
+vec3d_t* line3Dd_getStartPosVec3(line3Dd_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3D(line->_startX, line->_startY, line->_startZ);
+}
+
+vec3d_t* line3Dd_getEndPosVec3(line3Dd_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3D(line->_endX, line->_endY, line->_endZ);
+}
+
+void line3Dd_setStartPosVec3(line3Dd_t* line, const vec3d_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_startX = vec3d_X((vec3d_t*)vec);
+    line->_startY = vec3d_Y((vec3d_t*)vec);
+    line->_startZ = vec3d_Z((vec3d_t*)vec);
+}
+
+void line3Dd_setEndPosVec3(line3Dd_t* line, const vec3d_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_endX = vec3d_X((vec3d_t*)vec);
+    line->_endY = vec3d_Y((vec3d_t*)vec);
+    line->_endZ = vec3d_Z((vec3d_t*)vec);
+}
+
+// For line3Dld_t (long double)
+vec3ld_t* line3Dld_getStartPosVec3(line3Dld_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3LD(line->_startX, line->_startY, line->_startZ);
+}
+
+vec3ld_t* line3Dld_getEndPosVec3(line3Dld_t* line) {
+    if (!line) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return NULL;
+    }
+    line3_clear_error();
+    return allocvec3LD(line->_endX, line->_endY, line->_endZ);
+}
+
+void line3Dld_setStartPosVec3(line3Dld_t* line, const vec3ld_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_startX = vec3ld_X((vec3ld_t*)vec);
+    line->_startY = vec3ld_Y((vec3ld_t*)vec);
+    line->_startZ = vec3ld_Z((vec3ld_t*)vec);
+}
+
+void line3Dld_setEndPosVec3(line3Dld_t* line, const vec3ld_t* vec) {
+    if (!line || !vec) {
+        line3_set_error(LINE3_ERROR_NULL_POINTER, NULL);
+        return;
+    }
+    line3_clear_error();
+    line->_endX = vec3ld_X((vec3ld_t*)vec);
+    line->_endY = vec3ld_Y((vec3ld_t*)vec);
+    line->_endZ = vec3ld_Z((vec3ld_t*)vec);
+}
+
+#endif /* VEC3_DEFINED */
