@@ -7371,6 +7371,43 @@ void rectld_print(const rectld_t* obj) {
 }
 
 
+// getSize meta-function
+size_t rectu8_size(void){
+  return sizeof(rectu8_t);
+}
+size_t recti8_size(void){
+  return sizeof(recti8_t);
+}
+size_t rectu16_size(void){
+  return sizeof(rectu16_t);
+}
+size_t recti16_size(void){
+  return sizeof(recti16_t);
+}
+size_t rectu32_size(void){
+  return sizeof(rectu32_t);
+}
+size_t recti32_size(void){
+  return sizeof(recti32_t);
+}
+size_t rectu64_size(void){
+  return sizeof(rectu64_t);
+}
+size_t recti64_size(void){
+  return sizeof(recti64_t);
+}
+size_t rectf_size(void){
+  return sizeof(rectf_t);
+}
+size_t rectd_size(void){
+  return sizeof(rectd_t);
+}
+size_t rectld_size(void){
+  return sizeof(rectld_t);
+}
+
+
+
 // Serialization functions - convert rectangle to array
 void rectu8_toArray(uint8_t* output, const rectu8_t* src) {
     if (output == NULL || src == NULL) {

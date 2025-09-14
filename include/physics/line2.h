@@ -313,6 +313,19 @@ void line2Dld_translateX(line2Dld_t *line, long double x);
 void line2Dld_translateY(line2Dld_t *line, long double y);
 void line2Dld_translateLine(line2Dld_t *outLine, const line2Dld_t *line);
 
+// getSize meta-function
+size_t line2Du8_size(void);
+size_t line2Di8_size(void);
+size_t line2Du16_size(void);
+size_t line2Di16_size(void);
+size_t line2Du32_size(void);
+size_t line2Di32_size(void);
+size_t line2Du64_size(void);
+size_t line2Di64_size(void);
+size_t line2Df_size(void);
+size_t line2Dd_size(void);
+size_t line2Dld_size(void);
+
 
 /* Serialization functions */
 

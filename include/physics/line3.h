@@ -493,6 +493,18 @@ size_t line3Dld_toBytesLE(const line3Dld_t *line, uint8_t *bytes);
 line3Dld_t *line3Dld_fromBytesLE(const uint8_t *bytes);
 
 
+// getSize meta-function
+size_t line3Du8_size(void);
+size_t line3Di8_size(void);
+size_t line3Du16_size(void);
+size_t line3Di16_size(void);
+size_t line3Du32_size(void);
+size_t line3Di32_size(void);
+size_t line3Du64_size(void);
+size_t line3Di64_size(void);
+size_t line3Df_size(void);
+size_t line3Dd_size(void);
+size_t line3Dld_size(void);
 
 /* Vector extension functions */
 #ifdef VEC3_DEFINED

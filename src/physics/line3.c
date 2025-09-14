@@ -3935,6 +3935,43 @@ void line3Dld_translateLine(line3Dld_t *outLine, const line3Dld_t *line) {
     outLine->_endZ += dz;
 }
 
+
+// getSize meta-function
+size_t line3Du8_size(void){
+  return sizeof(line3Du8_t);
+}
+size_t line3Di8_size(void){
+  return sizeof(line3Di8_t);
+}
+size_t line3Du16_size(void){
+  return sizeof(line3Du16_t);
+}
+size_t line3Di16_size(void){
+  return sizeof(line3Di16_t);
+}
+size_t line3Du32_size(void){
+  return sizeof(line3Du32_t);
+}
+size_t line3Di32_size(void){
+  return sizeof(line3Di32_t);
+}
+size_t line3Du64_size(void){
+  return sizeof(line3Du64_t);
+}
+size_t line3Di64_size(void){
+  return sizeof(line3Di64_t);
+}
+size_t line3Df_size(void){
+  return sizeof(line3Df_t);
+}
+size_t line3Dd_size(void){
+  return sizeof(line3Dd_t);
+}
+size_t line3Dld_size(void){
+  return sizeof(line3Dld_t);
+}
+
+
 /* Array serialization/deserialization implementation */
 void line3Du8_toArray(const line3Du8_t *line, uint8_t arr[7]) {
     if (!line || !arr) {

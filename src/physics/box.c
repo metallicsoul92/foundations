@@ -52,7 +52,7 @@ typedef enum {
 } box_error_t;
 
 // Global error state for all box types
-static box_error_t box_last_error = BOX_SUCCESS; 
+static box_error_t box_last_error = BOX_SUCCESS;
 static const char* box_error_string = NULL;
 
 // Error strings
@@ -7313,6 +7313,42 @@ void boxld_print(const boxld_t *obj) {
     printf("Box (x: %.6Lf, y: %.6Lf, z: %.6Lf, width: %.6Lf, height: %.6Lf, depth: %.6Lf)\n",
            obj->_posx, obj->_posy, obj->_posz,
            obj->_width, obj->_height, obj->_depth);
+}
+
+
+// getSize meta-function
+size_t boxu8_size(void){
+  return sizeof(boxu8_t);
+}
+size_t boxi8_size(void){
+  return sizeof(boxi8_t);
+}
+size_t boxu16_size(void){
+  return sizeof(boxu16_t);
+}
+size_t boxi16_size(void){
+  return sizeof(boxi16_t);
+}
+size_t boxu32_size(void){
+  return sizeof(boxu32_t);
+}
+size_t boxi32_size(void){
+  return sizeof(boxi32_t);
+}
+size_t boxu64_size(void){
+  return sizeof(boxu64_t);
+}
+size_t boxi64_size(void){
+  return sizeof(boxi64_t);
+}
+size_t boxf_size(void){
+  return sizeof(boxf_t);
+}
+size_t boxd_size(void){
+  return sizeof(boxd_t);
+}
+size_t boxld_size(void){
+  return sizeof(boxld_t);
 }
 
 // toArray() functions

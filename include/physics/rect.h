@@ -462,17 +462,17 @@ bool rectd_collides(const rectd_t * obj, const rectd_t * other);
 bool rectld_collides(const rectld_t * obj, const rectld_t * other);
 
 //contains_point()
-bool rectu8_contains_point(const rectu8_t * obj, uint8_t width, uint8_t height);
-bool recti8_contains_point(const recti8_t * obj, int8_t width, int8_t height);
-bool rectu16_contains_point(const rectu16_t * obj, uint16_t width, uint16_t height);
-bool recti16_contains_point(const recti16_t * obj, int16_t width, int16_t height);
-bool rectu32_contains_point(const rectu32_t * obj, uint32_t width, uint32_t height);
-bool recti32_contains_point(const recti32_t * obj, int32_t width, int32_t height);
-bool rectu64_contains_point(const rectu64_t * obj, uint64_t width, uint64_t height);
-bool recti64_contains_point(const recti64_t * obj, int64_t width, int64_t height);
-bool rectf_contains_point(const rectf_t * obj, float width, float height);
-bool rectd_contains_point(const rectd_t * obj, double width, double height);
-bool rectld_contains_point(const rectld_t * obj, long double width, long double height);
+bool rectu8_contains_point(const rectu8_t * obj, uint8_t x, uint8_t y);
+bool recti8_contains_point(const recti8_t * obj, int8_t x, int8_t y);
+bool rectu16_contains_point(const rectu16_t * obj, uint16_t x, uint16_t y);
+bool recti16_contains_point(const recti16_t * obj, int16_t x, int16_t y);
+bool rectu32_contains_point(const rectu32_t * obj, uint32_t x, uint32_t y);
+bool recti32_contains_point(const recti32_t * obj, int32_t x, int32_t y);
+bool rectu64_contains_point(const rectu64_t * obj, uint64_t x, uint64_t y);
+bool recti64_contains_point(const recti64_t * obj, int64_t x, int64_t y);
+bool rectf_contains_point(const rectf_t * obj, float x, float y);
+bool rectd_contains_point(const rectd_t * obj, double x, double y);
+bool rectld_contains_point(const rectld_t * obj, long double x, long double y);
 
 //contains_rect()
 bool rectu8_contains_rect(const rectu8_t * obj, const rectu8_t * other);
@@ -558,6 +558,18 @@ void rectf_print(const rectf_t * obj);
 void rectd_print(const rectd_t * obj);
 void rectld_print(const rectld_t * obj);
 
+// getSize meta-function
+size_t rectu8_size(void);
+size_t recti8_size(void);
+size_t rectu16_size(void);
+size_t recti16_size(void);
+size_t rectu32_size(void);
+size_t recti32_size(void);
+size_t rectu64_size(void);
+size_t recti64_size(void);
+size_t rectf_size(void);
+size_t rectd_size(void);
+size_t rectld_size(void);
 
 
 //Serialization

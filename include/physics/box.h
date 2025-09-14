@@ -717,6 +717,18 @@ void boxf_print(const boxf_t * obj);
 void boxd_print(const boxd_t * obj);
 void boxld_print(const boxld_t * obj);
 
+// getSize meta-function
+size_t boxu8_size(void);
+size_t boxi8_size(void);
+size_t boxu16_size(void);
+size_t boxi16_size(void);
+size_t boxu32_size(void);
+size_t boxi32_size(void);
+size_t boxu64_size(void);
+size_t boxi64_size(void);
+size_t boxf_size(void);
+size_t boxd_size(void);
+size_t boxld_size(void);
 
 
 //Serialization

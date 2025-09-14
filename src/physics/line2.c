@@ -2875,6 +2875,44 @@ void line2Dld_translateLine(line2Dld_t *outLine, const line2Dld_t *line) {
     line2_clear_error();
 }
 
+// getSize meta-function
+size_t line2Du8_size(void){
+  return sizeof(line2Du8_t);
+}
+size_t line2Di8_size(void){
+  return sizeof(line2Di8_t);
+}
+size_t line2Du16_size(void){
+  return sizeof(line2Du16_t);
+}
+size_t line2Di16_size(void){
+  return sizeof(line2Di16_t);
+}
+size_t line2Du32_size(void){
+  return sizeof(line2Du32_t);
+}
+size_t line2Di32_size(void){
+  return sizeof(line2Di32_t);
+}
+size_t line2Du64_size(void){
+  return sizeof(line2Du64_t);
+}
+size_t line2Di64_size(void){
+  return sizeof(line2Di64_t);
+}
+size_t line2Df_size(void){
+  return sizeof(line2Df_t);
+}
+size_t line2Dd_size(void){
+  return sizeof(line2Dd_t);
+}
+size_t line2Dld_size(void){
+  return sizeof(line2Dld_t);
+}
+
+
+
+
 /* line2.c additions - Vector extension functions */
 
 #ifdef VEC2_DEFINED
