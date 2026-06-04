@@ -1,5 +1,7 @@
 #include "../../include/net/peer.h"
+#include "../../include/net/ip.h"
 #include "../../include/collections/vector.h"
+#include <stdlib.h>
 
 struct _peerConnection{
   ip_t * _pairIP;
@@ -29,7 +31,7 @@ peer_t *peer_malloc(uint16_t port, uint8_t ipType, uint8_t ipAtIndex, size_t max
 
 // Free resources associated with the peer
 void peer_free(peer_t *out){
-  ip_free(out->_peerIP);
+  ip_freeIP(out->_peerIP);
   free_vector(out->_peerList);
   free(out);
 }
@@ -48,12 +50,13 @@ uint16_t peer_getPort(peer_t * out){
   return out->_port;
 }
 size_t peer_getPeerCount(peer_t * out){
-  vector_getCount(out->_peerList);
+  return vector_getCount(out->_peerList);
 }
 
-int peer_Broadcast(peer_t * out, const void * data, size_t dataLength){
-  if(out->_broadcast != NULL){
-    return out->_broadcast(out,data,dataLength);
-  }
-  return PEER_E_INVALID_BROADCAST;
+int peer_Broadcast(peer_t *out, const void *data, size_t dataLength) {
+    if (out->_broadcast != NULL) {
+        out->_broadcast(out, data, dataLength);
+        return PEER_E_SUCCESS;
+    }
+    return PEER_E_INVALID_BROADCAST;
 }

@@ -1,6 +1,12 @@
 #ifndef FOUNDATIONS_MATH_VEC2_H_
 #define FOUNDATIONS_MATH_VEC2_H_ 1
 
+
+#ifndef STDDEF_DEFINED
+#include <stddef.h>
+#define STDDEF_DEFINED 1
+#endif
+
 // Standard header for fixed-size integer types
 #ifndef STDINT_DEFINED
 #include <stdint.h>
@@ -75,6 +81,12 @@
   #define VEC2D_DEFINED 1
   #endif
 
+  // Forward declaration for a 2D vector of double.
+  #ifndef VEC2LD_DEFINED
+  typedef struct vector2longdouble vec2ld_t;
+  #define VEC2LD_DEFINED 1
+  #endif
+
 #define VEC2_DEFINED 1
 #endif
 
@@ -125,40 +137,63 @@ void initVec2F(vec2f_t *out, float x, float y);
 // Initialize a 2D vector of double with given x and y values.
 void initVec2D(vec2d_t *out, double x, double y);
 
+// Initialize a 2D vector of long double with given x and y values.
+void initVec2LD(vec2ld_t *out, long double x, long double y);
+
 // Allocate and Initialize 2D Vectors
 
 // Allocate and initialize a 2D vector of int8_t with the specified values.
-vec2int8_t * allocVec2I8(int8_t x, int8_t y);
+vec2int8_t * allocvec2I8(int8_t x, int8_t y);
 
 // Allocate and initialize a 2D vector of uint8_t with the specified values.
-vec2uint8_t * allocVec2U8(uint8_t x, uint8_t y);
+vec2uint8_t * allocvec2U8(uint8_t x, uint8_t y);
 
 // Allocate and initialize a 2D vector of int16_t with the specified values.
-vec2int16_t * allocVec2I16(int16_t x, int16_t y);
+vec2int16_t * allocvec2I16(int16_t x, int16_t y);
 
 // Allocate and initialize a 2D vector of uint16_t with the specified values.
-vec2uint16_t * allocVec2U16(uint16_t x, uint16_t y);
+vec2uint16_t * allocvec2U16(uint16_t x, uint16_t y);
 
 // Allocate and initialize a 2D vector of int32_t with the specified values.
-vec2int32_t * allocVec2I32(int32_t x, int32_t y);
+vec2int32_t * allocvec2I32(int32_t x, int32_t y);
 
 // Allocate and initialize a 2D vector of uint32_t with the specified values.
-vec2uint32_t * allocVec2U32(uint32_t x, uint32_t y);
+vec2uint32_t * allocvec2U32(uint32_t x, uint32_t y);
 
 // Allocate and initialize a 2D vector of int64_t with the specified values.
-vec2int64_t * allocVec2I64(int64_t x, int64_t y);
+vec2int64_t * allocvec2I64(int64_t x, int64_t y);
 
 // Allocate and initialize a 2D vector of uint64_t with the specified values.
-vec2uint64_t * allocVec2U64(uint64_t x, uint64_t y);
+vec2uint64_t * allocvec2U64(uint64_t x, uint64_t y);
 
 // Allocate and initialize a 2D vector of char with the specified values.
-vec2char_t * allocVec2C(char x, char y);
+vec2char_t * allocvec2C(char x, char y);
 
 // Allocate and initialize a 2D vector of float with the specified values.
-vec2f_t * allocVec2F(float x, float y);
+vec2f_t * allocvec2F(float x, float y);
 
 // Allocate and initialize a 2D vector of double with the specified values.
-vec2d_t * allocVec2D(double x, double y);
+vec2d_t * allocvec2D(double x, double y);
+
+// Allocate and initialize a 2D vector of double with the specified values.
+vec2ld_t * allocvec2LD(long double x,long double y);
+
+
+
+vec2int8_t * allocvec2I8_fromString(const char * str);
+vec2uint8_t * allocvec2U8_fromString(const char * str);
+vec2int16_t * allocvec2I16_fromString(const char * str);
+vec2uint16_t * allocvec2U16_fromString(const char * str);
+vec2int32_t * allocvec2I32_fromString(const char * str);
+vec2uint32_t * allocvec2U32_fromString(const char * str);
+vec2int64_t * allocvec2I64_fromString(const char * str);
+vec2uint64_t * allocvec2U64_fromString(const char * str);
+vec2char_t * allocvec2C_fromString(const char * str);
+vec2f_t * allocvec2F_fromString(const char * str);
+vec2d_t * allocvec2D_fromString(const char * str);
+vec2ld_t * allocvec2LD_fromString(const char * str);
+
+
 
 //getters and setters
 // Set the x component of a 2D vector of int8_t (8-bit signed integers).
@@ -295,6 +330,18 @@ double vec2d_X(vec2d_t * out);
 // Get the Y-component of a 2D vector of double.
 double vec2d_Y(vec2d_t * out);
 
+
+// Set the X-component of a 2D vector of double.
+void vec2ld_setX(vec2d_t * out, long double x);
+
+// Set the Y-component of a 2D vector of double.
+void vec2ld_setY(vec2d_t * out, long double y);
+
+// Get the X-component of a 2D vector of long double.
+long double vec2ld_X(vec2ld_t * out);
+
+// Get the Y-component of a 2D vector of long double.
+long double vec2ld_Y(vec2ld_t * out);
 
 //addition
 /**
@@ -662,6 +709,44 @@ vec2d_t *vec2d_addS_r(vec2d_t *out, double scalar);
 
 
 /**
+ * @brief Performs element-wise addition between two vec2ld_t vectors.
+ *
+ * @param out A pointer to the destination vec2ld_t vector where the result will be stored.
+ * @param other A pointer to the source vec2ld_t vector to be added.
+ */
+void vec2ld_add(vec2ld_t *out, vec2ld_t *other);
+
+/**
+ * @brief Performs scalar addition to each element of a vec2ld_t vector.
+ *
+ * @param out A pointer to the destination vec2ld_t vector where the result will be stored.
+ * @param scalar The scalar value to be added to each element of the vector.
+ */
+void vec2ld_addS(vec2ld_t *out,long double scalar);
+
+/**
+ * @brief Performs element-wise addition between two vec2ld_t vectors and returns a new vector.
+ *
+ * @param out A pointer to the destination vec2ld_t vector where the result will be stored.
+ * @param other A pointer to the source vec2ld_t vector to be added.
+ *
+ * @return A pointer to a newly allocated vec2ld_t vector containing the result of the addition.
+ */
+vec2ld_t *vec2ld_add_r(vec2ld_t *out, vec2ld_t *other);
+
+/**
+ * @brief Performs scalar addition to each element of a vec2ld_t vector and returns a new vector.
+ *
+ * @param out A pointer to the destination vec2ld_t vector where the result will be stored.
+ * @param scalar The scalar value to be added to each element of the vector.
+ *
+ * @return A pointer to a newly allocated vec2ld_t vector containing the result of the addition.
+ */
+vec2ld_t *vec2ld_addS_r(vec2ld_t *out,long double scalar);
+
+
+
+/**
  * @brief Performs element-wise subtraction between two vec2int8_t vectors.
  *
  * @param out A pointer to the destination vec2int8_t vector where the result will be stored.
@@ -1020,6 +1105,45 @@ vec2uint16_t *vec2u16_sub_r(vec2uint16_t *out, vec2uint16_t *other);
   * @return A pointer to a newly allocated vec2d_t vector containing the result of the subtraction.
   */
  vec2d_t *vec2d_subS_r(vec2d_t *out, double scalar);
+
+
+ /**
+  * @brief Performs element-wise subtraction between two vec2ld_t vectors.
+  *
+  * @param out A pointer to the destination vec2ld_t vector where the result will be stored.
+  * @param other A pointer to the source vec2ld_t vector to be subtracted.
+  */
+ void vec2ld_sub(vec2ld_t *out, vec2ld_t *other);
+
+ /**
+  * @brief Subtracts a scalar value from each element of a vec2ld_t vector.
+  *
+  * @param out A pointer to the destination vec2ld_t vector where the result will be stored.
+  * @param scalar The scalar value to be subtracted from each element of the vector.
+  */
+ void vec2ld_subS(vec2ld_t *out,long double scalar);
+
+ /**
+  * @brief Performs element-wise subtraction between two vec2ld_t vectors and returns a new vector.
+  *
+  * @param out A pointer to the destination vec2ld_t vector where the result will be stored.
+  * @param other A pointer to the source vec2ld_t vector to be subtracted.
+  *
+  * @return A pointer to a newly allocated vec2ld_t vector containing the result of the subtraction.
+  */
+ vec2ld_t *vec2ld_sub_r(vec2ld_t *out, vec2ld_t *other);
+
+ /**
+  * @brief Subtracts a scalar value from each element of a vec2ld_t vector and returns a new vector.
+  *
+  * @param out A pointer to the destination vec2ld_t vector where the result will be stored.
+  * @param scalar The scalar value to be subtracted from each element of the vector.
+  *
+  * @return A pointer to a newly allocated vec2ld_t vector containing the result of the subtraction.
+  */
+ vec2ld_t *vec2ld_subS_r(vec2ld_t *out,long double scalar);
+
+
 
 
 
@@ -1410,7 +1534,116 @@ vec2uint16_t *vec2u16_sub_r(vec2uint16_t *out, vec2uint16_t *other);
  vec2d_t *vec2d_multS_r(vec2d_t *out, double scalar);
 
 
+ /**
+  * @brief Performs element-wise multiplication between two vec2ld_t vectors.
+  *
+  * This function multiplies each element of the 'out' vector by the corresponding
+  * element of the 'other' vector and stores the result in the 'out' vector.
+  *
+  * @param out A pointer to the destination vec2ld_t vector where the result will be stored.
+  * @param other A pointer to the source vec2ld_t vector to be multiplied with 'out'.
+  */
+ void vec2ld_mult(vec2ld_t *out, vec2ld_t *other);
+
+ /**
+  * @brief Multiplies each element of a vec2ld_t vector by a scalar value.
+  *
+  * This function multiplies each element of the 'out' vector by the provided 'scalar'
+  * value and stores the result in the 'out' vector.
+  *
+  * @param out A pointer to the destination vec2ld_t vector where the result will be stored.
+  * @param scalar The scalar value to multiply each element of the 'out' vector by.
+  */
+ void vec2ld_multS(vec2ld_t *out,long double scalar);
+
+ /**
+  * @brief Performs element-wise multiplication between two vec2ld_t vectors and returns a new vector.
+  *
+  * This function multiplies each element of the 'out' vector by the corresponding element
+  * of the 'other' vector and stores the result in a newly allocated vec2ld_t vector.
+  *
+  * @param out A pointer to the destination vec2ld_t vector where the result will be stored.
+  * @param other A pointer to the source vec2ld_t vector to be multiplied with 'out'.
+  *
+  * @return A pointer to a newly allocated vec2ld_t vector containing the result of the multiplication.
+  */
+ vec2ld_t *vec2ld_mult_r(vec2ld_t *out, vec2ld_t *other);
+
+ /**
+  * @brief Multiplies each element of a vec2ld_t vector by a scalar value and returns a new vector.
+  *
+  * This function multiplies each element of the 'out' vector by the provided 'scalar' value
+  * and stores the result in a newly allocated vec2ld_t vector.
+  *
+  * @param out A pointer to the destination vec2ld_t vector where the result will be stored.
+  * @param scalar The scalar value to multiply each element of the 'out' vector by.
+  *
+  * @return A pointer to a newly allocated vec2ld_t vector containing the result of the multiplication.
+  */
+ vec2ld_t *vec2ld_multS_r(vec2ld_t *out,long double scalar);
+
+
+
 //Divison (TO BE IMPLEMENTED)
+
+
+
+//length() - returns float
+float vec2i8_length(vec2int8_t * self);
+float vec2u8_length(vec2uint8_t * self);
+float vec2i16_length(vec2int16_t * self);
+float vec2u16_length(vec2uint16_t * self);
+float vec2i32_length(vec2int32_t * self);
+float vec2u32_length(vec2uint32_t * self);
+float vec2i64_length(vec2int64_t * self);
+float vec2u64_length(vec2uint64_t * self);
+float vec2c_length(vec2char_t * self);
+float vec2f_length(vec2f_t * self);
+float vec2d_length(vec2d_t * self);
+float vec2ld_length(vec2ld_t * self);
+
+//dot() -returns float
+float vec2i8_dot(vec2int8_t * left,vec2int8_t * right);
+float vec2u8_dot(vec2uint8_t * left,vec2uint8_t * right);
+float vec2i16_dot(vec2int16_t * left,vec2int16_t * right);
+float vec2u16_dot(vec2uint16_t * left,vec2uint16_t * right);
+float vec2i32_dot(vec2int32_t * left,vec2int32_t * right);
+float vec2u32_dot(vec2uint32_t * left,vec2uint32_t * right);
+float vec2i64_dot(vec2int64_t * left,vec2int64_t * right);
+float vec2u64_dot(vec2uint64_t * left,vec2uint64_t * right);
+float vec2c_dot(vec2char_t * left,vec2char_t * right);
+float vec2f_dot(vec2f_t * left,vec2f_t * right);
+float vec2d_dot(vec2d_t * left,vec2d_t * right);
+float vec2ld_dot(vec2ld_t * left,vec2ld_t * right);
+
+//getSize() -returns size_t
+size_t vec2i8_getSize();
+size_t vec2u8_getSize();
+size_t vec2i16_getSize();
+size_t vec2u16_getSize();
+size_t vec2i32_getSize();
+size_t vec2u32_getSize();
+size_t vec2i64_getSize();
+size_t vec2u64_getSize();
+size_t vec2c_getSize();
+size_t vec2f_getSize();
+size_t vec2d_getSize();
+size_t vec2ld_getSize();
+
+//toString() -returns char pointer that must be freed
+char * vec2i8_toString(vec2int8_t * self);
+char * vec2u8_toString(vec2uint8_t * self);
+char * vec2i16_toString(vec2int16_t * self);
+char * vec2u16_toString(vec2uint16_t * self);
+char * vec2i32_toString(vec2int32_t * self);
+char * vec2u32_toString(vec2uint32_t * self);
+char * vec2i64_toString(vec2int64_t * self);
+char * vec2u64_toString(vec2uint64_t * self);
+char * vec2c_toString(vec2char_t * self);
+char * vec2f_toString(vec2f_t * self);
+char * vec2d_toString(vec2d_t * self);
+char * vec2ld_toString(vec2ld_t * self);
+
 
 // Printing a 2D vector of int8_t.
 void printVec2i8(vec2int8_t *vec);

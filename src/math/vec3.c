@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <math.h>
 
+#define DEFINE_ALL_VEC2
 #define DEFINE_ALL_VEC3
 #include "../../include/math/priv/types.h"
 
@@ -66,6 +67,12 @@ void initvec3D(vec3d_t * out, double x , double y, double z){
   out->_z = z;
 }
 
+void initvec3LD(vec3ld_t * out, long double x , long double y, long double z){
+  out->_x = x;
+  out->_y = y;
+  out->_z = z;
+}
+
 //vec2 represents the x,y variables
 void initvec3I8_fromVec2(vec3int8_t * out , vec2int8_t * xy , int8_t z){
   out->_x = vec2i8_X(xy);
@@ -122,6 +129,12 @@ void initvec3D_fromVec2(vec3d_t * out, vec2d_t * xy , double z){
   out->_y = vec2d_Y(xy);
   out->_z = z;
 }
+void initvec3LD_fromVec2(vec3ld_t * out, vec2ld_t * xy , long double z){
+  out->_x = vec2ld_X(xy);
+  out->_y = vec2ld_Y(xy);
+  out->_z = z;
+}
+
 
 //Allocate and initialize Vector
 vec3int8_t * allocvec3I8(int8_t x, int8_t y, int8_t z){
@@ -213,6 +226,16 @@ vec3d_t * allocvec3D(double x, double y, double z){
   return out;
 }
 
+vec3ld_t * allocvec3LD(long double x, long double y, long double z){
+  vec3ld_t * out;
+  out = malloc(sizeof(vec3ld_t));
+  out->_x = x;
+  out->_y = y;
+  out->_z = z;
+  return out;
+}
+
+
 //Allocate and initialize Vector from vec2
 vec3int8_t * allocvec3I8_fromVec2(vec2int8_t * xy, int8_t z){
   vec3int8_t * out;
@@ -303,6 +326,15 @@ vec3d_t * allocvec3D_fromVec2(vec2d_t * xy, double z){
   return out;
 }
 
+vec3ld_t * allocvec3LD_fromVec2(vec2ld_t * xy, long double z){
+  vec3ld_t * out;
+  out = malloc(sizeof(vec3ld_t));
+  out->_x = vec2ld_X(xy);
+  out->_y = vec2ld_Y(xy);
+  out->_z = z;
+  return out;
+}
+
 
 //Allocate and initialize Vector from string
 vec3int8_t * allocvec3I8_fromString(const char * str){
@@ -383,6 +415,13 @@ vec3d_t * allocvec3D_fromString(const char * str){
   return out;
 }
 
+vec3ld_t * allocvec3LD_fromString(const char * str){
+  long double x,y,z;
+  vec3ld_t * out = malloc(sizeof(vec3ld_t));
+  sscanf(str,"%Lf , %Lf , %Lf \n",&x , &y , &z);
+  initvec3LD(out,x,y,z);
+  return out;
+}
 
 
 
@@ -612,6 +651,29 @@ double vec3d_Z(vec3d_t * out){
   return out->_z;
 }
 
+void vec3ld_setX(vec3ld_t * out, long double x){
+  out->_x = x;
+}
+void vec3ld_setY(vec3ld_t * out, long double y){
+  out->_y = y;
+}
+void vec3ld_setZ(vec3ld_t * out, long double z){
+  out->_z = z;
+}
+
+long double vec3ld_X(vec3ld_t * out){
+  return out->_x;
+}
+long double vec3ld_Y(vec3ld_t * out){
+  return out->_y;
+}
+long double vec3ld_Z(vec3ld_t * out){
+  return out->_z;
+}
+
+
+
+
 int8_t * vec3i8_asPOD(vec3int8_t * self,int8_t * out){
   out[0] = vec3i8_X(self);
   out[1] = vec3i8_Y(self);
@@ -672,6 +734,14 @@ double * vec3d_asPOD(vec3d_t * self,double * out){
   out[2] = vec3d_Z(self);
   return out;
 }
+
+long double * vec3ld_asPOD(vec3ld_t * self,long double * out){
+  out[0] = vec3ld_X(self);
+  out[1] = vec3ld_Y(self);
+  out[2] = vec3ld_Z(self);
+  return out;
+}
+
 char * vec3c_asPOD(vec3char_t * self,char * out){
   out[0] = vec3char_X(self);
   out[1] = vec3char_Y(self);
@@ -913,6 +983,30 @@ vec3d_t * vec3d_addS_r(vec3d_t * out,double scalar){
   return out;
 }
 
+void vec3ld_add(vec3ld_t * out, vec3ld_t * other){
+  out->_x += other->_x;
+  out->_y += other->_y;
+  out->_z += other->_z;
+}
+void vec3ld_addS(vec3ld_t * out ,long double scalar){
+  out->_x += scalar;
+  out->_y += scalar;
+  out->_z += scalar;
+}
+vec3ld_t * vec3ld_add_r(vec3ld_t * out,vec3ld_t * other){
+  out->_x += other->_x;
+  out->_y += other->_y;
+  out->_z += other->_z;
+  return out;
+}
+vec3ld_t * vec3ld_addS_r(vec3ld_t * out,long double scalar){
+  out->_x += scalar;
+  out->_y += scalar;
+  out->_z += scalar;
+  return out;
+}
+
+
 //subtraction
 void vec3i8_sub(vec3int8_t * out, vec3int8_t * other){
   out->_x -= other->_x;
@@ -1144,6 +1238,29 @@ vec3d_t * vec3d_subS_r(vec3d_t * out,double scalar){
   return out;
 }
 
+void vec3ld_sub(vec3ld_t * out, vec3ld_t * other){
+  out->_x -= other->_x;
+  out->_y -= other->_y;
+  out->_z -= other->_z;
+}
+void vec3ld_subS(vec3ld_t * out ,long double scalar){
+  out->_x -= scalar;
+  out->_y -= scalar;
+  out->_z -= scalar;
+}
+vec3ld_t * vec3ld_sub_r(vec3ld_t * out,vec3ld_t * other){
+  out->_x -= other->_x;
+  out->_y -= other->_y;
+  out->_z -= other->_z;
+  return out;
+}
+vec3ld_t * vec3ld_subS_r(vec3ld_t * out,long double scalar){
+  out->_x -= scalar;
+  out->_y -= scalar;
+  out->_z -= scalar;
+  return out;
+}
+
 
 //Multiplication (only doing 16-bits+)
 void vec3i16_mult(vec3int16_t * out, vec3int16_t * other){
@@ -1330,6 +1447,29 @@ vec3d_t * vec3d_multS_r(vec3d_t * out,double scalar){
   return out;
 }
 
+void vec3ld_mult(vec3ld_t * out, vec3ld_t * other){
+  out->_x *= other->_x;
+  out->_y *= other->_y;
+  out->_z *= other->_z;
+}
+void vec3ld_multS(vec3ld_t * out ,long double scalar){
+  out->_x *= scalar;
+  out->_y *= scalar;
+  out->_z *= scalar;
+}
+vec3ld_t * vec3ld_mult_r(vec3ld_t * out,vec3ld_t * other){
+  out->_x *= other->_x;
+  out->_y *= other->_y;
+  out->_z *= other->_z;
+  return out;
+}
+vec3ld_t * vec3ld_multS_r(vec3ld_t * out,long double scalar){
+  out->_x *= scalar;
+  out->_y *= scalar;
+  out->_z *= scalar;
+  return out;
+}
+
 //Divison (TO BE IMPLEMENTED)
 
 
@@ -1367,6 +1507,9 @@ float vec3f_length(vec3f_t * self){
 float vec3d_length(vec3d_t * self){
 	return sqrt((self->_x * self->_x) + (self->_y * self->_y) + (self->_z * self->_z));
 }
+float vec3ld_length(vec3ld_t * self){
+	return sqrt((self->_x * self->_x) + (self->_y * self->_y) + (self->_z * self->_z));
+}
 
 //dot
 float vec3i8_dot(vec3int8_t * left,vec3int8_t * right){
@@ -1402,7 +1545,9 @@ float vec3f_dot(vec3f_t * left,vec3f_t * right){
 float vec3d_dot(vec3d_t * left,vec3d_t * right){
 	return sqrt((left->_x * right->_x) + (left->_y * right->_y)  + (left->_z * right->_z));
 }
-
+float vec3ld_dot(vec3ld_t * left,vec3ld_t * right){
+	return sqrt((left->_x * right->_x) + (left->_y * right->_y)  + (left->_z * right->_z));
+}
 
 //cross ( out as parameter)
 void vec3i8_cross(vec3int8_t * out, vec3int8_t * left, vec3int8_t * right){
@@ -1456,6 +1601,13 @@ void vec3d_cross(vec3d_t * out, vec3d_t * left, vec3d_t * right){
 	vec3d_setZ(out, (left->_x * right->_y ) - (left->_y * right->_x));
 }
 
+void vec3ld_cross(vec3ld_t * out, vec3ld_t * left, vec3ld_t * right){
+  vec3ld_setX(out, (left->_y * right->_z ) - (left->_z * right->_y));
+  vec3ld_setY(out, (left->_z * right->_x ) - (left->_x * right->_z));
+  vec3ld_setZ(out, (left->_x * right->_y ) - (left->_y * right->_x));
+}
+
+
 //cross (out returned)
 vec3int8_t * vec3i8_cross_r(vec3int8_t * out, vec3int8_t * left, vec3int8_t * right){
 	vec3i8_cross(out,left,right);
@@ -1495,6 +1647,10 @@ vec3f_t * vec3f_cross_r(vec3f_t * out, vec3f_t * left, vec3f_t * right){
 }
 vec3d_t * vec3d_cross_r(vec3d_t * out, vec3d_t * left, vec3d_t * right){
 	vec3d_cross(out,left,right);
+	return out;
+}
+vec3ld_t * vec3ld_cross_r(vec3ld_t * out, vec3ld_t * left, vec3ld_t * right){
+  vec3ld_cross(out,left,right);
 	return out;
 }
 
@@ -1551,7 +1707,7 @@ void vec3d_normalize(vec3d_t * out, vec3d_t * self){
 	out->_x = self->_x;
 	out->_y = self->_y;
 	out->_z = self->_z;
-	float squared = (self->_x * self->_x ) + (self->_y * self->_y ) + (self->_z * self->_z );
+  double squared = (self->_x * self->_x ) + (self->_y * self->_y ) + (self->_z * self->_z );
 	vec3d_multS(out, ( 1.0f/sqrt(squared) ) );
 }
 void vec3d_lerp(vec3d_t * out, vec3d_t * start , vec3d_t * end, float percentage){
@@ -1594,6 +1750,56 @@ void vec3d_nlerp(vec3d_t * out, vec3d_t * start , vec3d_t * end, float percentag
 	vec3d_normalize(out,out);
 }
 
+
+void vec3ld_normalize(vec3ld_t * out, vec3ld_t * self){
+	out->_x = self->_x;
+	out->_y = self->_y;
+	out->_z = self->_z;
+  long double squared = (self->_x * self->_x ) + (self->_y * self->_y ) + (self->_z * self->_z );
+  vec3ld_multS(out, ( 1.0f/sqrt(squared) ) );
+}
+void vec3ld_lerp(vec3ld_t * out, vec3ld_t * start , vec3ld_t * end, float percentage){
+  vec3ld_t temp;
+	temp._x = end->_x - start->_x;
+	temp._y = end->_y - start->_y;
+	temp._z = end->_z - start->_z;
+  vec3ld_multS(&temp,percentage);
+	out->_x = temp._x;
+	out->_y = temp._y;
+	out->_z = temp._z;
+
+}
+void vec3ld_slerp(vec3ld_t * out, vec3ld_t * start , vec3ld_t * end, float percentage){
+
+  vec3ld_t temp;
+  long double dotSE = vec3ld_dot(start,end);
+  long double clamp;
+	if(dotSE > 1.0f){
+		clamp = 1.0f;
+	}else if(dotSE < -1.0f){
+		clamp = -1.0f;
+	}else
+		clamp = dotSE;
+
+	temp._x = (end->_x - start->_x ) * clamp;
+	temp._y = (end->_y - start->_y) * clamp;
+	temp._z = (end->_z - start->_z) * clamp;
+  long double theta = acos(clamp) * percentage;
+
+	//normalize relative vec
+  vec3ld_normalize(&temp,&temp);
+	out->_x = (start->_x * cos(theta)) - (temp._x * sin(theta));
+	out->_x = (start->_x * cos(theta)) - (temp._x * sin(theta));
+	out->_z = (start->_z * cos(theta)) - (temp._z * sin(theta));
+}
+
+void vec3ld_nlerp(vec3ld_t * out, vec3ld_t * start , vec3ld_t * end, float percentage){
+  vec3ld_lerp(out,start,end,percentage);
+  vec3ld_normalize(out,out);
+}
+
+
+
 //Returned Misc Functions
 vec3f_t * vec3f_normalize_r(vec3f_t * out, vec3f_t * self){
 	vec3f_normalize(out,self);
@@ -1630,7 +1836,22 @@ vec3d_t * vec3d_nlerp_r(vec3d_t * out, vec3d_t * start , vec3d_t * end, float pe
 	return out;
 }
 
-
+vec3ld_t * vec3ld_normalize_r(vec3ld_t * out, vec3ld_t * self){
+	vec3ld_normalize(out,self);
+	return out;
+}
+vec3ld_t * vec3ld_lerp_r(vec3ld_t * out, vec3ld_t * start , vec3ld_t * end, float percentage){
+	vec3ld_lerp(out,start,end,percentage);
+	return out;
+}
+vec3ld_t * vec3ld_slerp_r(vec3ld_t * out, vec3ld_t * start , vec3ld_t * end, float percentage){
+	vec3ld_slerp(out,start,end,percentage);
+	return out;
+}
+vec3ld_t * vec3ld_nlerp_r(vec3ld_t * out, vec3ld_t * start , vec3ld_t * end, float percentage){
+  vec3ld_nlerp(out,start,end,percentage);
+	return out;
+}
 
 //getSize
 size_t vec3i8_getSize(){
@@ -1666,7 +1887,9 @@ size_t vec3f_getSize(){
 size_t vec3d_getSize(){
   return sizeof(vec3d_t);
 }
-
+size_t vec3ld_getSize(){
+  return sizeof(vec3ld_t);
+}
 
 
 
@@ -1726,6 +1949,11 @@ char * vec3d_toString(vec3d_t * self){
   sprintf(buffer, "%lf , %lf , %lf \n",self->_x,self->_y,self->_z);
   return buffer;
 }
+char * vec3ld_toString(vec3ld_t * self){
+  char * buffer = malloc(sizeof(char) * 48);
+  sprintf(buffer, "%Lf , %Lf , %Lf \n",self->_x,self->_y,self->_z);
+  return buffer;
+}
 
 //printing
 void printvec3i8(vec3int8_t * vec){
@@ -1760,4 +1988,7 @@ void printvec3f(vec3f_t * vec){
 }
 void printvec3d(vec3d_t * vec){
   printf(" %lf , %lf , %lf \n",vec->_x,vec->_y,vec->_z);
+}
+void printvec3ld(vec3ld_t * vec){
+  printf(" %Lf , %Lf , %Lf \n",vec->_x,vec->_y,vec->_z);
 }

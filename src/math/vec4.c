@@ -610,7 +610,7 @@ void vec4u8_setY(vec4uint8_t * out, uint8_t y){
 void vec4u8_setZ(vec4uint8_t * out, uint8_t z){
   out->_z = z;
 }
-void vec4u8_setW(vec4int8_t * out, uint8_t w){
+void vec4u8_setW(vec4uint8_t * out, uint8_t w){
   out->_w = w;
 }
 

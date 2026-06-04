@@ -25,10 +25,17 @@
 	#include <stdint.h>
 	#define STDINT_DEFINED 1
 #endif
+
 #ifndef STDBOOL_DEFINED
 	#include <stdbool.h>
 	#define STDBOOL_DEFINED 1
 #endif
+
+#ifndef STDIO_DEFINED
+#include <stdio.h>
+#define STDIO_DEFINED 1
+#endif
+
 
 /** @struct estring
  *  @brief A custom string structure for C.
@@ -64,6 +71,13 @@ estring_t * copy_estring(const estring_t * data);
  *  @return A pointer to the newly created `estring_t` with the data from the original.
  */
 estring_t * move_estring(estring_t * data);
+
+/** @brief Create estring from file .
+ *
+ *  @param The filepath as a const char *
+ *  @return An estring_t of the file contents
+ */
+estring_t * estring_fromFile(const char *filepath);
 
 /** @brief Deallocate memory used by an `estring_t`.
  *

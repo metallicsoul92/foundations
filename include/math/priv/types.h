@@ -51,6 +51,11 @@ struct vector2double{
   double _x;
   double _y;
 };
+
+struct vector2longdouble{
+  long double _x;
+  long double _y;
+};
 #endif
 
 #ifdef DEFINE_ALL_VEC3
@@ -109,6 +114,12 @@ struct vector3double{
   double _y;
   double _z;
 };
+struct vector3longdouble{
+  long double _x;
+  long double _y;
+  long double _z;
+};
+
 #endif
 
 #ifdef DEFINE_ALL_VEC4
@@ -177,6 +188,12 @@ struct vector4double{
   double _y;
   double _z;
   double _w;
+};
+struct vector4longdouble{
+  long double _x;
+  long double _y;
+  long double _z;
+  long double _w;
 };
 #endif
 

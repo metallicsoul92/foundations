@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 struct estring{
   uint32_t _length;
   char * _string;
@@ -34,6 +35,61 @@ estring_t * move_estring(estring_t * data){
   free_estring(data);
   return out;
 }
+
+estring_t * estring_fromFile(const char *filepath){
+    estring_t *result = malloc(sizeof(estring_t)); // Allocate memory for the result
+    if (result == NULL) {
+        perror("Error allocating memory");
+        return NULL; // Return NULL on memory allocation error
+    }
+
+    // Open the file for reading
+    FILE *file = fopen(filepath, "r");
+    if (file == NULL) {
+        perror("Error opening file");
+        free(result);
+        return NULL; // Return NULL on file opening error
+    }
+
+    // Determine the size of the file
+    fseek(file, 0, SEEK_END);
+    long file_size = ftell(file);
+    fseek(file, 0, SEEK_SET);
+
+    // Allocate memory for the string (including null terminator)
+    result->_string = malloc(file_size + 1);
+    if (result->_string == NULL) {
+        perror("Error allocating memory");
+        fclose(file);
+        free(result);
+        return NULL; // Return NULL on memory allocation error
+    }
+
+    // Read the contents of the file into the string
+    size_t bytes_read = fread(result->_string, 1, file_size, file);
+    if (bytes_read != (size_t)file_size) {
+        perror("Error reading file");
+        free(result->_string);
+        fclose(file);
+        free(result);
+        return NULL; // Return NULL on file reading error
+    }
+
+    // Null-terminate the string
+    result->_string[file_size] = '\0';
+
+    // Set the length of the string
+    result->_length = file_size;
+
+    // Close the file
+    fclose(file);
+
+    return result;
+}
+
+
+
+
 
 void free_estring(estring_t * self){
   free(self->_string);

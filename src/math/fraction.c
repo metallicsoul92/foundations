@@ -1,5 +1,6 @@
 #include "../../include/math/fraction.h"
 #include <math.h>
+#include <stdlib.h>
 
 struct _fract{
   int64_t _numerator;
@@ -31,7 +32,9 @@ fraction_t fraction_init(int64_t n, int64_t d) {
 
   // return if d == 0
   if( d == 0 ){
-    return NULL;
+    //set d to 1
+    //TODO: Fix
+    d++;
   }
     // Initialize a fraction structure without dynamic memory allocation
     fraction_t fraction;
@@ -66,7 +69,7 @@ float fraction_toFloat(fraction_t *out) {
 
 double fraction_toDouble(fraction_t *out) {
     // Convert a fraction to a double
-    return (double)(out->numerator) / (double)(out->_denominator);
+    return (double)(out->_numerator) / (double)(out->_denominator);
 }
 
 

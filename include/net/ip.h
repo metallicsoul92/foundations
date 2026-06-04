@@ -20,9 +20,12 @@ typedef struct ip ip_t;
 #define IP_TYPES_DEFINED 1
 #endif
 
+char *ip_toString(const ip_t *ip);
+uint32_t ip_getAddressCount(uint8_t type);
+
 // Allocate and initialize an IP structure based on the type and index.
 // This function retrieves the IP address of the system's network interfaces.
-ip_t *ip_getIP(uint8_t type, uint8_t atIndex);
+ip_t *ip_getIP(uint8_t type, uint32_t atIndex);
 
 // Free resources associated with an IP structure.
 void ip_freeIP(ip_t * out);

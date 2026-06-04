@@ -49,7 +49,12 @@
  * @typedef vector_t
  * Opaque pointer to the vector structure (hides the implementation details).
  */
-typedef struct vector vector_t;
+
+ #ifndef VECTOR_DEF
+ typedef struct vector vector_t;
+ #define VECTOR_DEF
+ #endif
+
 
 /**
  * @brief Retrieves the size of a vector.

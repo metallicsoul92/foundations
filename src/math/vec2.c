@@ -7,47 +7,52 @@
 #define DEFINE_ALL_VEC2
 #include "../../include/math/priv/types.h"
 
-void initvec2I8(vec2int8_t * out , int8_t x ,int8_t y){
+void initVec2I8(vec2int8_t * out , int8_t x ,int8_t y){
   out->_x = x;
   out->_y = y;
 }
-void initvec2U8(vec2uint8_t * out , uint8_t x ,uint8_t y){
+void initVec2U8(vec2uint8_t * out , uint8_t x ,uint8_t y){
   out->_x = x;
   out->_y = y;
 }
-void initvec2I16(vec2int16_t * out , int16_t x ,int16_t y){
+void initVec2I16(vec2int16_t * out , int16_t x ,int16_t y){
   out->_x = x;
   out->_y = y;
 }
-void initvec2U16(vec2uint16_t * out , uint16_t x ,uint16_t y){
+void initVec2U16(vec2uint16_t * out , uint16_t x ,uint16_t y){
   out->_x = x;
   out->_y = y;
 }
-void initvec2I32(vec2int32_t * out , int32_t x ,int32_t y){
+void initVec2I32(vec2int32_t * out , int32_t x ,int32_t y){
   out->_x = x;
   out->_y = y;
 }
-void initvec2U32(vec2uint32_t * out , uint32_t x ,uint32_t y){
+void initVec2U32(vec2uint32_t * out , uint32_t x ,uint32_t y){
   out->_x = x;
   out->_y = y;
 }
-void initvec2I64(vec2int64_t * out , int64_t x ,int64_t y){
+void initVec2I64(vec2int64_t * out , int64_t x ,int64_t y){
   out->_x = x;
   out->_y = y;
 }
-void initvec2U64(vec2uint64_t * out , uint64_t x ,uint64_t y){
+void initVec2U64(vec2uint64_t * out , uint64_t x ,uint64_t y){
   out->_x = x;
   out->_y = y;
 }
-void initvec2C(vec2char_t * out , char x ,char y){
+void initVec2C(vec2char_t * out , char x ,char y){
   out->_x = x;
   out->_y = y;
 }
-void initvec2F(vec2f_t * out , float x ,float y){
+void initVec2F(vec2f_t * out , float x ,float y){
   out->_x = x;
   out->_y = y;
 }
-void initvec2D(vec2d_t * out, double x , double y){
+void initVec2D(vec2d_t * out, double x , double y){
+  out->_x = x;
+  out->_y = y;
+}
+
+void initVec2LD(vec2ld_t *out, long double x, long double y){
   out->_x = x;
   out->_y = y;
 }
@@ -130,85 +135,99 @@ vec2d_t * allocvec2D(double x, double y){
   return out;
 }
 
+vec2ld_t * allocvec2LD(long double x, long double y){
+  vec2ld_t * out;
+  out = malloc(sizeof(vec2ld_t));
+  out->_x = x;
+  out->_y = y;
+  return out;
+}
+
 //Allocate and initialize Vector from string
 vec2int8_t * allocvec2I8_fromString(const char * str){
   int8_t x,y;
   vec2int8_t * out = malloc(sizeof(vec2int8_t));
   sscanf(str,"%hhd , %hhd \n",&x , &y);
-  initvec2I8(out,x,y);
+  initVec2I8(out,x,y);
   return out;
 }
 vec2uint8_t * allocvec2U8_fromString(const char * str){
   uint8_t x,y;
   vec2uint8_t * out = malloc(sizeof(vec2uint8_t));
   sscanf(str,"%hhu , %hhu \n",&x , &y);
-  initvec2U8(out,x,y);
+  initVec2U8(out,x,y);
   return out;
 }
 vec2int16_t * allocvec2I16_fromString(const char * str){
   int16_t x,y;
   vec2int16_t * out = malloc(sizeof(vec2int16_t));
   sscanf(str,"%hd , %hd \n",&x , &y);
-  initvec2I16(out,x,y);
+  initVec2I16(out,x,y);
   return out;
 }
 vec2uint16_t * allocvec2U16_fromString(const char * str){
   uint16_t x,y;
   vec2uint16_t * out = malloc(sizeof(vec2uint16_t));
   sscanf(str,"%hu , %hu \n",&x , &y);
-  initvec2U16(out,x,y);
+  initVec2U16(out,x,y);
   return out;
 }
 vec2int32_t * allocvec2I32_fromString(const char * str){
   int32_t x,y;
   vec2int32_t * out = malloc(sizeof(vec2int32_t));
   sscanf(str,"%d , %d \n",&x , &y);
-  initvec2I32(out,x,y);
+  initVec2I32(out,x,y);
   return out;
 }
 vec2uint32_t * allocvec2U32_fromString(const char * str){
   uint32_t x,y;
   vec2uint32_t * out = malloc(sizeof(vec2uint32_t));
   sscanf(str,"%u , %u \n",&x , &y);
-  initvec2U32(out,x,y);
+  initVec2U32(out,x,y);
   return out;
 }
 vec2int64_t * allocvec2I64_fromString(const char * str){
   int64_t x,y;
   vec2int64_t * out = malloc(sizeof(vec2int64_t));
   sscanf(str,"%ld , %ld \n",&x , &y);
-  initvec2I64(out,x,y);
+  initVec2I64(out,x,y);
   return out;
 }
 vec2uint64_t * allocvec2U64_fromString(const char * str){
   uint64_t x,y;
   vec2uint64_t * out = malloc(sizeof(vec2uint64_t));
   sscanf(str,"%lu , %lu \n",&x , &y);
-  initvec2U64(out,x,y);
+  initVec2U64(out,x,y);
   return out;
 }
 vec2char_t * allocvec2C_fromString(const char * str){
   char x,y;
   vec2char_t * out = malloc(sizeof(vec2char_t));
   sscanf(str,"%c , %c \n",&x , &y);
-  initvec2C(out,x,y);
+  initVec2C(out,x,y);
   return out;
 }
 vec2f_t * allocvec2F_fromString(const char * str){
   float x,y;
   vec2f_t * out = malloc(sizeof(vec2f_t));
   sscanf(str,"%f , %f \n",&x , &y);
-  initvec2F(out,x,y);
+  initVec2F(out,x,y);
   return out;
 }
 vec2d_t * allocvec2D_fromString(const char * str){
   double x,y;
   vec2d_t * out = malloc(sizeof(vec2d_t));
   sscanf(str,"%lf , %lf \n",&x , &y);
-  initvec2D(out,x,y);
+  initVec2D(out,x,y);
   return out;
 }
-
+vec2ld_t * allocvec2LD_fromString(const char * str){
+  long double x,y;
+  vec2ld_t * out = malloc(sizeof(vec2ld_t));
+  sscanf(str,"%Lf , %Lf \n",&x , &y);
+  initVec2LD(out,x,y);
+  return out;
+}
 
 
 
@@ -356,6 +375,27 @@ double vec2d_X(vec2d_t * out){
 double vec2d_Y(vec2d_t * out){
   return out->_y;
 }
+
+// Set the X-component of a 2D vector of double.
+void vec2ld_setX(vec2d_t * out, long double x){
+  out->_x = x;
+}
+
+// Set the Y-component of a 2D vector of double.
+void vec2ld_setY(vec2d_t * out, long double y){
+  out->_y = y;
+}
+
+// Get the X-component of a 2D vector of long double.
+long double vec2ld_X(vec2ld_t * out){
+  return out->_x;
+}
+
+// Get the Y-component of a 2D vector of long double.
+long double vec2ld_Y(vec2ld_t * out){
+  return out->_y;
+}
+
 
 int8_t * vec2i8_asPOD(vec2int8_t * self,int8_t * out){
   out[0] = vec2i8_X(self);
@@ -627,6 +667,31 @@ vec2d_t * vec2d_addS_r(vec2d_t * out,double scalar){
   return out;
 }
 
+void vec2ld_add(vec2ld_t *out, vec2ld_t *other){
+  out->_x += other->_x;
+  out->_y += other->_y;
+}
+void vec2ld_addS(vec2ld_t *out,long double scalar){
+  out->_x += scalar;
+  out->_y += scalar;
+}
+vec2ld_t *vec2ld_add_r(vec2ld_t *out, vec2ld_t *other){
+  out->_x += other->_x;
+  out->_y += other->_y;
+
+  return out;
+}
+vec2ld_t *vec2ld_addS_r(vec2ld_t *out,long double scalar){
+  out->_x += scalar;
+  out->_y += scalar;
+
+  return out;
+}
+
+
+
+
+
 //subtraction
 void vec2i8_sub(vec2int8_t * out, vec2int8_t * other){
   out->_x -= other->_x;
@@ -837,6 +902,28 @@ vec2d_t * vec2d_subS_r(vec2d_t * out,double scalar){
 
   return out;
 }
+
+void vec2ld_sub(vec2ld_t * out, vec2ld_t * other){
+  out->_x -= other->_x;
+  out->_y -= other->_y;
+}
+void vec2ld_subS(vec2ld_t * out ,long double scalar){
+  out->_x -= scalar;
+  out->_y -= scalar;
+}
+vec2ld_t * vec2ld_sub_r(vec2ld_t * out,vec2ld_t * other){
+  out->_x -= other->_x;
+  out->_y -= other->_y;
+
+  return out;
+}
+vec2ld_t * vec2ld_subS_r(vec2ld_t * out,long double scalar){
+  out->_x -= scalar;
+  out->_y -= scalar;
+
+  return out;
+}
+
 
 //Multiplication
 void vec2i8_mult(vec2int8_t * out, vec2int8_t * other){
@@ -1049,6 +1136,28 @@ vec2d_t * vec2d_multS_r(vec2d_t * out,double scalar){
   return out;
 }
 
+void vec2ld_mult(vec2ld_t * out, vec2ld_t * other){
+  out->_x *= other->_x;
+  out->_y *= other->_y;
+}
+void vec2ld_multS(vec2ld_t * out ,long double scalar){
+  out->_x *= scalar;
+  out->_y *= scalar;
+}
+vec2ld_t * vec2ld_mult_r(vec2ld_t * out,vec2ld_t * other){
+  out->_x *= other->_x;
+  out->_y *= other->_y;
+
+  return out;
+}
+vec2ld_t * vec2ld_multS_r(vec2ld_t * out,long double scalar){
+  out->_x *= scalar;
+  out->_y *= scalar;
+
+  return out;
+}
+
+
 //division (TO BE IMPLEMENTED)
 
 
@@ -1089,6 +1198,11 @@ float vec2d_length(vec2d_t * self){
 	return sqrt((self->_x * self->_x) + (self->_y * self->_y));
 }
 
+float vec2ld_length(vec2ld_t * self){
+	return sqrt((self->_x * self->_x) + (self->_y * self->_y));
+}
+
+
 //dot
 float vec2i8_dot(vec2int8_t * left,vec2int8_t * right){
 	return sqrt((left->_x * right->_x) + (left->_y * right->_y));
@@ -1123,7 +1237,9 @@ float vec2f_dot(vec2f_t * left,vec2f_t * right){
 float vec2d_dot(vec2d_t * left,vec2d_t * right){
 	return sqrt((left->_x * right->_x) + (left->_y * right->_y));
 }
-
+float vec2ld_dot(vec2ld_t * left,vec2ld_t * right){
+	return sqrt((left->_x * right->_x) + (left->_y * right->_y));
+}
 //getSize
 size_t vec2i8_getSize(){
   return sizeof(vec2int8_t);
@@ -1157,6 +1273,9 @@ size_t vec2f_getSize(){
 }
 size_t vec2d_getSize(){
   return sizeof(vec2d_t);
+}
+size_t vec2ld_getSize(){
+  return sizeof(vec2ld_t);
 }
 
 
@@ -1216,7 +1335,11 @@ char * vec2d_toString(vec2d_t * self){
   sprintf(buffer, "%lf , %lf \n",self->_x,self->_y);
   return buffer;
 }
-
+char * vec2ld_toString(vec2ld_t * self){
+  char * buffer = malloc(sizeof(char) * 32);
+  sprintf(buffer, "%Lf , %Lf \n",self->_x,self->_y);
+  return buffer;
+}
 
 
 

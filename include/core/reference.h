@@ -6,6 +6,12 @@
 #define STDDEF_DEFINED 1
 #endif
 
+
+#ifndef STDINT_DEFINED
+	#include <stdint.h>
+	#define STDINT_DEFINED 1
+#endif
+
 #define REF_NO_ERR 0
 #define REF_ERR_INVDMEM 1  //Invalid Memory
 #define REF_ERR_SIZE 2     //Incorrect Size

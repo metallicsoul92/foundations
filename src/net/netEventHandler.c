@@ -1,4 +1,7 @@
 #include "../../include/net/netEventHandler.h"
+#include "../../include/collections/vector.h"
+#include <stdbool.h>
+#include <stdlib.h>
 
 // User-defined function structure
 struct userFunction {
@@ -8,9 +11,9 @@ struct userFunction {
 };
 
 // Event handler structure
-struct netEventHandler_t {
+struct netEventHandler {
     size_t _eventCount; // Number of registered user functions
-    vector_t _events;   // Vector to store user functions
+    vector_t * _events;   // Vector to store user functions
 };
 
 // Allocate memory for a user function and initialize it
@@ -46,6 +49,9 @@ void *userFunction_getUserData(userFunction_t *function) {
 
 // Register a user function in the event handler
 void register_user_function(netEventHandler_t *handler, userFunction_t *function) {
+    if(handler->_events == NULL){
+      handler->_events = vector_malloc(sizeof(userFunction_t*), 16);
+    }
     vector_push(handler->_events, function);
     handler->_eventCount++;
 }
@@ -54,7 +60,7 @@ void register_user_function(netEventHandler_t *handler, userFunction_t *function
 void process_event(netEventHandler_t *handler, uint16_t event_id) {
     // Iterate over registered user functions and call the relevant ones based on event_id.
     for (size_t i = 0; i < handler->_eventCount; i++) {
-        userFunction_t *function = vector_get(handler->_events, i);
+        userFunction_t *function = vector_getElementAt(handler->_events, i);
         if (function->_identifier == event_id) {
             // Call the user function with user data.
             function->_function(function->_userData);

@@ -39,7 +39,7 @@ server_t * server_malloc(uint16_t port,uint8_t ipType, uint8_t ipAtIndex, uint32
 
         // Initialize any other server fields, e.g., _connections, _serverLog, and _listen
         out->_connections = vector_malloc(sizeof(serverConnection_t), maxConnections);
-        out->_serverLog = logger_malloc(LOG_IO_FILE_AND_STDERR,LOG_FORMAT_STRUCTURED,"server.log");
+        out->_serverLog = logger_malloc(LOG_IO_ALL,LOG_FORMAT_STRUCTURED,"server.log");
         out->_serverIP = ip_getIP(ipType, ipAtIndex);
         // out->_listen = ...;
 
